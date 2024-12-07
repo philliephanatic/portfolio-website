@@ -1,1 +1,6 @@
-# portfolio-website
+!__UPDATE__!
+Project purpose:
+
+Technologies used:
+
+Setup instructions:

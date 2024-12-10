@@ -1,16 +1,14 @@
 /* Defining the visual design | colors, font, branding */
 
-/*__FONTS_START__*/
+/*__FONTS__*/
 
-/* Fjalla One - Regular */
-@font-face {
+@font-face { /* Fjalla One - Regular */
     font-family: "Fjalla One";
     src: url(../assets/fonts/Fjalla_One/FjallaOne-Regular.woff2) format(woff2),
         url(../assets/fonts/Fjalla_One/FjallaOne-Regular.woff) format(woff);
 }
 
-/* Roboto - Regular */
-@font-face {
+@font-face { /* Roboto - Regular */
     font-family: "Roboto";
     src: url(../assets/fonts/Roboto/Roboto-Black.woff2) format(woff2),
         url(../assets/fonts/Roboto/Roboto-Black.woff) format(woff);
@@ -19,9 +17,7 @@
 html, body {
     font-size: 62.5%; /* 62.5% trick: 1rem = 10px for easier scaling */
 }
-/*__FONTS_END__*/
 
-/* Headings */
 body h1, h2 {
     font-family: "Fjalla One";
 }
@@ -33,4 +29,5 @@ body h3, h4, h5, h6, p {
 /* COLORS */
 html, body {
     background-color: #542746;
+    color: white;
 }

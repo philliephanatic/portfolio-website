@@ -1,14 +1,15 @@
 /* Buttons, cards, and reusable components */
 
-/* hero element */
-.flex-container-2 .hero-element {
+/* hero element
+.hero-element {
     display: block;
-    width: 30rem;
+    width: 10rem;
     height: 10rem;
-}
+} */
 
 /* hero copy block */
-.flex-container-1 {
+
+/* .flex-container-1 {
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -22,4 +23,4 @@
 .flex-container-1 h2 {
     font-size: 4rem;
     text-align: center;
-}
+} */

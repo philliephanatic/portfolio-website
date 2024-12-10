@@ -1,6 +1,4 @@
 /* Standardizing UI across portfolio-website | CSS Reset, Global Element Styles  */
-/* Used at the beginning of a project to create a standardized baseline. */
-
 
 /* Default Global Styles */
 html, body {
@@ -9,6 +7,77 @@ html, body {
     height: 100%; 
     box-sizing: border-box;
     overflow-x: hidden; 
+}
+
+/* Used at the beginning of a project to create a standardized baseline. */
+
+.hero-homepage-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 0.75fr);
+    padding: 2rem;
+}
+
+.grid-item-1, .grid-item-2, .grid-item-3, .grid-item-4,
+.grid-item-5, .grid-item-6, .grid-item-7 {
+    display: grid;
+}
+
+.flex-container-1, .flex-container-2, .flex-container-3,
+.flex-container-4, .flex-container-5, .flex-container-6,
+.flex-container-7, .flex-container-8, .flex-container-9,
+.flex-container-10 {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    /* align-content: center;  */
+    margin-top: 0rem;
+}
+
+.grid-item-1 { /* header and subhead  */
+    grid-row: 2;
+    align-content: center;
+    width: 100%;
+    height: 5%;
+}
+
+.flex-container-1 {
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;    
+}
+
+.flex-container-1 h1 {
+    font-size: 5rem;
+    text-align: center;
+}
+ 
+.flex-container-1 h2 {
+    font-size: 4rem;
+    text-align: center;
+} 
+
+.hero-element { /* hero element  */
+    display: block;
+    grid-row: 1;
+    height: 10rem;
+    width: 10rem;
+}
+
+.flex-container-2 {
+    height: auto;
+    justify-content: flex-end;
+}
+   
+.grid-item-3 {
+    grid-row: 3;
+    height: 40rem;
+
+    color: aqua;
+    font-style: bold;
+    border-color: white;
+    border-style: dashed;
 }
 
 

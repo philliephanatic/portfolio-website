@@ -2,8 +2,9 @@
 
 /*__HEADER_START__*/
 .site-header {
-    background-color: aqua;
+    background-color: inherit;
     font-family: "Roboto", serif;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.5); /* Layered shadow for depth */
     z-index: 1000;
  }
 
@@ -27,7 +28,7 @@
  
  .logo a, .navigation ul li a {
     text-decoration: none; /* Remove underline */
-    color: black; /* Default link color */
+    color: white; 
     font-weight: bold;
     font-size: 3rem;
  }

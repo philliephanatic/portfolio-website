@@ -1,4 +1,5 @@
 /* Standardizing UI across portfolio-website | CSS Reset, Global Element Styles  */
+/* Used at the beginning of a project to create a standardized baseline. */
 
 /* Default Global Styles */
 html, body {
@@ -9,13 +10,15 @@ html, body {
     overflow-x: hidden; 
 }
 
-/* Used at the beginning of a project to create a standardized baseline. */
-
-.hero-homepage-container {
+.hero-homepage-container, .module-1-homepage-container, .module-2-homepage-container {
     display: grid;
+    padding: 0rem 10rem;
+}
+
+/*__HERO_START__*/
+.hero-homepage-container {
     grid-template-columns: 1fr;
-    grid-template-rows: repeat(3, 0.75fr);
-    padding: 2rem;
+    grid-template-rows: 0.75fr, 0.50fr, 0.75fr;
 }
 
 .grid-item-1, .grid-item-2, .grid-item-3, .grid-item-4,
@@ -31,7 +34,8 @@ html, body {
     flex-grow: 0;
     flex-shrink: 1;
     flex-wrap: wrap;
-    /* align-content: center;  */
+    align-content: center; 
+    justify-content: center;
     margin-top: 0rem;
 }
 
@@ -39,45 +43,145 @@ html, body {
     grid-row: 2;
     align-content: center;
     width: 100%;
-    height: 5%;
+    height: auto;
 }
 
 .flex-container-1 {
     flex-direction: column;
     align-content: center;
-    justify-content: center;    
+    justify-content: center;
 }
 
 .flex-container-1 h1 {
     font-size: 5rem;
     text-align: center;
+    margin-bottom: 1rem;
 }
  
 .flex-container-1 h2 {
     font-size: 4rem;
     text-align: center;
+    margin-top: 0rem;
+    font-family: "Roboto" !important;
 } 
 
-.hero-element { /* hero element  */
-    display: block;
-    grid-row: 1;
-    height: 10rem;
-    width: 10rem;
-}
-
-.flex-container-2 {
-    height: auto;
-    justify-content: flex-end;
-}
-   
 .grid-item-3 {
     grid-row: 3;
-    height: 40rem;
+    height: 30rem;
 
     color: aqua;
+    font-size: 3rem;
     font-style: bold;
     border-color: white;
     border-style: dashed;
 }
 
+.flex-container-3 {
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+/*__HERO_END__*/
+
+/*__MODULE_1_START__*/
+.module-1-container {
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: 2fr;
+}
+
+.grid-item-4 {
+    grid-row: 1;
+    max-width: 100%;
+    height: auto;
+    font-size: 4rem;
+}   
+
+.grid-item-5 {
+    grid-row: 2;
+}
+
+.grid-item-5 > .flex-container-5 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.grid-item-5 > .flex-container-6 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.grid-item-5 > .flex-container-7 {
+    grid-column: 1;
+    grid-row: 5;
+}
+
+.grid-item-5 > .flex-container-8 {
+    grid-column: 2;
+    grid-row: 5;
+}
+
+.flex-container-5, .flex-container-6, .flex-container-7, 
+.flex-container-8 {
+    height: 20rem;
+    margin: 1rem;
+    border-radius: 5px;
+
+    font-size: 1.5rem;
+    text-decoration: none;
+
+    border-color: white;
+    border-style: dashed;
+}
+/* MODULE_1_END */
+
+/* MODULE_2_START */
+.module-2-homepage-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: .25fr repeat(6, auto);
+}
+
+.nectar-scribble-basic-underline {
+    display: block;           /* Keeps the SVG centered */
+    margin: -10px auto 0;     /* Pulls the SVG closer */
+    position: relative;       /* Enables finer adjustments */
+    top: -5rem;               /* Moves the SVG upward */
+}
+
+.grid-item-6 {
+    grid-row: 1;
+    grid-column: 1 / 4;
+    height: auto;
+    font-size: 4rem;
+}
+
+.grid-item-6 > .flex-container-9 {
+    text-align: center;     
+}
+
+.grid-item-6 .highlight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    color: #6f38c5;
+    position: relative;
+
+}
+
+.grid-item-7 {
+    grid-column: 1 / 4;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(150px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    align-items: start;
+}
+
+.image-grid img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensures the entire image is visible */
+    transform: scale(2);
+}
 

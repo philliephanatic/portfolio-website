@@ -22,14 +22,14 @@ html, body {
 }
 
 .grid-item-1, .grid-item-2, .grid-item-3, .grid-item-4,
-.grid-item-5, .grid-item-6, .grid-item-7 {
+.grid-item-5, .grid-item-6, .grid-item-7, .image-grid {
     display: grid;
 }
 
 .flex-container-1, .flex-container-2, .flex-container-3,
 .flex-container-4, .flex-container-5, .flex-container-6,
 .flex-container-7, .flex-container-8, .flex-container-9,
-.flex-container-10 {
+.flex-container-10, .flex-container-11, .flex-container-12 {
     display: flex;
     flex-grow: 0;
     flex-shrink: 1;
@@ -84,15 +84,13 @@ html, body {
 /*__HERO_END__*/
 
 /*__MODULE_1_START__*/
-.module-1-container {
-    grid-template-rows: repeat(6, 1fr);
-    grid-template-columns: 2fr;
+.module-1-homepage-container {
+    grid-template-rows: .25fr 1fr;
+    grid-template-columns: 1fr;
 }
 
 .grid-item-4 {
     grid-row: 1;
-    max-width: 100%;
-    height: auto;
     font-size: 4rem;
 }   
 
@@ -102,26 +100,36 @@ html, body {
 
 .grid-item-5 > .flex-container-5 {
     grid-column: 1;
-    grid-row: 3;
+    grid-row: 2;
 }
 
 .grid-item-5 > .flex-container-6 {
     grid-column: 2;
-    grid-row: 3;
+    grid-row: 2;
 }
 
 .grid-item-5 > .flex-container-7 {
     grid-column: 1;
-    grid-row: 5;
+    grid-row: 3;
 }
 
 .grid-item-5 > .flex-container-8 {
     grid-column: 2;
-    grid-row: 5;
+    grid-row: 3;
 }
 
+.grid-item-5 > .flex-container-9 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.grid-item-5 > .flex-container-10 {
+    grid-column: 2;
+    grid-row: 4;
+}
+/* image-grid */
 .flex-container-5, .flex-container-6, .flex-container-7, 
-.flex-container-8 {
+.flex-container-8, .flex-container-9, .flex-container-10 {
     height: 20rem;
     margin: 1rem;
     border-radius: 5px;
@@ -137,7 +145,7 @@ html, body {
 /* MODULE_2_START */
 .module-2-homepage-container {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: .25fr repeat(6, auto);
+    grid-template-rows: .25fr auto;
 }
 
 .nectar-scribble-basic-underline {
@@ -154,7 +162,7 @@ html, body {
     font-size: 4rem;
 }
 
-.grid-item-6 > .flex-container-9 {
+.grid-item-6 > .flex-container-11 {
     text-align: center;     
 }
 
@@ -171,11 +179,9 @@ html, body {
 }
 
 .image-grid {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(150px, 1fr));
+    grid-template-columns: repeat(6, minmax(150px, 1fr)); 
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
-    align-items: start;
 }
 
 .image-grid img {

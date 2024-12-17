@@ -54,6 +54,15 @@
     }
 /*__HEADER_END__*/
 
+/*__FOOTER_START__*/
+
+
+.social-media-footer img {
+        /* height: 8rem;
+        width: 10rem; */
+    }
+
+/*__FOOTER_END__*/
 /*__MODULE_1_START__*/
     .module-1-homepage-container {
         grid-template-rows: .125fr 1fr;
@@ -126,7 +135,7 @@
         padding: 1rem; 
     }
 }
-
+/* MOBILE END | 600px to 320px */
 /* LAPTOP VIEW | 769px to 1200px */
 @media (min-width: 769px) and (max-width: 1200px) {
     .hamburger-menu-mobile-wrapper {

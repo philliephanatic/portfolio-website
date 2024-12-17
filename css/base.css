@@ -187,7 +187,5 @@ html, body {
 .image-grid img {
     width: 100%;
     height: auto;
-    object-fit: contain; /* Ensures the entire image is visible */
-    transform: scale(2);
 }
 

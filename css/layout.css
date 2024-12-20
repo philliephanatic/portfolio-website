@@ -1,2 +1,109 @@
 /* Grid, flexbox, and page structure */
 
+/*__Default_Grid_Structure__*/
+.hero-homepage-container, .module-1-homepage-container, .module-2-homepage-container {
+    display: grid;
+    padding: 0rem 10rem;
+}
+
+.grid-item-1, .grid-item-2, .grid-item-3, .grid-item-4,
+.grid-item-5, .grid-item-6, .grid-item-7, .image-grid {
+    display: grid;
+}
+
+.flex-container-1, .flex-container-2, .flex-container-3,
+.flex-container-4, .flex-container-5, .flex-container-6,
+.flex-container-7, .flex-container-8, .flex-container-9,
+.flex-container-10, .flex-container-11, .flex-container-12 {
+    display: flex;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    align-content: center; 
+    justify-content: center;
+    margin-top: 0rem;
+}
+
+/*__HERO_START__*/
+.hero-homepage-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.75fr, 0.50fr, 0.75fr;
+}
+
+.grid-item-1 { /* header and subhead  */
+    grid-row: 2;
+    align-content: center;
+}
+
+.grid-item-3 { /* hero image  */
+    grid-row: 3;
+}
+/*__HERO_END__*/
+
+/*__MODULE_1_START__*/
+.module-1-homepage-container {
+    grid-template-rows: .25fr 1fr;
+    grid-template-columns: 1fr;
+}
+
+.grid-item-4 {
+    grid-row: 1;
+    font-size: 4rem;
+}   
+
+/* image-grid */
+.grid-item-5 {
+    grid-row: 2;
+}
+
+.grid-item-5 > .flex-container-5 {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.grid-item-5 > .flex-container-6 {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.grid-item-5 > .flex-container-7 {
+    grid-column: 1;
+    grid-row: 3;
+}
+
+.grid-item-5 > .flex-container-8 {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.grid-item-5 > .flex-container-9 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.grid-item-5 > .flex-container-10 {
+    grid-column: 2;
+    grid-row: 4;
+}
+/* MODULE_1_END */
+
+/* MODULE_2_START */
+.module-2-homepage-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: .25fr auto;
+}
+
+.grid-item-6 { /* module 2 header */
+    grid-row: 1;
+    grid-column: 1 / 4;
+}
+
+.grid-item-7 { /* module 2 logo wall */
+    grid-column: 1 / 4;
+}
+
+.image-grid {
+    grid-template-columns: repeat(6, minmax(150px, 1fr)); 
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+}

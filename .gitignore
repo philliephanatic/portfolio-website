@@ -1,0 +1,30 @@
+# Node modules (backend & Parcel)
+node_modules/
+
+# Parcel cache + build output
+.parcel-cache/
+dist/
+
+# Local environment config (if used)
+.env
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# macOS metadata
+.DS_Store
+
+# VS Code settings
+.vscode/
+
+# OS generated
+Thumbs.db
+
+# Optional: lockfiles (if switching between npm/yarn/pnpm)
+# yarn.lock
+# pnpm-lock.yaml

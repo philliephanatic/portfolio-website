@@ -12,7 +12,8 @@ const swiper = new Swiper('.swiper', {
   speed: 2000,
   autoplay: {
     delay: 0,
-    disableOnInteraction: false
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true
   },
   breakpoints: {
     // when window width is >= 0px

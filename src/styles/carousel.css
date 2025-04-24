@@ -1,0 +1,53 @@
+.swiper {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    object-fit: contain;
+    opacity: 0.9;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.swiper-slide img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+
+/* MOBILE | 600px and below */
+@media (max-width: 600px) {
+    .swiper-slide img {
+        height: 20rem;
+    }
+    .blackstone img {
+        height: 22rem;
+    }
+}
+
+/* TABLET | 769px to 1023px */
+@media (min-width: 601px) and (max-width: 1023px) {
+    .swiper-slide img {
+        height: 25rem;
+    }
+}
+
+/* DESKTOP | 769px to 1024px */
+@media (min-width: 1024px) {
+    .swiper-slide img {
+        height: 35rem;
+    }
+}

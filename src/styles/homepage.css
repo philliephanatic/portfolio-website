@@ -1,0 +1,68 @@
+/*__GLOBAL_STYLING__*/
+html, body {
+    background-color: white ;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%; 
+    box-sizing: border-box;
+    overflow-x: hidden; 
+    font-size: 62.5%; /* 62.5% trick: 1rem = 10px for easier scaling */
+    scroll-behavior: smooth;
+}
+
+/*__FONTS__*/
+@font-face { 
+    font-family: "Fjalla One";
+    src: url(./fonts/Fjalla_One/FjallaOne-Regular.woff2) format(woff2),
+        url(./fonts/Fjalla_One/FjallaOne-Regular.woff) format(woff);
+}
+
+@font-face { 
+    font-family: "Roboto";
+    src: url(./fonts/Roboto/Roboto-Regular.woff2) format(woff2),
+        url(./fonts/Roboto/Roboto-Regular.woff) format(woff);
+}
+
+h1 {
+    font-family: "Fjalla One";
+    font-size: 5rem;
+}
+
+h2 {
+    font-family: "Roboto";
+    font-size: 3rem;
+}
+
+body h3, h4, h5, h6, p, li, a {
+    font-family: "Roboto";
+    font-size: 2rem;
+}
+/*__GLOBAL_STYLING_END__*/
+
+/* MOBILE | 600px and below */
+@media (max-width: 600px) {
+    .hero-homepage-container {
+        margin-bottom: 1rem;
+    } 
+    
+    .module-1-homepage-container, .module-2-homepage-container {
+        margin-bottom: 1rem;
+    }
+
+    .cta-button {
+        border-radius: 1rem;
+        border-color: white;
+        background-color: aqua;
+        text-decoration: none;
+        padding: 2rem 2.5rem;
+        margin: 1.5rem 1rem;
+    }
+
+    .flex-container-1 {
+        text-align: center;
+    }
+}
+
+
+

@@ -1,0 +1,46 @@
+/*__HEADER_START__*/
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0rem 1rem;
+}
+
+.main-nav .nav-ul-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link:hover {
+    text-decoration: underline;
+}
+
+.site-header {
+    background-color: #542746;
+    position: relative;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.1),   /* small soft shadow */
+        0 6px 12px rgba(0, 0, 0, 0.1);  /* deeper wider shadow */
+    z-index: 1000;
+}
+
+.logo-image {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-ul-links {
+    list-style: none;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+/*__HEADER_END__*/
+
+
+/*__FOOTER_START__*/
+
+/*__FOOTER_END__*/
+

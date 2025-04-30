@@ -4,15 +4,17 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html",
+    "dev": "parcel src/index.html  --dist-dir docs",
     "build": "parcel build src/index.html"
   },
+  "homepage": "https://philliephanatic.github.io/portfolio-website",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
-    "parcel": "^2.14.4"
+    "parcel": "^2.14.4",
+    "svgo": "^3.3.2"
   },
   "dependencies": {
     "swiper": "^11.2.6"

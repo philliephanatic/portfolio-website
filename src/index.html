@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nolan Young | Portfolio Website</title>
     
-    <link rel="stylesheet" href="./styles/carousel.css"> 
+    <link rel="stylesheet" href="./styles/carousel.css">
+    <link rel="stylesheet" href="./styles/header-footer.css">
     <link rel="stylesheet" href="./styles/homepage.css">
     <link rel="stylesheet" href="./styles/layout.css"> 
    
@@ -14,15 +15,34 @@
 </head>
 
 <body>
+    <!-- !HEADER_START! -->
+    <header class="site-header">
+        <div class="logo">
+            <a href="./index.html" class="logo-image">Logo</a>
+        </div>
+        <nav class="main-nav">
+            <ul class="nav-ul-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger-menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+        </button>
+    </header>
+    <!-- !HEADER_END! -->
+
     <!-- !HERO_START! -->
     <div class="hero-homepage-container">
         <div class="grid-item-1">
             <div class="flex-container-1">
                 <h1>I Optimize Websites for Performance, SEO & Conversions</h1>
-                <br>
-                <h2>Experienced in enterprise web marketing, A/B testing, and growth strategy for high-traffic sites.
-                </h2>
+                <h2>Experienced in enterprise web marketing, A/B testing, and growth strategy for high-traffic sites.</h2>
                 <a href="#case-studies" class="cta-button">View My Case Studies</a>
+                <a href="#" class="cta-button">See Mobile View</a>
                 <a href="contact.html" class="cta-button">Contact Me</a>
             </div>
         </div>
@@ -110,8 +130,22 @@
             </div>
         </div>
     </div>
-    <!-- !MODULE_2_END! -->
+<!-- !MODULE_2_END! -->
 
+<!-- !FOOTER_START! -->
+<!-- <footer class="site-footer">
+    <div class="site-footer-wrapper">
+        <div class="social-media-footer">
+            <a href="https://www.linkedin.com/in/nolanyoung" target="_blank">
+                <img src="./images/header-footer/LinkedIn_Logo.svg" class="linkedin-logo" alt="Linkedin Logo">
+            </a>
+            <a href="https://github.com/philliephanatic" target="_blank">
+                <img src="./images/header-footer/Github_Logo.svg" class="github-logo" alt="GitHub Logo">
+            </a>
+        </div>
+    </div>
+</footer> -->
+<!-- !FOOTER_END! -->
 
 
 </body>

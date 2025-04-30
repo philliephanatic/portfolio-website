@@ -40,8 +40,8 @@ body h3, h4, h5, h6, p, li, a {
 }
 /*__GLOBAL_STYLING_END__*/
 
-/* MOBILE | 600px and below */
-@media (max-width: 600px) {
+/* MOBILE | 768px and below */
+@media (max-width: 767px) {
     .hero-homepage-container {
         margin-bottom: 1rem;
     } 
@@ -63,6 +63,5 @@ body h3, h4, h5, h6, p, li, a {
         text-align: center;
     }
 }
-
-
+    
 

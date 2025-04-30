@@ -3,6 +3,7 @@ import { Autoplay } from "swiper/modules";
 import 'swiper/swiper-bundle.css';
 import './styles/carousel.css';
 
+// Homepage carousel
 Swiper.use([Autoplay]);
 
 const swiper = new Swiper('.swiper', {
@@ -29,4 +30,15 @@ const swiper = new Swiper('.swiper', {
         slidesPerView: 4,
     }
   }
+});
+
+// Mobile header
+const hamburger = document.querySelector(".hamburger-menu");
+const mainNav = document.querySelector(".main-nav");
+const siteHeader = document.querySelector(".site-header")
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  mainNav.classList.toggle("active");
+  siteHeader.classList.toggle("active");
 });

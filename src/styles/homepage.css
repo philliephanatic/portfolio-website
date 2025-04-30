@@ -43,6 +43,7 @@ body h3, h4, h5, h6, p, li, a {
 /* MOBILE | 768px and below */
 @media (max-width: 767px) {
     .hero-homepage-container {
+        margin-top: 0rem;
         margin-bottom: 1rem;
     } 
     
@@ -50,13 +51,22 @@ body h3, h4, h5, h6, p, li, a {
         margin-bottom: 1rem;
     }
 
-    .cta-button {
+    .primary-cta-button {
         border-radius: 1rem;
         border-color: white;
         background-color: aqua;
         text-decoration: none;
         padding: 2rem 2.5rem;
-        margin: 1.5rem 1rem;
+        margin: 1rem 1rem;
+    }
+
+    .secondary-cta-button {
+        border-radius: 1rem;
+        border-color: white;
+        background-color: rgb(0, 255, 110);
+        text-decoration: none;
+        padding: 1rem 1.25rem;
+        margin: 0.5rem 0.5rem;
     }
 
     .flex-container-1 {

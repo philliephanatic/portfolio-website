@@ -35,10 +35,8 @@ const swiper = new Swiper('.swiper', {
 // Mobile header
 const hamburger = document.querySelector(".hamburger-menu");
 const mainNav = document.querySelector(".main-nav");
-const siteHeader = document.querySelector(".site-header")
 
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   mainNav.classList.toggle("active");
-  siteHeader.classList.toggle("active");
 });

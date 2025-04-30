@@ -15,7 +15,8 @@
 .flex-container-1, .flex-container-2, .flex-container-3,
 .flex-container-4, .flex-container-5, .flex-container-6,
 .flex-container-7, .flex-container-8, .flex-container-9,
-.flex-container-10, .flex-container-11, .flex-container-12 {
+.flex-container-10, .flex-container-11, .flex-container-12,
+.flex-container-secondary-cta {
     display: flex;
     flex-grow: 0;
     flex-shrink: 1;
@@ -26,7 +27,7 @@
 }
 
 /*__HERO_START__*/
-.grid-item-1 { /* hero header and subhead  */
+.grid-item-1 {
     width: 100%;
     height: auto;
 }
@@ -37,16 +38,28 @@
 
 .flex-container-1 h1 {
     text-align: center;
-    margin-bottom: 0rem;
+    margin-bottom: 1rem;
 }
  
-.flex-container-1 h2 {
+.flex-container-1 h3 {
     text-align: center;
     margin-top: 0rem;
+    margin-bottom: 0rem;
 } 
 
-.flex-container-3 {
-    flex-direction: column;
+.grid-item-secondary-cta {
+    grid-row: 2;
+    justify-items: stretch;
+}
+
+.flex-container-secondary-cta {
+    flex-wrap: nowrap;
+}
+
+.secondary-cta-button {
+    width: 100%;
+    text-align: center;
+    align-content: center;
 }
 /*__HERO_END__*/
 
@@ -97,11 +110,13 @@
 .grid-item-5 > .flex-container-9 {
     grid-column: 1;
     grid-row: 4;
+    margin-bottom: 0.5rem;
 }
 
 .grid-item-5 > .flex-container-10 {
     grid-column: 2;
     grid-row: 4;
+    margin-bottom: 0.5rem;
 }
 /* MODULE_1_END */
 
@@ -112,6 +127,10 @@
 
 .flex-container-11 { 
     text-align: center;   
+}
+
+.grid-item-7 {
+    margin-bottom: 0.5rem;
 }
 /* MODULE_2_END */
 

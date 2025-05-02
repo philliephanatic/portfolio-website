@@ -1,0 +1,51 @@
+.swiper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.swiper-wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  display: flex;
+}
+
+.swiper-slide img {
+  object-fit: contain;
+  opacity: .9;
+  transition: transform .2s, opacity .2s;
+}
+
+.swiper-slide img:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@media (width <= 600px) {
+  .swiper-slide img {
+    height: 20rem;
+  }
+
+  .blackstone img {
+    height: 22rem;
+  }
+}
+
+@media (width >= 601px) and (width <= 1023px) {
+  .swiper-slide img {
+    height: 25rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .swiper-slide img {
+    height: 35rem;
+  }
+}
+/*# sourceMappingURL=portfolio-website.449ec9bd.css.map */

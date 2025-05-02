@@ -7,7 +7,7 @@
     background-color: #542746;
 }
 
-.grid-item-1, .grid-item-2, .grid-item-3, .grid-item-4,
+.grid-item-2, .grid-item-3, .grid-item-4,
 .grid-item-5, .grid-item-6, .grid-item-7 {
     display: grid;
 }
@@ -16,7 +16,8 @@
 .flex-container-4, .flex-container-5, .flex-container-6,
 .flex-container-7, .flex-container-8, .flex-container-9,
 .flex-container-10, .flex-container-11, .flex-container-12,
-.flex-container-secondary-cta {
+.flex-container-subhead, .flex-container-marquee, 
+.flex-container-button, .flex-container-primary-cta {
     display: flex;
     flex-grow: 0;
     flex-shrink: 1;
@@ -27,9 +28,36 @@
 }
 
 /*__HERO_START__*/
-.grid-item-1 {
+.hero-homepage-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 12.5rem 12rem 1rem repeat(3, .5fr);
+}
+
+.grid-item-hero {
+    grid-row: 1;
     width: 100%;
     height: auto;
+}
+
+.grid-item-marquee {
+    grid-row: 2;
+}
+
+.grid-item-button {
+    grid-row: 3;
+}
+
+.grid-item-subhead {
+    grid-row: 4;
+}
+
+.grid-item-primary-cta {
+    grid-row: 5;
+}
+
+.grid-item-secondary-cta {
+    grid-row: 6;
+    justify-items: stretch;
 }
 
 .flex-container-1 {
@@ -40,33 +68,52 @@
     text-align: center;
     margin-bottom: 1rem;
 }
+
+.flex-container-marquee {
+    min-height: 16rem;
+    align-content: center; 
+    justify-content: center;
+    text-align: center;
+}
  
-.flex-container-1 h3 {
+.flex-container-button {
+    justify-content: flex-end;
+    max-height: 1rem;
+    position: relative;
+    bottom: -5;
+    right: -25; 
+}
+
+.flex-container-subhead {
     text-align: center;
     margin-top: 0rem;
     margin-bottom: 0rem;
-} 
+    align-content: center;
+    justify-content: center;
+}
 
-.grid-item-secondary-cta {
-    grid-row: 2;
-    justify-items: stretch;
+
+.flex-container-primary-cta {
+    max-width: 35.5rem;
+    margin: 0 auto;
 }
 
 .flex-container-secondary-cta {
-    flex-wrap: nowrap;
-}
-
-.secondary-cta-button {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
     width: 100%;
-    text-align: center;
-    align-content: center;
+    max-width: 35.5rem;    
+    margin: 0 auto;
+    
 }
 /*__HERO_END__*/
 
 /*__MODULE_1_START__*/
 .module-1-homepage-container {
-    grid-template-rows: .25fr 1fr;
     grid-template-columns: 1fr;
+    grid-template-rows: .25fr 1fr;
+    
 }
 
 .flex-container-5, .flex-container-6, .flex-container-7, 

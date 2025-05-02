@@ -1,0 +1,98 @@
+html, body {
+  color: #fff;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  background-color: #fff;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 62.5%;
+  overflow-x: hidden;
+}
+
+@font-face {
+  font-family: Fjalla One;
+  src: url("FjallaOne-Regular.f3112505.woff2") format("woff2"), url("FjallaOne-Regular.db7dc382.woff") format("woff");
+}
+
+@font-face {
+  font-family: Roboto;
+  src: url("Roboto-Regular.84c235ac.woff2") format("woff2"), url("Roboto-Regular.8a56dae9.woff") format("woff");
+}
+
+h1 {
+  font-family: Fjalla One;
+  font-size: 5rem;
+}
+
+h2 {
+  font-family: Roboto;
+  font-size: 3rem;
+}
+
+body h3, h4, h5, h6, p, li, a {
+  font-family: Roboto;
+  font-size: 2rem;
+}
+
+.sr-only {
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  overflow: hidden;
+}
+
+.typed-icon-toggle {
+  background-color: inherit;
+  cursor: pointer;
+  z-index: 2000;
+  border: none;
+  justify-content: flex-end;
+  font-size: 1.5rem;
+  display: flex;
+}
+
+@media (width <= 767px) {
+  .hero-homepage-container {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .module-1-homepage-container, .module-2-homepage-container {
+    margin-bottom: 1rem;
+  }
+
+  .typed-icon-toggle img {
+    opacity: .55;
+    width: 7rem;
+  }
+
+  #typed-text {
+    font-size: 7rem;
+  }
+
+  .primary-cta-button {
+    text-align: center;
+    background-color: #0ff;
+    border-radius: 1rem;
+    width: 100%;
+    margin: 1rem;
+    padding: 2rem 2.5rem;
+    text-decoration: none;
+  }
+
+  .secondary-cta-button {
+    text-align: center;
+    background-color: #00ff6e;
+    border-radius: 1rem;
+    flex: 1 0 0;
+    align-content: center;
+    margin: .5rem .5rem 1.5rem;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+  }
+}
+/*# sourceMappingURL=portfolio-website.bea6fefd.css.map */

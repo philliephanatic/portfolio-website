@@ -17,6 +17,7 @@
     "svgo": "^3.3.2"
   },
   "dependencies": {
-    "swiper": "^11.2.6"
+    "swiper": "^11.2.6",
+    "typed.js": "^2.1.0"
   }
 }

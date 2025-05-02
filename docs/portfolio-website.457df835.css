@@ -1,0 +1,143 @@
+.site-header {
+  z-index: 1000;
+  background-color: #542746;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  display: flex;
+  position: relative;
+  box-shadow: 0 2px 4px #0000001a, 0 6.1px 12px #0000001a;
+}
+
+.logo-image {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-ul-links {
+  list-style: none;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+@media (width >= 768px) {
+  .main-nav .nav-ul-links {
+    gap: 2rem;
+    display: flex;
+  }
+}
+
+.hamburger-menu {
+  cursor: pointer;
+  z-index: 1001;
+  background: none;
+  border: none;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 0;
+  padding: .5rem .5rem .5rem 0;
+  display: none;
+  position: relative;
+}
+
+.hamburger-menu .line {
+  background-color: #fff;
+  width: 2.5rem;
+  height: .3rem;
+  margin: .3rem;
+  transition: all .3s;
+}
+
+.hamburger-menu.active .line:first-child {
+  transform: rotate(45deg)translate(6px, 6px);
+}
+
+.hamburger-menu.active .line:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.active .line:nth-child(3) {
+  transform: rotate(-45deg)translate(6px, -6px);
+}
+
+@media (width <= 767px) {
+  .hamburger-menu {
+    display: flex;
+  }
+
+  .main-nav {
+    z-index: 999;
+    background-color: #542746;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-height: 0;
+    transition: transform .4s ease-in-out;
+    display: flex;
+    overflow: hidden;
+    transform: translateX(100%);
+  }
+
+  .main-nav.active {
+    max-height: 100%;
+    transform: translateX(0%);
+  }
+
+  .nav-ul-links {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+}
+
+.site-footer {
+  color: #fff;
+  text-align: center;
+  background-color: #000;
+}
+
+.site-footer-wrapper {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.social-media-footer {
+  justify-content: center;
+  gap: 1rem;
+  line-height: 0;
+  display: inline-flex;
+}
+
+.social-media-footer img {
+  width: auto;
+  height: 10rem;
+  margin: 0;
+  display: block;
+}
+
+.footer-copy {
+  opacity: .8;
+  font-size: 2rem;
+}
+
+@media (width <= 767px) {
+  .social-media-footer img {
+    height: 5rem;
+  }
+
+  .footer-copy {
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=portfolio-website.457df835.css.map */

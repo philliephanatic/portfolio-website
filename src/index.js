@@ -2,6 +2,7 @@ import Swiper from "swiper";
 import { Autoplay } from "swiper/modules";
 import 'swiper/swiper-bundle.css';
 import './styles/carousel.css';
+import Typed from "typed.js";
 
 // Homepage carousel
 Swiper.use([Autoplay]);
@@ -39,4 +40,38 @@ const mainNav = document.querySelector(".main-nav");
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   mainNav.classList.toggle("active");
+});
+
+// Homepage text marquee
+import Typed from 'typed.js';
+
+const typed = new Typed('#typed-text', {
+  strings: ['SEO', 'Performance', 'Conversion', 'Mobile UX'],
+  typeSpeed: 90,
+  backSpeed: 40,
+  backDelay: 1500,
+  loop: true,
+  showCursor: false,
+});
+
+const pauseIconUrl = new URL('./images/homepage/pause-button.svg', import.meta.url);
+const playIconUrl = new URL('./images/homepage/play-button.svg', import.meta.url);
+
+const toggleButton = document.getElementById('toggle-typed');
+const toggleImage = toggleButton.querySelector('img');
+
+let isPaused = false;
+
+toggleButton.addEventListener('click', () => {
+  if (isPaused) {
+    typed.start();
+    isPaused = false;
+    toggleImage.src = pauseIconUrl;
+    toggleImage.alt = 'Pause typed text';
+  } else {
+    typed.stop();
+    isPaused = true;
+    toggleImage.src = playIconUrl;
+    toggleImage.alt = 'Play typed text';
+  }
 });

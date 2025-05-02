@@ -1,5 +1,4 @@
 .hero-homepage-container, .module-1-homepage-container, .module-2-homepage-container {
-  background-color: #542746;
   align-content: space-evenly;
   padding: 0 1rem;
   display: grid;
@@ -97,15 +96,6 @@
 .module-1-homepage-container {
   grid-template-rows: .25fr 1fr;
   grid-template-columns: 1fr;
-}
-
-.flex-container-5, .flex-container-6, .flex-container-7, .flex-container-8, .flex-container-9, .flex-container-10 {
-  border-style: dashed;
-  border-color: #fff;
-  border-radius: .5rem;
-  height: 20rem;
-  margin: 0;
-  text-decoration: none;
 }
 
 .grid-item-4 {

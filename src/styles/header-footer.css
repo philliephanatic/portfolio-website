@@ -4,12 +4,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1rem;
-    background-color: #542746;
+    background-color: #1F2A44;
     position: relative;
     box-shadow:
         0 2px 4px rgba(0, 0, 0, 0.1),
         /* small soft shadow */
-        0 6.1px 12px rgba(0, 0, 0, 0.1);
+        0 6.1px 1px rgba(0, 0, 0, 0.1);
     /* deeper wider shadow */
     z-index: 1000;
 }
@@ -87,7 +87,7 @@
         flex-direction: column;
         align-items: center;
         width: 100%;
-        background-color: #542746;
+        background-color: #1F2A44;
         overflow: hidden;
         max-height: 0; /* similar to display: none */
         transform: translateX(100%);
@@ -118,7 +118,7 @@
 .site-footer {
     color: white;
     text-align: center;
-    background-color: black;
+    background-color: #1F2A44;
 }
 
 .site-footer-wrapper {

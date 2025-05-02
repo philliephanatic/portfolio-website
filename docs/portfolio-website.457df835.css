@@ -1,12 +1,12 @@
 .site-header {
   z-index: 1000;
-  background-color: #542746;
+  background-color: #1f2a44;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   display: flex;
   position: relative;
-  box-shadow: 0 2px 4px #0000001a, 0 6.1px 12px #0000001a;
+  box-shadow: 0 2px 4px #0000001a, 0 6.1px 1px #0000001a;
 }
 
 .logo-image {
@@ -74,7 +74,7 @@
 
   .main-nav {
     z-index: 999;
-    background-color: #542746;
+    background-color: #1f2a44;
     flex-direction: column;
     align-items: center;
     width: 100%;
@@ -103,7 +103,7 @@
 .site-footer {
   color: #fff;
   text-align: center;
-  background-color: #000;
+  background-color: #1f2a44;
 }
 
 .site-footer-wrapper {

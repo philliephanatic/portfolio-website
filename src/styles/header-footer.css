@@ -1,3 +1,32 @@
+/* TABLET and DESKTOP */
+@media (min-width: 768px) and (max-width: 1024px) {
+
+    .site-header,
+    .site-footer {
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+}
+
+/* LAPTOP and DESKTOP */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    .site-header,
+    .site-footer {
+        margin-left: 20rem;
+        margin-right: 20rem;
+    }
+}
+
+/* LARGE DESKTOP */
+@media (min-width: 1441px) {
+    .site-header,
+    .site-footer {
+        margin-left: 30rem;
+        margin-right: 30rem;
+    }
+}
+
+
 /*__HEADER_START__*/
 .site-header {
     display: flex;
@@ -76,10 +105,10 @@
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-@media (max-width: 767px) {
+@media (min-width: 0px) and (max-width: 767px) {
     .hamburger-menu {
         display: flex;
-    
+
     }
 
     .main-nav {
@@ -89,7 +118,8 @@
         width: 100%;
         background-color: #1F2A44;
         overflow: hidden;
-        max-height: 0; /* similar to display: none */
+        max-height: 0;
+        /* similar to display: none */
         transform: translateX(100%);
         transition: transform 0.4s ease-in-out;
         z-index: 999;
@@ -119,6 +149,10 @@
     color: white;
     text-align: center;
     background-color: #1F2A44;
+}
+
+.site-footer p {
+    color: white;
 }
 
 .site-footer-wrapper {
@@ -156,4 +190,5 @@
         font-size: 1rem;
     }
 }
+
 /*__FOOTER_END__*/

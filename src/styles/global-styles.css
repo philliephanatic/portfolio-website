@@ -1,0 +1,52 @@
+
+html,
+body {
+    background-color: #F5F5F7;
+    color: white;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-size: 62.5%;
+    /* 62.5% trick: 1rem = 10px for easier scaling */
+    scroll-behavior: smooth;
+}
+
+/*__FONTS__*/
+@font-face {
+    font-family: "Fjalla One";
+    src: url(./fonts/Fjalla_One/FjallaOne-Regular.woff2) format(woff2),
+        url(./fonts/Fjalla_One/FjallaOne-Regular.woff) format(woff);
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url(./fonts/Roboto/Roboto-Regular.woff2) format(woff2),
+        url(./fonts/Roboto/Roboto-Regular.woff) format(woff);
+}
+
+h1 {
+    font-family: "Fjalla One";
+    font-size: 5rem;
+    color: white;
+}
+
+h2 {
+    font-family: "Roboto";
+    font-size: 3rem;
+    color: white;
+}
+
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a {
+    font-family: "Roboto";
+    font-size: 2rem;
+    color: #2C2C2C;
+}
+/*__GLOBAL_STYLING_END__*/

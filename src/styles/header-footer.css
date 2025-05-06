@@ -76,7 +76,7 @@
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
-@media (min-width: 0px) and (max-width: 767px) {
+@media (max-width: 767px) {
     .hamburger-menu {
         display: flex;
 
@@ -111,6 +111,7 @@
     }
 
 }
+
 /*__HEADER_END__*/
 
 /*__FOOTER_START__*/
@@ -149,7 +150,7 @@
     font-size: 2rem;
 }
 
-/* mobile font & img size */
+/* MOBILE */
 @media (max-width: 768px) {
     .social-media-footer img {
         height: 5rem;
@@ -159,32 +160,38 @@
         font-size: 1rem;
     }
 }
-/*__FOOTER_END__*/
 
-
-/* TABLET and DESKTOP */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .site-header,
-    .site-footer {
-        margin-left: 10rem;
-        margin-right: 10rem;
+/* MEDIUM SCREEN */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .footer-copy {
+        font-size: 1.25rem;
     }
 }
 
-/* LAPTOP and DESKTOP */
+/* LARGE SCREEN */
 @media (min-width: 1025px) and (max-width: 1440px) {
+
     .site-header,
     .site-footer {
-        margin-left: 20rem;
-        margin-right: 20rem;
+        padding-left: 30rem;
+        padding-right: 30rem;
+    }
+
+    .footer-copy {
+        font-size: 1.5rem;
     }
 }
 
-/* LARGE DESKTOP */
+/* XL SCREEN */
 @media (min-width: 1441px) {
+
     .site-header,
     .site-footer {
-        margin-left: 30rem;
-        margin-right: 30rem;
+        padding-left: 30rem;
+        padding-right: 30rem;
+    }
+
+    .footer-copy {
+        font-size: 1.75rem;
     }
 }

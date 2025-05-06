@@ -6,7 +6,7 @@
     margin-bottom: 1rem;
 }
 
-/* MOBILE | 768px and below */
+/* MOBILE | => 767px */
 @media (max-width: 767px) {
     .hero-homepage-container {
         margin-top: 0rem;
@@ -28,7 +28,7 @@
     }
 
     .primary-cta-button {
-        border-radius: 1rem;
+        border-radius: 3rem;
         background-color: #FFD166;
         text-decoration: none;
         color: #2C2C2C;
@@ -39,7 +39,7 @@
     }
 
     .secondary-cta-button {
-        border-radius: 1rem;
+        border-radius: 3rem;
         background-color: #00B4D8;
         color: white;
         text-decoration: none;
@@ -51,7 +51,7 @@
     }
 }
 
-/* DESKTOP and TABLET | 768px and above */
+/* DESKTOP and TABLET | =< 768px */
 @media (min-width: 768px) {
     .hero-homepage-container,
     .module-1-homepage-container,
@@ -160,9 +160,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-  
-  .background-video {
+}
+
+.background-video {
     flex-wrap: wrap;
     position: absolute;
     top: 50%;
@@ -174,21 +174,21 @@
     transform: translate(-50%, -50%);
     z-index: 1;
     object-fit: cover;
-  }
-  
-  .overlay-content {
+}
+
+.overlay-content {
     position: relative;
     z-index: 2;
     text-align: center;
-  }
-  
-  .overlay-content h3 {
-    color: white;
-  }
+}
 
-  .case-study-4 h3 {
+.overlay-content h3 {
+    color: white;
+}
+
+.case-study-4 h3 {
     color: #2C2C2C;
-  }
+}
 
 .flex-container-8 {
     background-color: #7139DB;
@@ -198,7 +198,8 @@
     color: white;
 }
 
-.flex-container-7, .flex-container-10 {
+.flex-container-7,
+.flex-container-10 {
     border: solid;
 }
 
@@ -214,6 +215,3 @@
 .module-2-homepage-container {
     background-color: #1F2A44;
 }
-
-
-

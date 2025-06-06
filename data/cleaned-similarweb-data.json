@@ -1,0 +1,1390 @@
+[
+  {
+    "status": "success",
+    "interests": {
+      "interestedWebsitesTotalCount": 10,
+      "topInterestedWebsites": [
+        {
+          "domain": "hollisterco.com",
+          "icon": "https://site-images.similarcdn.com/image?url=hollisterco.com&t=2&s=1&h=2d07c266565240e7725165a2c34cabac8ee5b74b4497df9b500bd03e2f9d6f78"
+        },
+        {
+          "domain": "zara.com",
+          "icon": "https://site-images.similarcdn.com/image?url=zara.com&t=2&s=1&h=92036de89e0997d84315c1b75909120523d1e63cee8d34c5f5d664c56d6cb60f"
+        },
+        {
+          "domain": "www2.hm.com",
+          "icon": "https://site-images.similarcdn.com/image?url=www2.hm.com&t=2&s=1&h=7b9e65f16e6c76ccc8f812ef02546ea3dbbab721b439adc3559a78d89e7cb915"
+        },
+        {
+          "domain": "uniqlo.com",
+          "icon": "https://site-images.similarcdn.com/image?url=uniqlo.com&t=2&s=1&h=e98141b2acf8d747cebb51c334a9f2da98a6876ec96d723393da040e0a76bac4"
+        },
+        {
+          "domain": "asos.com",
+          "icon": "https://site-images.similarcdn.com/image?url=asos.com&t=2&s=1&h=86ed73414e52197bf936f549a0ad9de7aae8c58fa26c61f94d95d21ce1f6c2f8"
+        }
+      ],
+      "topInterestedTopics": [
+        "shopping",
+        "fashion",
+        "clothing",
+        "shop",
+        "news"
+      ],
+      "topInterestedCategories": [
+        "lifestyle/fashion_and_apparel",
+        "science_and_education/universities_and_colleges",
+        "science_and_education/education",
+        "news_and_media",
+        "computers_electronics_and_technology/computers_electronics_and_technology"
+      ]
+    },
+    "competitors": {
+      "topSimilarityCompetitors": [
+        {
+          "domain": "hollisterco.com",
+          "icon": "https://site-images.similarcdn.com/image?url=hollisterco.com&t=2&s=1&h=2d07c266565240e7725165a2c34cabac8ee5b74b4497df9b500bd03e2f9d6f78",
+          "visitsTotalCount": 18083213,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 49,
+          "affinity": 1,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "ae.com",
+          "icon": "https://site-images.similarcdn.com/image?url=ae.com&t=2&s=1&h=9ac5c9eb4bb9cc23f951913a6d6f1461f6426668a7518e50abeeb35d7b97cf26",
+          "visitsTotalCount": 19432152,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 37,
+          "affinity": 0.9468458709314564,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "urbanoutfitters.com",
+          "icon": "https://site-images.similarcdn.com/image?url=urbanoutfitters.com&t=2&s=1&h=7122bd195ca4ffe73e41436f31032d6942d7b63a561f319a2729fabf379b79f2",
+          "visitsTotalCount": 18226131,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 40,
+          "affinity": 0.9024121007013323,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "gap.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gap.com&t=2&s=1&h=c1783e3969c35095d947aa3078dd3fcd93e1758c1adeed332ec69063d58f96d6",
+          "visitsTotalCount": 62212870,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 7,
+          "affinity": 0.8927520601360612,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "jcrew.com",
+          "icon": "https://site-images.similarcdn.com/image?url=jcrew.com&t=2&s=1&h=449aacd5a98ef1cf3cb1c2d707d749186e0bdcbc54f6e86da91f661b352eacec",
+          "visitsTotalCount": 15969987,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 48,
+          "affinity": 0.8756128014484825,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "pacsun.com",
+          "icon": "https://site-images.similarcdn.com/image?url=pacsun.com&t=2&s=1&h=8e0c29da1637d64ccd3998d65656052b943fff2039777b997e0cb466a5820f97",
+          "visitsTotalCount": 10907827,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 72,
+          "affinity": 0.8127051467955663,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "express.com",
+          "icon": "https://site-images.similarcdn.com/image?url=express.com&t=2&s=1&h=168d101ec19b7aa9580110634081f40a13a1bd1e9f7aa82f6c248184ed005f9c",
+          "visitsTotalCount": 7335522,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 149,
+          "affinity": 0.8113304037433204,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "zara.com",
+          "icon": "https://site-images.similarcdn.com/image?url=zara.com&t=2&s=1&h=92036de89e0997d84315c1b75909120523d1e63cee8d34c5f5d664c56d6cb60f",
+          "visitsTotalCount": 90143553,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 2,
+          "affinity": 0.7850326091482827,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "macys.com",
+          "icon": "https://site-images.similarcdn.com/image?url=macys.com&t=2&s=1&h=2c680f4947000605fad59a8938af61779f64b7b61cc5fab77056675e80fd0178",
+          "visitsTotalCount": 68637592,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 9,
+          "affinity": 0.7747307918624219,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "nordstrom.com",
+          "icon": "https://site-images.similarcdn.com/image?url=nordstrom.com&t=2&s=1&h=f0c2ad7ef1e381b6f53a2a05b4110251d1d034aaea229c5f1292cb3c87bee660",
+          "visitsTotalCount": 40300415,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 13,
+          "affinity": 0.7745482781691864,
+          "isDataFromGa": false
+        }
+      ]
+    },
+    "searchesSource": {
+      "organicSearchShare": 0.6962175398234354,
+      "paidSearchShare": 0.30378246017656463,
+      "keywordsTotalCount": 14836,
+      "topKeywords": [
+        {
+          "name": "abercrombie",
+          "estimatedValue": 702998,
+          "volume": 1978030,
+          "cpc": 0.7121774375
+        },
+        {
+          "name": "abercrombie and fitch",
+          "estimatedValue": 131687,
+          "volume": 800150,
+          "cpc": 0.7156181875
+        },
+        {
+          "name": "abercrombie & fitch",
+          "estimatedValue": 24367,
+          "volume": 22990,
+          "cpc": 18.310164
+        },
+        {
+          "name": "abercombie",
+          "estimatedValue": 18575,
+          "volume": 60750,
+          "cpc": 0.7673145
+        },
+        {
+          "name": "abercrombie dresses",
+          "estimatedValue": 13870,
+          "volume": 28220,
+          "cpc": 0.586443625
+        }
+      ]
+    },
+    "incomingReferrals": {
+      "referralSitesTotalCount": 59,
+      "topReferralSites": [
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.5710443383281474,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.1832348497264838,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.02869807819337969,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "google.com",
+          "icon": "https://site-images.similarcdn.com/image?url=google.com&t=2&s=1&h=eb35e0fbafa3eb290132ffdfe47187d950d68daaa659ec1bd4b4e834b8f16461",
+          "visitsShare": 0.026020570967107016,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "gq.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gq.com&t=2&s=1&h=599a1e2c699f04162f30ccd2ac5bcb93a242fa6db648444a6b918415f6bea75e",
+          "visitsShare": 0.024759126284484435,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "chatgpt.com",
+          "icon": "https://site-images.similarcdn.com/image?url=chatgpt.com&t=2&s=1&h=a31616ae3cdef12fcfc664127563e6092e7531e7b4c3cde7e0c8c5fd3310dfc0",
+          "visitsShare": 0.021734241455880085,
+          "isLocked": false,
+          "isAvailable": true
+        }
+      ],
+      "topIncomingCategories": [
+        {
+          "category": "Business_and_Consumer_Services/Marketing_and_Advertising",
+          "visitsShare": 0.5716070457437041
+        },
+        {
+          "category": "Lifestyle/Fashion_and_Apparel",
+          "visitsShare": 0.21533458951032153
+        },
+        {
+          "category": "News_and_Media",
+          "visitsShare": 0.05419307939996133
+        },
+        {
+          "category": "E-commerce_and_Shopping/Coupons_and_Rebates",
+          "visitsShare": 0.03500900687560732
+        },
+        {
+          "category": "Computers_Electronics_and_Technology/Search_Engines",
+          "visitsShare": 0.026153940481463148
+        }
+      ]
+    },
+    "adsSource": {
+      "adsSitesTotalCount": 53,
+      "adsNetworksTotalCount": 4,
+      "topAdsSites": [
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.12839028081368759,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.09600540005456519,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "giftful.com",
+          "icon": "https://site-images.similarcdn.com/image?url=giftful.com&t=2&s=1&h=fb9a5f6c82786c961d8970e96c66601f77ac0c131bb546cab708d704a81cead2",
+          "visitsShare": 0.09237816615208774,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "theknot.com",
+          "icon": "https://site-images.similarcdn.com/image?url=theknot.com&t=2&s=1&h=bee72427ea150997a9fe3a0576de35f72dd4d499a6ab88639d1709aa02e05d8b",
+          "visitsShare": 0.07688094108254463,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "gq-magazine.co.uk",
+          "icon": "https://site-images.similarcdn.com/image?url=gq-magazine.co.uk&t=2&s=1&h=5cc298e532258248ca439ab4e2e957c7a5f387baaa0b7b04be63d9fb6dd2b46c",
+          "visitsShare": 0.06805013222043027,
+          "isLocked": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    "socialNetworksSource": {
+      "topSocialNetworks": [
+        {
+          "name": "Youtube",
+          "visitsShare": 0.27503166170584786,
+          "icon": "https://site-images.similarcdn.com/image?url=youtube.com&t=2&s=1&h=e117fb09ba0a34dee9830863bf927d29fc864e342583a36a667bf12346e88e20"
+        },
+        {
+          "name": "Pinterest",
+          "visitsShare": 0.2320573902795967,
+          "icon": "https://site-images.similarcdn.com/image?url=pinterest.com&t=2&s=1&h=ec976160ca16242c6ab9ed7bc48e7b0f04c4100ceac5bcb6d3ea55450aa12210"
+        },
+        {
+          "name": "Reddit",
+          "visitsShare": 0.21740356942946992,
+          "icon": "https://site-images.similarcdn.com/image?url=reddit.com&t=2&s=1&h=66f2412047e0362ec60d5583d4b186511a8e859446bb112c60d22968facae906"
+        },
+        {
+          "name": "Facebook",
+          "visitsShare": 0.1432621057702278,
+          "icon": "https://site-images.similarcdn.com/image?url=facebook.com&t=2&s=1&h=be773d6b77aa3d59b6a671c5c27ad729b1ae77400e89776e2f749cce6b926c4b"
+        },
+        {
+          "name": "Instagram",
+          "visitsShare": 0.08304922525083244,
+          "icon": "https://site-images.similarcdn.com/image?url=instagram.com&t=2&s=1&h=acbe9ff09f263f0114ce8473b3d3e401bfdc360d5aff845e04182e8d2335ba49"
+        }
+      ],
+      "socialNetworksTotalCount": 14
+    },
+    "outgoingReferrals": {
+      "outgoingSitesTotalCount": 28,
+      "topOutgoingSites": [
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.41005548327749997,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.3406029651016828,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.10614791260772664,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "klarna.com",
+          "icon": "https://site-images.similarcdn.com/image?url=klarna.com&t=2&s=1&h=67e19124534674f8a30262cf522ee9a99dd32ff95abf642b49fd45715e6f8b6d",
+          "visitsShare": 0.05792569477873546,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "anfcorp.com",
+          "icon": "https://site-images.similarcdn.com/image?url=anfcorp.com&t=2&s=1&h=7be6d23a14d5cc244aa0eef504efa04deb6e90175e0c940d968972552abe4449",
+          "visitsShare": 0.02964590167541244,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "fedex.com",
+          "icon": "https://site-images.similarcdn.com/image?url=fedex.com&t=2&s=1&h=4126e66fe26beaff66dfb358f15809f8e4c0b8ca0c1e8a5b40730477b7a4d79b",
+          "visitsShare": 0.009560637962730637,
+          "isLocked": false,
+          "isAvailable": true
+        }
+      ],
+      "topOutgoingCategories": [
+        {
+          "category": "Lifestyle/Fashion_and_Apparel",
+          "visitsShare": 0.5092042027370701
+        },
+        {
+          "category": "Finance/Banking_Credit_and_Lending",
+          "visitsShare": 0.34342550482686424
+        },
+        {
+          "category": "Computers_Electronics_and_Technology/Email",
+          "visitsShare": 0.06464560482145462
+        },
+        {
+          "category": "Computers_Electronics_and_Technology/Search_Engines",
+          "visitsShare": 0.04047380410143406
+        },
+        {
+          "category": "Business_and_Consumer_Services/Business_Services",
+          "visitsShare": 0.00956063796273064
+        }
+      ]
+    },
+    "compareCompetitor": null,
+    "technologies": {
+      "categories": [
+        {
+          "categoryId": "advertising",
+          "topTechName": "DoubleClick",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=239",
+          "technologiesTotalCount": 25
+        },
+        {
+          "categoryId": "conversion_and_analytics",
+          "topTechName": "Google Analytics",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=1",
+          "technologiesTotalCount": 16
+        },
+        {
+          "categoryId": "payment_and_currencies",
+          "topTechName": "Cart Functionality",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=2901",
+          "technologiesTotalCount": 12
+        },
+        {
+          "categoryId": "social",
+          "topTechName": "Facebook Connect",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=732",
+          "technologiesTotalCount": 5
+        }
+      ],
+      "categoriesTotalCount": 15,
+      "technologiesTotalCount": 82
+    },
+    "recentAds": {
+      "recentAds": [],
+      "isMoreAds": false
+    },
+    "snapshotDate": "2025-04-01T00:00:00+00:00",
+    "domain": "abercrombie.com",
+    "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019",
+    "previewDesktop": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=1&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019",
+    "previewMobile": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=4&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019",
+    "isInvalidTrafficData": false,
+    "domainGaStatus": 0,
+    "isDataFromGaHighlyDiscrepant": false,
+    "isDataFromGa": false,
+    "categoryId": "lifestyle/fashion_and_apparel",
+    "overview": {
+      "description": "create your myabercrombie account and enjoy benefits like faster checkout, order history and add items to your list. sign up is fast and easy. ",
+      "globalRank": 2563,
+      "globalRankChange": -61,
+      "countryAlpha2Code": "US",
+      "countryUrlCode": "united-states",
+      "countryRank": 764,
+      "countryRankChange": -100,
+      "categoryRank": 36,
+      "categoryRankChange": -5,
+      "visitsTotalCount": 15981904,
+      "bounceRate": 0.4124058315063875,
+      "pagesPerVisit": 5.296779294242357,
+      "visitsAvgDurationFormatted": "00:04:13",
+      "companyFeedbackRecaptcha": "6LfEq1gUAAAAACEE4w7Zek8GEmBooXMMWDpBjI6r",
+      "companyName": "Abercrombie & Fitch Co.",
+      "companyYearFounded": 1892,
+      "companyHeadquarterCountryCode": "US",
+      "companyHeadquarterStateCode": 84039,
+      "companyHeadquarterCity": "New Albany",
+      "companyEmployeesMin": 10001,
+      "companyEmployeesMax": null,
+      "companyRevenueMin": 1000000000,
+      "companyRevenueMax": null,
+      "companyCategoryId": "lifestyle/fashion_and_apparel",
+      "companyRevenueCurrency": "USD",
+      "companyParentDomain": "abercrombie.com"
+    },
+    "traffic": {
+      "visitsTotalCount": 15981904,
+      "visitsTotalCountChange": -0.1073856877689881,
+      "bounceRate": 0.4124058315063875,
+      "pagesPerVisit": 5.296779294242357,
+      "visitsAvgDurationFormatted": "00:04:13",
+      "history": [
+        {
+          "date": "2025-02-01T00:00:00",
+          "visits": 15927505
+        },
+        {
+          "date": "2025-03-01T00:00:00",
+          "visits": 17904602
+        },
+        {
+          "date": "2025-04-01T00:00:00",
+          "visits": 15981904
+        }
+      ],
+      "competitors": [
+        {
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019",
+          "isDataFromGa": false,
+          "visits": 15981904
+        },
+        {
+          "domain": "hollisterco.com",
+          "icon": "https://site-images.similarcdn.com/image?url=hollisterco.com&t=2&s=1&h=2d07c266565240e7725165a2c34cabac8ee5b74b4497df9b500bd03e2f9d6f78",
+          "isDataFromGa": false,
+          "visits": 18083213
+        },
+        {
+          "domain": "ae.com",
+          "icon": "https://site-images.similarcdn.com/image?url=ae.com&t=2&s=1&h=9ac5c9eb4bb9cc23f951913a6d6f1461f6426668a7518e50abeeb35d7b97cf26",
+          "isDataFromGa": false,
+          "visits": 19432152
+        },
+        {
+          "domain": "urbanoutfitters.com",
+          "icon": "https://site-images.similarcdn.com/image?url=urbanoutfitters.com&t=2&s=1&h=7122bd195ca4ffe73e41436f31032d6942d7b63a561f319a2729fabf379b79f2",
+          "isDataFromGa": false,
+          "visits": 18226131
+        },
+        {
+          "domain": "gap.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gap.com&t=2&s=1&h=c1783e3969c35095d947aa3078dd3fcd93e1758c1adeed332ec69063d58f96d6",
+          "isDataFromGa": false,
+          "visits": 62212870
+        }
+      ]
+    },
+    "trafficSources": {
+      "directVisitsShare": 0.5625394972722217,
+      "referralVisitsShare": 0.04874686682601428,
+      "organicSearchVisitsShare": 0.2529449786468504,
+      "paidSearchVisitsShare": 0.11036815866795877,
+      "socialNetworksVisitsShare": 0.021050135571063056,
+      "mailVisitsShare": 0.0013063978040425042,
+      "adsVisitsShare": 0.00304396521179279,
+      "topCompetitorInsight": {
+        "domain": "hollisterco.com",
+        "source": "OrganicSearchVisitsShare",
+        "share": 0.3145009030840428,
+        "icon": "https://site-images.similarcdn.com/image?url=hollisterco.com&t=2&s=1&h=2d07c266565240e7725165a2c34cabac8ee5b74b4497df9b500bd03e2f9d6f78"
+      }
+    },
+    "ranking": {
+      "globalRankCompetitors": [
+        {
+          "rank": 2561,
+          "domain": "gamingbible.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gamingbible.com&t=2&s=1&h=65b826ef32bb37c6c95d457b05f109839b216550b7a1a1e1d9eea28bbd65d5fe"
+        },
+        {
+          "rank": 2562,
+          "domain": "google.co.nz",
+          "icon": "https://site-images.similarcdn.com/image?url=google.co.nz&t=2&s=1&h=bcfb230aa74d235bf740d0aca6363405e7a436ddee06bee5d31ec1a1e3f212f4"
+        },
+        {
+          "rank": 2563,
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019"
+        },
+        {
+          "rank": 2564,
+          "domain": "google.ie",
+          "icon": "https://site-images.similarcdn.com/image?url=google.ie&t=2&s=1&h=31859c3f6fc7f830f8c051b3893affef054331f87f61a026c14e6d51964abc66"
+        },
+        {
+          "rank": 2565,
+          "domain": "laodong.vn",
+          "icon": "https://site-images.similarcdn.com/image?url=laodong.vn&t=2&s=1&h=35080ee72458516ed6dd75e40901a9dbc1fe2790faf9d35b69e4e4252d090d37"
+        }
+      ],
+      "globalRankHistory": [
+        {
+          "date": "2025-02-01T00:00:00+00:00",
+          "rank": 2747
+        },
+        {
+          "date": "2025-03-01T00:00:00+00:00",
+          "rank": 2502
+        },
+        {
+          "date": "2025-04-01T00:00:00+00:00",
+          "rank": 2563
+        }
+      ],
+      "countryRankCompetitors": [
+        {
+          "rank": 762,
+          "domain": "cardgames.io",
+          "icon": "https://site-images.similarcdn.com/image?url=cardgames.io&t=2&s=1&h=543f560c8684cb2b1416612bbfc5704ecc09eb20915648e07b3f49bb861e34ad"
+        },
+        {
+          "rank": 763,
+          "domain": "torrid.com",
+          "icon": "https://site-images.similarcdn.com/image?url=torrid.com&t=2&s=1&h=efd5ea52af51b564f20df291725dfc14c2d63ff35af239c5d9472ccc1add17be"
+        },
+        {
+          "rank": 764,
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019"
+        },
+        {
+          "rank": 765,
+          "domain": "delish.com",
+          "icon": "https://site-images.similarcdn.com/image?url=delish.com&t=2&s=1&h=c4631b0b776dcf9cab66a08c5c1c2f7c163c139bf5e775d7baf3271f54d551b9"
+        },
+        {
+          "rank": 766,
+          "domain": "xhamster.desi",
+          "icon": "https://site-images.similarcdn.com/image?url=xhamster.desi&t=2&s=1&h=f8ed003ac651d5673027a9677294cbd3ce07666c012aff15c06ae2c3907b70c8"
+        }
+      ],
+      "countryRankHistory": [
+        {
+          "date": "2025-02-01T00:00:00+00:00",
+          "rank": 772
+        },
+        {
+          "date": "2025-03-01T00:00:00+00:00",
+          "rank": 664
+        },
+        {
+          "date": "2025-04-01T00:00:00+00:00",
+          "rank": 764
+        }
+      ],
+      "categoryRankCompetitors": [
+        {
+          "rank": 34,
+          "domain": "loft.com",
+          "icon": "https://site-images.similarcdn.com/image?url=loft.com&t=2&s=1&h=b965dd4fe7dc3dafb10098aea8db114f53162877e3d399a3728c3859a9e76216"
+        },
+        {
+          "rank": 35,
+          "domain": "torrid.com",
+          "icon": "https://site-images.similarcdn.com/image?url=torrid.com&t=2&s=1&h=efd5ea52af51b564f20df291725dfc14c2d63ff35af239c5d9472ccc1add17be"
+        },
+        {
+          "rank": 36,
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019"
+        },
+        {
+          "rank": 37,
+          "domain": "landsend.com",
+          "icon": "https://site-images.similarcdn.com/image?url=landsend.com&t=2&s=1&h=29c3f06e7270d549ccd7395de1b6b47a4f8506405f739e84df675c899386f75b"
+        },
+        {
+          "rank": 38,
+          "domain": "newbalance.com",
+          "icon": "https://site-images.similarcdn.com/image?url=newbalance.com&t=2&s=1&h=d833c37f2178db0b43a805e00126b7f23df899747053b6b494780e7547603409"
+        }
+      ],
+      "categoryRankHistory": [
+        {
+          "date": "2025-02-01T00:00:00+00:00",
+          "rank": 31
+        },
+        {
+          "date": "2025-03-01T00:00:00+00:00",
+          "rank": 31
+        },
+        {
+          "date": "2025-04-01T00:00:00+00:00",
+          "rank": 36
+        }
+      ],
+      "globalRank": 2563,
+      "globalRankPrev": 2502,
+      "globalRankChange": -61,
+      "categoryRank": 36,
+      "categoryRankPrev": 31,
+      "categoryRankChange": -5,
+      "countryRank": 764,
+      "countryRankPrev": 664,
+      "countryRankChange": -100,
+      "countryAlpha2Code": "US",
+      "countryUrlCode": "united-states"
+    },
+    "demographics": {
+      "ageDistribution": [
+        {
+          "minAge": 25,
+          "maxAge": 34,
+          "value": 0.35180529703760544
+        },
+        {
+          "minAge": 35,
+          "maxAge": 44,
+          "value": 0.1754944060554498
+        },
+        {
+          "minAge": 45,
+          "maxAge": 54,
+          "value": 0.15523720551638578
+        },
+        {
+          "minAge": 18,
+          "maxAge": 24,
+          "value": 0.14739296621219347
+        },
+        {
+          "minAge": 55,
+          "maxAge": 64,
+          "value": 0.11306282746831803
+        },
+        {
+          "minAge": 65,
+          "maxAge": null,
+          "value": 0.057007297710047394
+        }
+      ],
+      "genderDistribution": {
+        "male": 0.2975431580806334,
+        "female": 0.7024568419193666
+      }
+    },
+    "geography": {
+      "countriesTotalCount": 106,
+      "topCountriesTraffics": [
+        {
+          "countryAlpha2Code": "US",
+          "countryUrlCode": "united-states",
+          "visitsShare": 0.7371679839836883,
+          "visitsShareChange": -0.0682666038522396
+        },
+        {
+          "countryAlpha2Code": "CA",
+          "countryUrlCode": "canada",
+          "visitsShare": 0.08596523503192528,
+          "visitsShareChange": -0.05742299503901116
+        },
+        {
+          "countryAlpha2Code": "GB",
+          "countryUrlCode": "united-kingdom",
+          "visitsShare": 0.07885406648765514,
+          "visitsShareChange": 0.07588267385820102
+        },
+        {
+          "countryAlpha2Code": "DE",
+          "countryUrlCode": "germany",
+          "visitsShare": 0.013210063308027908,
+          "visitsShareChange": -0.316423501937277
+        },
+        {
+          "countryAlpha2Code": "NL",
+          "countryUrlCode": "netherlands",
+          "visitsShare": 0.01135763248566479,
+          "visitsShareChange": 0.10281675619831909
+        }
+      ]
+    },
+    "name": "abercrombie.com"
+  },
+  {
+    "status": "success",
+    "interests": {
+      "interestedWebsitesTotalCount": 10,
+      "topInterestedWebsites": [
+        {
+          "domain": "www2.hm.com",
+          "icon": "https://site-images.similarcdn.com/image?url=www2.hm.com&t=2&s=1&h=7b9e65f16e6c76ccc8f812ef02546ea3dbbab721b439adc3559a78d89e7cb915"
+        },
+        {
+          "domain": "gapfactory.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gapfactory.com&t=2&s=1&h=537c05200b0bb2940e24e408772afd35eb6f0ead2f18b6103e4d06411f56b4c7"
+        },
+        {
+          "domain": "ae.com",
+          "icon": "https://site-images.similarcdn.com/image?url=ae.com&t=2&s=1&h=9ac5c9eb4bb9cc23f951913a6d6f1461f6426668a7518e50abeeb35d7b97cf26"
+        },
+        {
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019"
+        },
+        {
+          "domain": "bananarepublicfactory.gapfactory.com",
+          "icon": "https://site-images.similarcdn.com/image?url=bananarepublicfactory.gapfactory.com&t=2&s=1&h=533e1501bdf1b58bb814a7096074c92badff4e5c4801d0750fa3fc91f951f3f2"
+        }
+      ],
+      "topInterestedTopics": [
+        "shopping",
+        "clothing",
+        "fashion",
+        "news",
+        "shop"
+      ],
+      "topInterestedCategories": [
+        "lifestyle/fashion_and_apparel",
+        "finance/banking_credit_and_lending",
+        "news_and_media",
+        "science_and_education/universities_and_colleges",
+        "computers_electronics_and_technology/computers_electronics_and_technology"
+      ]
+    },
+    "competitors": {
+      "topSimilarityCompetitors": [
+        {
+          "domain": "ae.com",
+          "icon": "https://site-images.similarcdn.com/image?url=ae.com&t=2&s=1&h=9ac5c9eb4bb9cc23f951913a6d6f1461f6426668a7518e50abeeb35d7b97cf26",
+          "visitsTotalCount": 19432152,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 37,
+          "affinity": 1,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "macys.com",
+          "icon": "https://site-images.similarcdn.com/image?url=macys.com&t=2&s=1&h=2c680f4947000605fad59a8938af61779f64b7b61cc5fab77056675e80fd0178",
+          "visitsTotalCount": 68637592,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 9,
+          "affinity": 0.9156564386057524,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "gapfactory.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gapfactory.com&t=2&s=1&h=537c05200b0bb2940e24e408772afd35eb6f0ead2f18b6103e4d06411f56b4c7",
+          "visitsTotalCount": 14677170,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 35,
+          "affinity": 0.8327364684950442,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019",
+          "visitsTotalCount": 15981904,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 52,
+          "affinity": 0.7972235019287691,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "hollisterco.com",
+          "icon": "https://site-images.similarcdn.com/image?url=hollisterco.com&t=2&s=1&h=2d07c266565240e7725165a2c34cabac8ee5b74b4497df9b500bd03e2f9d6f78",
+          "visitsTotalCount": 18083213,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 49,
+          "affinity": 0.7806525065471763,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "jcrew.com",
+          "icon": "https://site-images.similarcdn.com/image?url=jcrew.com&t=2&s=1&h=449aacd5a98ef1cf3cb1c2d707d749186e0bdcbc54f6e86da91f661b352eacec",
+          "visitsTotalCount": 15969987,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 48,
+          "affinity": 0.7633896062826875,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "nordstrom.com",
+          "icon": "https://site-images.similarcdn.com/image?url=nordstrom.com&t=2&s=1&h=f0c2ad7ef1e381b6f53a2a05b4110251d1d034aaea229c5f1292cb3c87bee660",
+          "visitsTotalCount": 40300415,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 13,
+          "affinity": 0.7628208953267624,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "quince.com",
+          "icon": "https://site-images.similarcdn.com/image?url=quince.com&t=2&s=1&h=91c01ddb8b04fcc9b9bc39ac76dca47bbbea316ba5511c0e825f7088e25d6f44",
+          "visitsTotalCount": 28467876,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 21,
+          "affinity": 0.7608589254273873,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "jcpenney.com",
+          "icon": "https://site-images.similarcdn.com/image?url=jcpenney.com&t=2&s=1&h=a42b4153dac158d244d14b5bac01c66cde17f617df61fb6975a870af82fcf93d",
+          "visitsTotalCount": 25316652,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 26,
+          "affinity": 0.7479789751599145,
+          "isDataFromGa": false
+        },
+        {
+          "domain": "childrensplace.com",
+          "icon": "https://site-images.similarcdn.com/image?url=childrensplace.com&t=2&s=1&h=dea18cc2b7e6a935070fc85c963f0243665dd7016237e76167b668f98989c7a5",
+          "visitsTotalCount": 7624007,
+          "categoryId": "lifestyle/fashion_and_apparel",
+          "categoryRank": 155,
+          "affinity": 0.7471976452842334,
+          "isDataFromGa": false
+        }
+      ]
+    },
+    "searchesSource": {
+      "organicSearchShare": 0.6167999651606793,
+      "paidSearchShare": 0.38320003483932075,
+      "keywordsTotalCount": 15234,
+      "topKeywords": [
+        {
+          "name": "old navy",
+          "estimatedValue": 548938,
+          "volume": 5258610,
+          "cpc": 0.5408685625
+        },
+        {
+          "name": "oldnavy",
+          "estimatedValue": 65978,
+          "volume": 211310,
+          "cpc": 0.5446363125
+        },
+        {
+          "name": "old navy promo code",
+          "estimatedValue": 5856,
+          "volume": 71620,
+          "cpc": 0.782804
+        },
+        {
+          "name": "old navy returns",
+          "estimatedValue": 5345,
+          "volume": 15750,
+          "cpc": 1.0342759375
+        },
+        {
+          "name": "old navy jeans",
+          "estimatedValue": 5169,
+          "volume": 31700,
+          "cpc": 0.6810488125
+        }
+      ]
+    },
+    "incomingReferrals": {
+      "referralSitesTotalCount": 26,
+      "topReferralSites": [
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.915322547553937,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.03373721121097515,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.023090308479889885,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "gapfactory.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gapfactory.com&t=2&s=1&h=537c05200b0bb2940e24e408772afd35eb6f0ead2f18b6103e4d06411f56b4c7",
+          "visitsShare": 0.007303932324025548,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "narvar.com",
+          "icon": "https://site-images.similarcdn.com/image?url=narvar.com&t=2&s=1&h=1058095e572d3a2ee077cd70c291650ad14f46b4399d32dd6e2f65d784f190c3",
+          "visitsShare": 0.005912707119449254,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "chatgpt.com",
+          "icon": "https://site-images.similarcdn.com/image?url=chatgpt.com&t=2&s=1&h=a31616ae3cdef12fcfc664127563e6092e7531e7b4c3cde7e0c8c5fd3310dfc0",
+          "visitsShare": 0.00468304166660061,
+          "isLocked": false,
+          "isAvailable": true
+        }
+      ],
+      "topIncomingCategories": [
+        {
+          "category": "Lifestyle/Fashion_and_Apparel",
+          "visitsShare": 0.9271150593958956
+        },
+        {
+          "category": "News_and_Media",
+          "visitsShare": 0.035476242716695486
+        },
+        {
+          "category": "Computers_Electronics_and_Technology/Search_Engines",
+          "visitsShare": 0.023108478706829267
+        },
+        {
+          "category": "Computers_Electronics_and_Technology/Programming_and_Developer_Software",
+          "visitsShare": 0.004683041666600606
+        },
+        {
+          "category": "Business_and_Consumer_Services/Online_Marketing",
+          "visitsShare": 0.0032459415295503823
+        }
+      ]
+    },
+    "adsSource": {
+      "adsSitesTotalCount": 58,
+      "adsNetworksTotalCount": 6,
+      "topAdsSites": [
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.1790170109972381,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.1779923861007531,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "youtube.com",
+          "icon": "https://site-images.similarcdn.com/image?url=youtube.com&t=2&s=1&h=e117fb09ba0a34dee9830863bf927d29fc864e342583a36a667bf12346e88e20",
+          "visitsShare": 0.14603134639045642,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "imamother.com",
+          "icon": "https://site-images.similarcdn.com/image?url=imamother.com&t=2&s=1&h=b66fceb55d2e52c977122209570ca8ac5a10f1dea510edfe9160aae287d305fa",
+          "visitsShare": 0.11674054073309775,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "duckduckgo.com",
+          "icon": "https://site-images.similarcdn.com/image?url=duckduckgo.com&t=2&s=1&h=dff2821cfcef1d36cdbbf5a78aa7eac7d5da8ef335fa460cfd2cc6180c60aa2a",
+          "visitsShare": 0.07847883383705588,
+          "isLocked": false,
+          "isAvailable": true
+        }
+      ]
+    },
+    "socialNetworksSource": {
+      "topSocialNetworks": [
+        {
+          "name": "Facebook",
+          "visitsShare": 0.6849395661625927,
+          "icon": "https://site-images.similarcdn.com/image?url=facebook.com&t=2&s=1&h=be773d6b77aa3d59b6a671c5c27ad729b1ae77400e89776e2f749cce6b926c4b"
+        },
+        {
+          "name": "Instagram",
+          "visitsShare": 0.13290703597737596,
+          "icon": "https://site-images.similarcdn.com/image?url=instagram.com&t=2&s=1&h=acbe9ff09f263f0114ce8473b3d3e401bfdc360d5aff845e04182e8d2335ba49"
+        },
+        {
+          "name": "Reddit",
+          "visitsShare": 0.09588032405743863,
+          "icon": "https://site-images.similarcdn.com/image?url=reddit.com&t=2&s=1&h=66f2412047e0362ec60d5583d4b186511a8e859446bb112c60d22968facae906"
+        },
+        {
+          "name": "Pinterest",
+          "visitsShare": 0.0489353014783236,
+          "icon": "https://site-images.similarcdn.com/image?url=pinterest.com&t=2&s=1&h=ec976160ca16242c6ab9ed7bc48e7b0f04c4100ceac5bcb6d3ea55450aa12210"
+        },
+        {
+          "name": "Youtube",
+          "visitsShare": 0.025858063765898692,
+          "icon": "https://site-images.similarcdn.com/image?url=youtube.com&t=2&s=1&h=e117fb09ba0a34dee9830863bf927d29fc864e342583a36a667bf12346e88e20"
+        }
+      ],
+      "socialNetworksTotalCount": 13
+    },
+    "outgoingReferrals": {
+      "outgoingSitesTotalCount": 25,
+      "topOutgoingSites": [
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.9586130900985089,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.012303799094998298,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "",
+          "icon": "",
+          "visitsShare": 0.007379005900416408,
+          "isLocked": true,
+          "isAvailable": true
+        },
+        {
+          "domain": "barclaysus.com",
+          "icon": "https://site-images.similarcdn.com/image?url=barclaysus.com&t=2&s=1&h=83bf4054ae8a06e6e695452c9aabd53bda81622fa82b391f7b0b274dbdea7b7e",
+          "visitsShare": 0.00605719985518822,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "findmine.com",
+          "icon": "https://site-images.similarcdn.com/image?url=findmine.com&t=2&s=1&h=da57e6baaef7a78b739c7e2389ac049be4f968ceb87fb4b02ba468c027f33b2f",
+          "visitsShare": 0.005001048469635229,
+          "isLocked": false,
+          "isAvailable": true
+        },
+        {
+          "domain": "narvar.com",
+          "icon": "https://site-images.similarcdn.com/image?url=narvar.com&t=2&s=1&h=1058095e572d3a2ee077cd70c291650ad14f46b4399d32dd6e2f65d784f190c3",
+          "visitsShare": 0.0026450901147307415,
+          "isLocked": false,
+          "isAvailable": true
+        }
+      ],
+      "topOutgoingCategories": [
+        {
+          "category": "Lifestyle/Fashion_and_Apparel",
+          "visitsShare": 0.9676028060608655
+        },
+        {
+          "category": "Computers_Electronics_and_Technology/Email",
+          "visitsShare": 0.007379005900416408
+        },
+        {
+          "category": "Finance/Banking_Credit_and_Lending",
+          "visitsShare": 0.00605719985518822
+        },
+        {
+          "category": "E-commerce_and_Shopping/Coupons_and_Rebates",
+          "visitsShare": 0.0020850788422912873
+        },
+        {
+          "category": "Vehicles/Vehicles",
+          "visitsShare": 0.0015611526849744683
+        }
+      ]
+    },
+    "compareCompetitor": null,
+    "technologies": {
+      "categories": [
+        {
+          "categoryId": "advertising",
+          "topTechName": "Google Adsense",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=237",
+          "technologiesTotalCount": 38
+        },
+        {
+          "categoryId": "conversion_and_analytics",
+          "topTechName": "Google Analytics",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=1",
+          "technologiesTotalCount": 24
+        },
+        {
+          "categoryId": "payment_and_currencies",
+          "topTechName": "Cart Functionality",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=2901",
+          "technologiesTotalCount": 10
+        },
+        {
+          "categoryId": "marketing",
+          "topTechName": "Google Marketing Platform",
+          "topTechIconUrl": "https://s3.amazonaws.com/s3-static-us-east-1.similarweb.com/technographics/id=5492",
+          "technologiesTotalCount": 7
+        }
+      ],
+      "categoriesTotalCount": 18,
+      "technologiesTotalCount": 119
+    },
+    "recentAds": {
+      "recentAds": [],
+      "isMoreAds": false
+    },
+    "snapshotDate": "2025-04-01T00:00:00+00:00",
+    "domain": "oldnavy.gap.com",
+    "icon": "https://site-images.similarcdn.com/image?url=oldnavy.gap.com&t=2&s=1&h=c12f30755195f62f2a9342a1b7759a6fc56bebd612c930aa8a3ace812c31865f",
+    "previewDesktop": "https://site-images.similarcdn.com/image?url=oldnavy.gap.com&t=1&s=1&h=c12f30755195f62f2a9342a1b7759a6fc56bebd612c930aa8a3ace812c31865f",
+    "previewMobile": "https://site-images.similarcdn.com/image?url=oldnavy.gap.com&t=4&s=1&h=c12f30755195f62f2a9342a1b7759a6fc56bebd612c930aa8a3ace812c31865f",
+    "isInvalidTrafficData": false,
+    "domainGaStatus": 0,
+    "isDataFromGaHighlyDiscrepant": false,
+    "isDataFromGa": false,
+    "categoryId": "lifestyle/fashion_and_apparel",
+    "overview": {
+      "description": "old navy provides the latest fashions at great prices for the whole family. shop men's, women's, women's plus, kids', baby and maternity wear. we also offer big and tall sizes for adults and extended sizes for kids.",
+      "globalRank": null,
+      "globalRankChange": 0,
+      "countryAlpha2Code": "XX",
+      "countryUrlCode": "",
+      "countryRank": null,
+      "countryRankChange": 0,
+      "categoryRank": null,
+      "categoryRankChange": 0,
+      "visitsTotalCount": 39166410,
+      "bounceRate": 0.3824804470709219,
+      "pagesPerVisit": 8.62958092354821,
+      "visitsAvgDurationFormatted": "00:04:39",
+      "companyFeedbackRecaptcha": "6LfEq1gUAAAAACEE4w7Zek8GEmBooXMMWDpBjI6r",
+      "companyName": null,
+      "companyYearFounded": null,
+      "companyHeadquarterCountryCode": null,
+      "companyHeadquarterStateCode": null,
+      "companyHeadquarterCity": null,
+      "companyEmployeesMin": null,
+      "companyEmployeesMax": null,
+      "companyRevenueMin": null,
+      "companyRevenueMax": null,
+      "companyCategoryId": "",
+      "companyRevenueCurrency": null,
+      "companyParentDomain": null
+    },
+    "traffic": {
+      "visitsTotalCount": 39166410,
+      "visitsTotalCountChange": -0.03558023107419272,
+      "bounceRate": 0.3824804470709219,
+      "pagesPerVisit": 8.62958092354821,
+      "visitsAvgDurationFormatted": "00:04:39",
+      "history": [
+        {
+          "date": "2025-02-01T00:00:00",
+          "visits": 27884439
+        },
+        {
+          "date": "2025-03-01T00:00:00",
+          "visits": 40611372
+        },
+        {
+          "date": "2025-04-01T00:00:00",
+          "visits": 39166410
+        }
+      ],
+      "competitors": [
+        {
+          "domain": "oldnavy.gap.com",
+          "icon": "https://site-images.similarcdn.com/image?url=oldnavy.gap.com&t=2&s=1&h=c12f30755195f62f2a9342a1b7759a6fc56bebd612c930aa8a3ace812c31865f",
+          "isDataFromGa": false,
+          "visits": 39166410
+        },
+        {
+          "domain": "ae.com",
+          "icon": "https://site-images.similarcdn.com/image?url=ae.com&t=2&s=1&h=9ac5c9eb4bb9cc23f951913a6d6f1461f6426668a7518e50abeeb35d7b97cf26",
+          "isDataFromGa": false,
+          "visits": 19432152
+        },
+        {
+          "domain": "macys.com",
+          "icon": "https://site-images.similarcdn.com/image?url=macys.com&t=2&s=1&h=2c680f4947000605fad59a8938af61779f64b7b61cc5fab77056675e80fd0178",
+          "isDataFromGa": false,
+          "visits": 68637592
+        },
+        {
+          "domain": "gapfactory.com",
+          "icon": "https://site-images.similarcdn.com/image?url=gapfactory.com&t=2&s=1&h=537c05200b0bb2940e24e408772afd35eb6f0ead2f18b6103e4d06411f56b4c7",
+          "isDataFromGa": false,
+          "visits": 14677170
+        },
+        {
+          "domain": "abercrombie.com",
+          "icon": "https://site-images.similarcdn.com/image?url=abercrombie.com&t=2&s=1&h=0a7399d4e4452c17960bd42ce1d2020659e28cc5f89b2fad109e93d70b61c019",
+          "isDataFromGa": false,
+          "visits": 15981904
+        }
+      ]
+    },
+    "trafficSources": {
+      "directVisitsShare": 0.6528650004782549,
+      "referralVisitsShare": 0.07592034429774853,
+      "organicSearchVisitsShare": 0.12180767666055135,
+      "paidSearchVisitsShare": 0.07567559756242931,
+      "socialNetworksVisitsShare": 0.039203508883593266,
+      "mailVisitsShare": 0.0012333052802696956,
+      "adsVisitsShare": 0.03329456683714645,
+      "topCompetitorInsight": {
+        "domain": "ae.com",
+        "source": "OrganicSearchVisitsShare",
+        "share": 0.19970344789265976,
+        "icon": "https://site-images.similarcdn.com/image?url=ae.com&t=2&s=1&h=9ac5c9eb4bb9cc23f951913a6d6f1461f6426668a7518e50abeeb35d7b97cf26"
+      }
+    },
+    "ranking": {
+      "globalRankCompetitors": [],
+      "globalRankHistory": [
+        {
+          "date": "2025-02-01T00:00:00+00:00",
+          "rank": 0
+        },
+        {
+          "date": "2025-03-01T00:00:00+00:00",
+          "rank": 0
+        },
+        {
+          "date": "2025-04-01T00:00:00+00:00",
+          "rank": 0
+        }
+      ],
+      "countryRankCompetitors": [],
+      "countryRankHistory": [
+        {
+          "date": "2025-02-01T00:00:00+00:00",
+          "rank": 0
+        },
+        {
+          "date": "2025-03-01T00:00:00+00:00",
+          "rank": 0
+        },
+        {
+          "date": "2025-04-01T00:00:00+00:00",
+          "rank": 0
+        }
+      ],
+      "categoryRankCompetitors": [],
+      "categoryRankHistory": [
+        {
+          "date": "2025-02-01T00:00:00+00:00",
+          "rank": 0
+        },
+        {
+          "date": "2025-03-01T00:00:00+00:00",
+          "rank": 0
+        },
+        {
+          "date": "2025-04-01T00:00:00+00:00",
+          "rank": 0
+        }
+      ],
+      "globalRank": null,
+      "globalRankPrev": null,
+      "globalRankChange": 0,
+      "categoryRank": null,
+      "categoryRankPrev": null,
+      "categoryRankChange": 0,
+      "countryRank": null,
+      "countryRankPrev": null,
+      "countryRankChange": 0,
+      "countryAlpha2Code": null,
+      "countryUrlCode": null
+    },
+    "demographics": {
+      "ageDistribution": [
+        {
+          "minAge": 25,
+          "maxAge": 34,
+          "value": 0.2679639913830408
+        },
+        {
+          "minAge": 35,
+          "maxAge": 44,
+          "value": 0.19955635749028605
+        },
+        {
+          "minAge": 45,
+          "maxAge": 54,
+          "value": 0.19671560024445173
+        },
+        {
+          "minAge": 55,
+          "maxAge": 64,
+          "value": 0.1621237243656563
+        },
+        {
+          "minAge": 18,
+          "maxAge": 24,
+          "value": 0.08800853501938616
+        },
+        {
+          "minAge": 65,
+          "maxAge": null,
+          "value": 0.08563179149717921
+        }
+      ],
+      "genderDistribution": {
+        "male": 0.20716331421252818,
+        "female": 0.7928366857874718
+      }
+    },
+    "geography": {
+      "countriesTotalCount": 82,
+      "topCountriesTraffics": [
+        {
+          "countryAlpha2Code": "US",
+          "countryUrlCode": "united-states",
+          "visitsShare": 0.9727162836494037,
+          "visitsShareChange": 0.0028876849411894057
+        },
+        {
+          "countryAlpha2Code": "CA",
+          "countryUrlCode": "canada",
+          "visitsShare": 0.005501770965124369,
+          "visitsShareChange": 0.004773273623722929
+        },
+        {
+          "countryAlpha2Code": "PR",
+          "countryUrlCode": "",
+          "visitsShare": 0.0035606968249289796,
+          "visitsShareChange": 0.46667224198247337
+        },
+        {
+          "countryAlpha2Code": "GE",
+          "countryUrlCode": "",
+          "visitsShare": 0.0019036189510154395,
+          "visitsShareChange": 0.050658036336805434
+        },
+        {
+          "countryAlpha2Code": "GB",
+          "countryUrlCode": "united-kingdom",
+          "visitsShare": 0.001395683525121211,
+          "visitsShareChange": 0.1145291861952471
+        }
+      ]
+    },
+    "name": "oldnavy.gap.com"
+  }
+]

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Audit</title>
+</head>
+
+<body>
+    <main class="traffic-audit">
+        <h1>Traffic Audit Comparison</h1>
+
+        <% if (trafficData) { %>
+            <div class="companyA-grid-item">
+                <div class="companyA-flex-container">
+                    <h2>
+                        <%= trafficData.companyA.label %>
+                    </h2>
+                    <ul>
+                        <% trafficData.companyA.monthlyVisits.forEach(element=> { %>
+                            <li>
+                                <%= element.date %>: <br>
+                                    <%= element.visits %> visits
+                            </li>
+                            <% }); %>
+                    </ul>
+                </div>
+            </div>
+            <div class="companyB-grid-item">
+                <div class="companyB-flex-container">
+                    <h2>
+                        <%= trafficData.companyB.label %>
+                    </h2>
+                    <ul>
+                        <% trafficData.companyB.monthlyVisits.forEach(element=> { %>
+                            <li>
+                                <%= element.date %>: <br>
+                                    <%= element.visits %> visits
+                            </li>
+                            <% }); %>
+                    </ul>
+
+                </div>
+
+            </div>
+            <% } %>
+
+    </main>
+
+</body>
+
+</html>

@@ -54,7 +54,10 @@ router.get("/", async (req, res) => {
         };
 
         // Server-side render with EJS and pass the formatted data
-        res.render("traffic-audit.ejs", { trafficData });
+        res.render("traffic-audit.ejs", {
+            title: "Traffic Audit",
+            pageStyle: "traffic-audit",
+            trafficData });
 
     } catch (err) {
         console.error("Traffic audit error:", err.message);
@@ -62,4 +65,5 @@ router.get("/", async (req, res) => {
     }
 });
 
+// exports the router object so that it can be imported and used in server.js
 export default router;

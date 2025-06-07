@@ -19,9 +19,16 @@ li {
     justify-items: center;
 }
 
-.companyA-title {
+.companyA-title-flex {
+    display: flex;
+    justify-content: center;
     grid-column: 1;
     grid-row: 2
+}
+
+.companyA-monthly-visits-charts {
+    grid-column: 1;
+    grid-row: 3;
 }
 
 .companyB-title {
@@ -29,14 +36,7 @@ li {
     grid-row: 2;
 }
 
-.companyA-grid-item {
-    grid-column: 1;
-}
-
-.companyB-grid-item {
-    grid-column: 2;
-}
-
 .companyB-monthly-visits-charts {
+    grid-column: 2;
     grid-row: 3;
 }

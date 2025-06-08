@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 main {
     background-color: #1F2A44;
 }
@@ -17,7 +21,6 @@ h3 {
 }
 
 .page-title-grid {
-    display: grid;
     grid-column: span 2;
 }
 
@@ -57,11 +60,14 @@ h3 {
 }
 
 canvas {
-    border: 1px dotted red;
+    border: 1px solid white;
+    width: 100%;
+    height: auto;
+    min-height: 30rem;
 }
 
 .traffic-comparison-chart-flex {
-    display: flex;
+    /* display: flex; */
     position: relative;
     margin: auto;
     min-height: 30rem;
@@ -78,14 +84,14 @@ canvas {
     }
 
     h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
-};
+}
 
 @media (max-width: 375px) {
     .page-title-flex {
         margin: 2rem;
     }
-};
+}
 
     

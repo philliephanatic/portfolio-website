@@ -9,15 +9,14 @@ const router = express.Router();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Correct path to the newly cleaned, private JSON data
-const jsonPath = path.join(__dirname,"../data/cleaned-similarweb-data.json");
+const jsonPath = path.join(__dirname, "../data/cleaned-similarweb-data.json");
 
 // Formatting
-const formatNumber = (num) => new Intl.NumberFormat("en-US").format(Number(num));
 const formatDate = (isoString) => {
     const d = new Date(isoString);
     d.setMonth(d.getMonth() - 1);
 
-    return `Month of ${d.toLocaleString("en-US", {
+    return `${d.toLocaleString("en-US", {
         month: "long",
         year: "numeric"
     })}`;
@@ -34,30 +33,22 @@ router.get("/", async (req, res) => {
         // Isolate Company A and Company B
         const companyA = data.find((d) => d.name === "abercrombie.com");
         const companyB = data.find((d) => d.name === "oldnavy.gap.com");
-        
+
         // Clean object to pass to view
-        const trafficData = {
-            companyA: {
-                label: "Company A",
-                monthlyVisits: companyA.traffic.history.map(item => ({
-                    date: formatDate(item.date),
-                    visits: formatNumber(item.visits)
-                })),
-            },
-            companyB: {
-                label: "Company B",
-                monthlyVisits: companyB.traffic.history.map(item => ({
-                    date: formatDate(item.date),
-                    visits: formatNumber(item.visits)
-                })),
-            }
-        };
+        const labels = companyA.traffic.history.map(item => formatDate(item.date));
+    
+
+        const companyATrafficValues = companyA.traffic.history.map(item => item.visits);
+        const companyBTrafficValues = companyB.traffic.history.map(item => item.visits);
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
             title: "Traffic Audit",
             pageStyle: "traffic-audit",
-            trafficData });
+            labels,
+            companyATrafficValues,
+            companyBTrafficValues,
+        });
 
     } catch (err) {
         console.error("Traffic audit error:", err.message);

@@ -166,6 +166,11 @@
     .footer-copy {
         font-size: 1.25rem;
     }
+    .site-header,
+    .site-footer {
+        padding-left: 10rem;
+        padding-right: 10rem;
+    }
 }
 
 /* LARGE SCREEN */
@@ -173,8 +178,8 @@
 
     .site-header,
     .site-footer {
-        padding-left: 30rem;
-        padding-right: 30rem;
+        padding-left: 10rem;
+        padding-right: 10rem;
     }
 
     .footer-copy {

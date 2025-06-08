@@ -2,41 +2,90 @@ main {
     background-color: #1F2A44;
 }
 
-li {
+li,
+h3 {
     color: #f5f5f5;
 }
 
+/* full page layout */
 .traffic-audit {
     display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: 3fr;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+    padding: 1rem 1rem;
+    gap: 1rem;
 }
 
-.page-title {
+.page-title-grid {
+    display: grid;
     grid-column: span 2;
-    grid-row: 1;
-    align-items: center;
-    justify-items: center;
 }
 
-.companyA-title-flex {
+.page-title-flex {
     display: flex;
     justify-content: center;
-    grid-column: 1;
-    grid-row: 2
+    text-wrap: nowrap;
+    grid-row: 1;
 }
 
-.companyA-monthly-visits-charts {
-    grid-column: 1;
-    grid-row: 3;
+.goal-statement-flex,
+.data-statement-flex {
+    display: flex;
+    justify-content: center;
+    align-items: first baseline;
+    border: 0.1rem solid #f5f5f5;
+    padding: 1rem;
 }
 
-.companyB-title {
+.goal-statement-flex {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.data-statement-flex {
     grid-column: 2;
     grid-row: 2;
 }
 
-.companyB-monthly-visits-charts {
-    grid-column: 2;
-    grid-row: 3;
+#goal,
+#data {
+    color: gold;
 }
+
+.traffic-comparison-chart-grid {
+    grid-column: 1;
+}
+
+canvas {
+    border: 1px dotted red;
+}
+
+.traffic-comparison-chart-flex {
+    display: flex;
+    position: relative;
+    margin: auto;
+    min-height: 30rem;
+    max-width: 100%;
+}
+
+
+/* mobile */
+@media (max-width: 425px) {
+    .traffic-audit {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    h1 {
+        font-size: 4rem;
+    }
+};
+
+@media (max-width: 375px) {
+    .page-title-flex {
+        margin: 2rem;
+    }
+};
+
+    

@@ -6,7 +6,7 @@
         <%- include("partials/header") %>
 
             <main class="traffic-audit">
-
+                <!-- <header></header> ? -->
                 <div class="page-title-grid">
                     <div class="page-title-flex">
                         <h1>Traffic Audit Comparison</h1>
@@ -39,14 +39,40 @@
                                 companyBTrafficValues
                             }) %>
                         </script>
-                        <script src="/scripts/traffic-audit.js"></script>
                     </div>
                 </div>
-                
 
-                
+                <div class="traffic-comparison-copy-flex">
+                    <p>
+                        Volume in sessions is clear, let's look deeper and understand the audience; MAKE BAR CHART
+                        STACKED WITH DEVICE SPLIT
+                    </p>
+                </div>
+
+                <div class="traffic-source-companyA-chart-grid">
+                    <div class="traffic-source-companyA-chart-flex">
+                        <canvas id="companyA-traffic-source-canvas"></canvas>
+                        <script id="companyA-traffic-source-script" type="application/json">
+                            <%- JSON.stringify(companyATrafficSource) %>
+                        </script>
+                    </div>
+                </div>
+
+                <div class="traffic-source-companyB-chart-grid">
+                    <div class="traffic-source-companyB-chart-flex">
+                        <canvas id="companyB-traffic-source-canvas"></canvas>
+                        <script id="companyB-traffic-source-script" type="application/json">
+                            <%- JSON.stringify(companyBTrafficSource) %>
+                        </script>
+                    </div>
+                </div>
+
+
+
             </main>
             <%- include('partials/footer') %>
+                <script src="/scripts/traffic-audit.js"></script>
+
     </body>
 
 </html>

@@ -34,12 +34,45 @@ router.get("/", async (req, res) => {
         const companyA = data.find((d) => d.name === "abercrombie.com");
         const companyB = data.find((d) => d.name === "oldnavy.gap.com");
 
-        // Clean object to pass to view
+        // Monthly Sessions
         const labels = companyA.traffic.history.map(item => formatDate(item.date));
-    
-
         const companyATrafficValues = companyA.traffic.history.map(item => item.visits);
         const companyBTrafficValues = companyB.traffic.history.map(item => item.visits);
+
+        // Channel Breakdown
+        const companyATrafficSource = {
+            labels: [
+                "Direct",
+                "Referral",
+                "Organic Search",
+                "Paid Search",
+                "Social"
+            ],
+            values: [
+                companyA.trafficSources.directVisitsShare,
+                companyA.trafficSources.referralVisitsShare,
+                companyA.trafficSources.organicSearchVisitsShare,
+                companyA.trafficSources.paidSearchVisitsShare,
+                companyA.trafficSources.socialNetworksVisitsShare
+            ]
+        };
+        const companyBTrafficSource = {
+            labels: [
+                "Direct",
+                "Referral",
+                "Organic Search",
+                "Paid Search",
+                "Social"
+            ],
+            values: [
+                companyB.trafficSources.directVisitsShare,
+                companyB.trafficSources.referralVisitsShare,
+                companyB.trafficSources.organicSearchVisitsShare,
+                companyB.trafficSources.paidSearchVisitsShare,
+                companyB.trafficSources.socialNetworksVisitsShare
+            ]
+        };
+
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
@@ -48,6 +81,8 @@ router.get("/", async (req, res) => {
             labels,
             companyATrafficValues,
             companyBTrafficValues,
+            companyATrafficSource,
+            companyBTrafficSource
         });
 
     } catch (err) {

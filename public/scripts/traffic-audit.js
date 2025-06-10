@@ -3,8 +3,18 @@ Chart.register(ChartDataLabels);
 Chart.defaults.set('plugins.datalabels', {
     formatter: (value) => `${(value * 100).toFixed(1)}%`,
     color: "white",
-    font: { family: "Roboto", size: 14 },
+    font: {
+        family: "Roboto",
+        size: 14
+    },
 });
+// Bar chart global defaults
+Chart.defaults.elements.bar.borderWidth = 0;
+
+// Pie chart global defaults
+Chart.overrides.pie.borderWidth = 0;
+
+// !_TO DO_! work on global settings to create chart partials
 
 document.addEventListener("DOMContentLoaded", () => {
     initTrafficComparisonBarChart();
@@ -44,52 +54,13 @@ function initTrafficComparisonBarChart() {
         options: {
             responsive: true,
             maintainAspectRatio: false,
-
-
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: value => new Intl.NumberFormat("en-US").format(value),
-                        color: "white"
-                    },
-                    title: {
-                        display: true,
-                        text: "Sessions",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 14
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: "white"
-                    },
-                    title: {
-                        display: true,
-                        text: "Month",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 14
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            },
             plugins: {
                 legend: {
                     labels: {
                         color: "white",
                         font: {
-                            family: "Roboto"
+                            family: "Roboto",
+                            size: 18
                         }
                     }
                 },
@@ -99,8 +70,9 @@ function initTrafficComparisonBarChart() {
                     color: "white",
                     font: {
                         family: "Fjalla One",
-                        size: 20
-                    },
+                        size: 30
+                    }
+
                 },
                 datalabels: {
                     display: false,
@@ -113,7 +85,63 @@ function initTrafficComparisonBarChart() {
                         family: "Roboto"
                     }
                 }
-            }
+            },
+
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => new Intl.NumberFormat("en-US").format(value),
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: "Sessions",
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        },
+                        padding: {
+                            bottom: 10,
+                        }
+                    },
+                    grid: {
+                        color: "transparent",
+                    }
+                },
+                x: {
+                    border: {
+                        display: "none",
+                    },
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: "Month",
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        },
+                        padding: {
+                            top: 0,
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            },
         }
     });
 }
@@ -148,11 +176,24 @@ function initCompanyAPieChart() {
                     display: true,
                     text: "Company A Traffic Sources",
                     color: "white",
-                    font: { family: "Fjalla One", size: 18 }
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
                 },
                 legend: {
+                    font: {
+                        family: "Roboto",
+                        size: 18
+                    },
+                    position: "bottom",
                     labels: {
-                        color: "white", font: { family: "Roboto" }
+                        color: "white",
+                        font: {
+                            family: "Roboto"
+                        },
+                        usePointStyle: true,
+                        pointStyle: "circle"
                     },
                 },
                 datalabels: {
@@ -203,15 +244,27 @@ function initCompanyBPieChart() {
                     display: true,
                     text: "Company B Traffic Sources",
                     color: "white",
-                    font: { family: "Fjalla One", size: 18 }
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
                 },
                 datalabels: {
                     display: "auto",
                 },
                 legend: {
+                    font: {
+                        family: "Roboto",
+                        size: 18
+                    },
+                    position: "bottom",
                     labels: {
                         color: "white",
-                        font: { family: "Roboto" }
+                        font: {
+                            family: "Roboto"
+                        },
+                        usePointStyle: true,
+                        pointStyle: "circle"
                     }
                 },
                 tooltip: {

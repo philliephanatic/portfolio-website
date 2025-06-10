@@ -1,6 +1,6 @@
 html,
 body {
-    background-color: #F5F5F7;
+    background-color: #1F2A44;
     color: white;
     margin: 0;
     padding: 0;
@@ -11,6 +11,50 @@ body {
     /* 62.5% trick: 1rem = 10px for easier scaling */
     scroll-behavior: smooth;
 }
+
+
+/*__MARGINS__*/
+/* small mobile phones */
+@media (max-width: 600px) {
+    main {
+        margin-left: 2rem;
+        margin-right: 2rem;
+    }
+}
+
+/* medium tablets */
+@media (min-width: 601px) and (max-width: 768px) {
+    main {
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+}
+
+/* tablets in landscape or small laptops */
+@media (min-width: 769px) and (max-width: 1024px) {
+    main {
+        margin-left: 10rem;
+        margin-right: 10rem;
+    }
+}
+
+/* standard desktops and larger laptops */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    main {
+        margin-left: 12rem;
+        margin-right: 12rem;
+    }
+}
+
+/* extra large screens and 4K monitors */
+@media (min-width: 1441px) {
+    main {
+        margin-left: 15rem;
+        margin-right: 15rem;
+    }
+
+}
+
 
 /*__FONTS__*/
 @font-face {

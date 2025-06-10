@@ -7,6 +7,7 @@ main {
 }
 
 li,
+h2,
 h3,
 p {
     color: #f5f5f5;
@@ -16,38 +17,49 @@ p {
 .traffic-audit {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, auto);
+    grid-template-rows: repeat(9, auto);
     padding: 1rem 1rem;
     gap: 1rem;
 }
 
 .page-title-grid {
+    display: grid;
     grid-column: span 2;
+    grid-row: 1;
+    place-items: center; /* shorthand for align-items + justify-items */
+
 }
 
 .page-title-flex {
     display: flex;
     justify-content: center;
-    text-wrap: nowrap;
-    grid-row: 1;
+    text-wrap: wrap;
+    align-items: center;
+    
+}
+
+@media (max-width: 375px) {
+    .page-title-flex {
+        margin: 2rem;
+    }
+}
+
+.data-statement-grid {
+    display: grid;
+    grid-column: span 2;
+    grid-row: 3;
 }
 
 .goal-statement-flex,
 .data-statement-flex {
     display: flex;
-    justify-content: center;
-    align-items: first baseline;
-    border: 0.1rem solid #f5f5f5;
-    padding: 1rem;
+    place-items: center; /* shorthand for align-items + justify-items */
+    text-align: left;
 }
 
-.goal-statement-flex {
-    grid-column: 1;
-    grid-row: 2;
-}
-
-.data-statement-flex {
-    grid-column: 2;
+.goal-statement-grid {
+    display: grid;
+    grid-column: span 2;
     grid-row: 2;
 }
 
@@ -57,17 +69,15 @@ p {
 }
 
 .traffic-comparison-chart-grid {
-    grid-column: 1;
+    grid-column: span 2;
+    grid-row: 4;
 }
 
 canvas {
-    border: 1px solid white;
     width: 100%;
     height: auto;
     min-height: 30rem;
 }
-
-
 
 .traffic-comparison-chart-flex {
     position: relative;
@@ -76,18 +86,21 @@ canvas {
     max-width: 100%;
 }
 
+.traffic-comparison-copy-grid {
+    display: grid;
+    grid-column: span 2;
+    grid-row: 5;
+}
 
 .traffic-comparison-copy-flex {
     display: flex;
-    grid-column: 2;
-    grid-row: 3;
     justify-content: center;
     align-items: center;
 }
 
 .traffic-source-companyA-chart-grid {
     grid-column: 1;
-    grid-row: 4;
+    grid-row: 7;
 
 }
 
@@ -100,7 +113,7 @@ canvas {
 
 .traffic-source-companyB-chart-grid {
     grid-column: 2;
-    grid-row: 4;
+    grid-row: 7;
 }
 
 .traffic-source-companyB-chart-flex {
@@ -124,10 +137,5 @@ canvas {
     }
 }
 
-@media (max-width: 375px) {
-    .page-title-flex {
-        margin: 2rem;
-    }
-}
 
     

@@ -8,6 +8,7 @@ Chart.defaults.set('plugins.datalabels', {
         size: 14
     },
 });
+
 // Bar chart global defaults
 Chart.defaults.elements.bar.borderWidth = 0;
 
@@ -20,12 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
     initTrafficComparisonBarChart();
     initCompanyAPieChart();
     initCompanyBPieChart();
+    initAudienceSegmentBarChart();
 });
 
 // 📊 Grouped Bar Chart – Monthly Sessions
 function initTrafficComparisonBarChart() {
-    const ctx = document.getElementById("traffic-comparison-chart-canvas");
     const raw = document.getElementById("traffic-comparison-chart-script");
+    const ctx = document.getElementById("traffic-comparison-chart-canvas");
 
     if (!ctx || !raw) {
         console.warn("Missing chart canvas or data script.");
@@ -280,3 +282,113 @@ function initCompanyBPieChart() {
         }
     })
 }
+
+// 📊 Grouped Bar Chart – Audience Segment
+function initAudienceSegmentBarChart() {
+    const raw = document.getElementById("audience-segment-script");
+    const ctx = document.getElementById("audience-segment-canvas");
+
+    if (!ctx || (!raw)) {
+        console.warn("Missing chart canvas or data script.")
+        return;
+    }
+
+    const { audienceLabels, companyAAudienceSegment, companyBAudienceSegment } = JSON.parse(raw.textContent);
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: audienceLabels,
+            datasets: [
+                {
+                    label: "Company A",
+                    data: companyAAudienceSegment,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)",
+                },
+                {
+                    label: "Company B",
+                    data: companyBAudienceSegment,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "Age Range of Digital Consumers",
+                    color: "white",
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
+                },
+                tooltip: {
+                    bodyFont: {
+                        family: "Roboto"
+                    },
+                    titleFont: {
+                        family: "Roboto"
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => new Intl.NumberFormat("en-US", { style: "percent" }).format(value),
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: "% of Total Sessions",
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: "Age Range",
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            }
+        }
+    })
+};

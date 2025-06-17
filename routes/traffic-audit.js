@@ -74,6 +74,28 @@ router.get("/", async (req, res) => {
         };
 
 
+        // Audience Segments
+        function formatAndSortAudienceSegmentData(ageDistribution) {
+            return ageDistribution
+                .sort((a, b) => a.minAge - b.minAge)
+                .map(item => ({
+                    label: item.maxAge === null ? "65+" : `${item.minAge} - ${item.maxAge}`,
+                    value: item.value
+                }));
+        }
+
+        const companyASortedAudience = formatAndSortAudienceSegmentData(companyA.demographics.ageDistribution);
+        const companyBSortedAudience = formatAndSortAudienceSegmentData(companyB.demographics.ageDistribution);
+
+        // Separate labels and values for Chart.js
+        const audienceLabels = companyASortedAudience.map(d => d.label);
+        const companyAAudienceSegment = companyASortedAudience.map(d => d.value);
+        const companyBAudienceSegment = companyBSortedAudience.map(d => d.value);
+
+
+
+
+
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
             title: "Traffic Audit",
@@ -82,7 +104,10 @@ router.get("/", async (req, res) => {
             companyATrafficValues,
             companyBTrafficValues,
             companyATrafficSource,
-            companyBTrafficSource
+            companyBTrafficSource,
+            audienceLabels,
+            companyAAudienceSegment,
+            companyBAudienceSegment
         });
 
     } catch (err) {
@@ -93,3 +118,40 @@ router.get("/", async (req, res) => {
 
 // exports the router object so that it can be imported and used in server.js
 export default router;
+
+// const companyAAudience = {
+//     labels: [
+//         "18 - 24",
+//         "25 - 34",
+//         "35 - 44",
+//         "45 - 54",
+//         "55 - 64",
+//         "Over 65"
+//     ],
+//     values: [
+//         companyA.demographics.ageDistribution.map(item => item.value), // 18 - 24
+//         companyA.demographics.ageDistribution.map(item => item.value), // 25 - 34
+//         companyA.demographics.ageDistribution.map(item => item.value), // 35 - 44
+//         companyA.demographics.ageDistribution.map(item => item.value), // 45 - 54
+//         companyA.demographics.ageDistribution.map(item => item.value), // 55 - 64
+//         companyA.demographics.ageDistribution.map(item => item.value) // Over 65
+//     ]
+// };
+// const companyBAudience = {
+//     labels: [
+//         "18 - 24",
+//         "25 - 34",
+//         "35 - 44",
+//         "45 - 54",
+//         "55 - 64",
+//         "Over 65"
+//     ],
+//     values: [
+//         companyB.demographics.ageDistribution.map(item => item.value), // 18 - 24
+//         companyB.demographics.ageDistribution.map(item => item.value), // 25 - 34
+//         companyB.demographics.ageDistribution.map(item => item.value), // 35 - 44
+//         companyB.demographics.ageDistribution.map(item => item.value), // 45 - 54
+//         companyB.demographics.ageDistribution.map(item => item.value), // 55 - 64
+//         companyB.demographics.ageDistribution.map(item => item.value) // Over 65
+//     ]
+// };

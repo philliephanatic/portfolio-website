@@ -4,34 +4,31 @@
 
     <body>
         <%- include("partials/header") %>
-
+            <header class="page-header">
+                <h1>Traffic Audit Comparison</h1>
+            </header>
             <main class="traffic-audit">
-                <div class="page-title-grid">
-                    <div class="page-title-flex">
-                        <h1>Traffic Audit Comparison</h1>
-                    </div>
-                </div>
                 <div class="goal-statement-grid">
                     <div class="goal-statement-flex">
                         <h3>
-                            <strong id="goal">GOAL: </strong>Provide a data-driven audit of two retail brands'
-                            website
-                            performance — Company A and Company B — and provide recommendations for strategic
+                            <strong id="goal">GOAL: </strong>
+                            Provide a data-driven audit of two retail brands' website
+                            performance — <strong id="company-a">Company A </strong>and <strong id="company-b">Company B
+                            </strong>— and provide recommendations for strategic
                             improvements.
                         </h3>
                     </div>
                 </div>
+                <!-- TRAFFIC-COMPARISON -->
                 <div class="data-statement-grid">
                     <div class="data-statement-flex">
                         <h3>
-                            <strong id="data">DATA: </strong>Sourced from Similarweb API via Postman with raw
-                            JSON
-                            data
+                            <strong id="data">DATA: </strong>
+                            Sourced from Similarweb API via Postman with raw JSON data
                             exported and integrated server-side using Express routes and Embedded JavaScript (EJS).
                         </h3>
                     </div>
                 </div>
-
                 <div class="traffic-comparison-chart-grid">
                     <div class="traffic-comparison-chart-flex">
                         <canvas id="traffic-comparison-chart-canvas"></canvas>
@@ -44,17 +41,18 @@
                         </script>
                     </div>
                 </div>
-
                 <div class="traffic-comparison-copy-grid">
                     <div class="traffic-comparison-copy-flex">
                         <p>
-                            Volume in sessions is clear, let's look deeper and understand the audience; MAKE BAR CHART
-                            STACKED WITH DEVICE SPLIT
+                            From January to March 2025, <strong id="company-b">Company B </strong>averaged <strong
+                                id="more-sessions">
+                                2.16x more sessions </strong>than <strong id="company-a">Company A</strong>.
+                            Let's look deeper into the data to understand where the users are coming from
+                            and what audience segments can be constructed.
                         </p>
                     </div>
                 </div>
-
-
+                <!-- TRAFFIC-SOURCE -->
                 <div class="traffic-source-companyA-chart-grid">
                     <div class="traffic-source-companyA-chart-flex">
                         <canvas id="companyA-traffic-source-canvas"></canvas>
@@ -63,7 +61,6 @@
                         </script>
                     </div>
                 </div>
-
                 <div class="traffic-source-companyB-chart-grid">
                     <div class="traffic-source-companyB-chart-flex">
                         <canvas id="companyB-traffic-source-canvas"></canvas>
@@ -72,7 +69,20 @@
                         </script>
                     </div>
                 </div>
-
+                <!-- AUDIENCE-SEGMENTS -->
+                <div class="audience-segment-chart-grid">
+                    <div class="audience-segment-chart-flex">
+                        <!-- <p>MONTH of APRIL 2024 data</p> -->
+                        <canvas id="audience-segment-canvas"></canvas>
+                        <script id="audience-segment-script" type="application/json">
+                            <%- JSON.stringify({
+                                audienceLabels,
+                                companyAAudienceSegment,
+                                companyBAudienceSegment
+                            }) %>
+                        </script>
+                    </div>
+                </div>
 
 
             </main>

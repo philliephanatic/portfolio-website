@@ -84,6 +84,30 @@
                     </div>
                 </div>
 
+                <div class="gender-segment-chart-grid">
+                    <div class="gender-segment-chart-flex">
+                        <p>GENDER SEGMENT</p>
+                        <canvas id="gender-segment-canvas"></canvas>
+                        <script id="gender-segment-script" type="application/json">
+                            <%- JSON.stringify({
+                                
+                            }) %>
+                        </script>
+                    </div>
+                </div>
+
+                <div class="geo-segment-chart-grid">
+                    <div class="geo-segment-chart-flex">
+                        <p>GEO SEGMENT</p>
+                        <canvas id="geo-segment-canvas"></canvas>
+                        <script id="geo-segment-script" type="application/json">
+                            <%- JSON.stringify({
+                                
+                            }) %>
+                        </script>
+                    </div>
+                </div>
+
 
             </main>
             <%- include('partials/footer') %>

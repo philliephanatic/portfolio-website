@@ -15,6 +15,13 @@ Chart.defaults.elements.bar.borderWidth = 0;
 // Pie chart global defaults
 Chart.overrides.pie.borderWidth = 0;
 
+// Format to Millions (M)
+function formatMillions(value) {
+    if (value >= 1_000_000) {
+        return (value / 1_000_000).toFixed(1).replace(/\.0$/, '') + "M";
+    } return value;
+};
+
 // !_TO DO_! work on global settings to create chart partials
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -77,7 +84,13 @@ function initTrafficComparisonBarChart() {
 
                 },
                 datalabels: {
-                    display: false,
+                    display: true,
+                    formatter: value => formatMillions(value),
+                    color: "white",
+                    font: {
+                        family: "Roboto",
+                        size: 14
+                    }
                 },
                 tooltip: {
                     bodyFont: {
@@ -340,6 +353,12 @@ function initAudienceSegmentBarChart() {
                     },
                     titleFont: {
                         family: "Roboto"
+                    },
+                    callbacks: {
+                        label: function (ctx) {
+                            const value = ctx.raw || 0;
+                            return `${(value * 100).toFixed(1)}%`
+                        }
                     }
                 }
             },

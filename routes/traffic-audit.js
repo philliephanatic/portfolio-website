@@ -79,7 +79,7 @@ router.get("/", async (req, res) => {
             return ageDistribution
                 .sort((a, b) => a.minAge - b.minAge)
                 .map(item => ({
-                    label: item.maxAge === null ? "65+" : `${item.minAge} - ${item.maxAge}`,
+                    label: `${item.minAge} - ${item.maxAge}`,
                     value: item.value
                 }));
         }

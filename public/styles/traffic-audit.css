@@ -130,14 +130,24 @@ canvas {
 .audience-segment-chart-grid {
     grid-column: span 2;
     grid-row: 7;
+    padding-top: 2.5rem;
 }
 
 .audience-segment-chart-flex {
     position: relative;
     margin: auto;
     min-height: 30rem;
-    /* max-height: 100rem; */
     max-width: 100%;
+}
+
+.gender-segment-chart-grid {
+    grid-column: 1;
+    grid-row: 8;
+}
+
+.geo-segment-chart-grid {
+    grid-column: 2;
+    grid-row: 8;
 }
 
 /* mobile */

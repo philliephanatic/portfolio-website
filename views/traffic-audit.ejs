@@ -25,7 +25,7 @@
                         <h3>
                             <strong id="data">DATA: </strong>
                             Sourced from Similarweb API via Postman with raw JSON data
-                            exported and integrated server-side using Express routes and Embedded JavaScript (EJS).
+                            exported and integrated server-side using Express router and Embedded JavaScript (EJS).
                         </h3>
                     </div>
                 </div>
@@ -86,11 +86,12 @@
 
                 <div class="gender-segment-chart-grid">
                     <div class="gender-segment-chart-flex">
-                        <p>GENDER SEGMENT</p>
                         <canvas id="gender-segment-canvas"></canvas>
                         <script id="gender-segment-script" type="application/json">
                             <%- JSON.stringify({
-                                
+                                genderLabels, 
+                                companyAGenderSegment, 
+                                companyBGenderSegment
                             }) %>
                         </script>
                     </div>
@@ -98,11 +99,12 @@
 
                 <div class="geo-segment-chart-grid">
                     <div class="geo-segment-chart-flex">
-                        <p>GEO SEGMENT</p>
                         <canvas id="geo-segment-canvas"></canvas>
                         <script id="geo-segment-script" type="application/json">
                             <%- JSON.stringify({
-                                
+                                geoLabels,
+                                companyAGeoSegment,
+                                companyBGeoSegment
                             }) %>
                         </script>
                     </div>

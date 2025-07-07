@@ -7,6 +7,7 @@ Chart.defaults.set('plugins.datalabels', {
         family: "Roboto",
         size: 14
     },
+
 });
 
 // Bar chart global defaults
@@ -22,13 +23,15 @@ function formatMillions(value) {
     } return value;
 };
 
-// !_TO DO_! work on global settings to create chart partials
+// !_TO DO_! work on global settings/defaults to create chart partials
 
 document.addEventListener("DOMContentLoaded", () => {
     initTrafficComparisonBarChart();
     initCompanyAPieChart();
     initCompanyBPieChart();
     initAudienceSegmentBarChart();
+    initGenderSegmentBarChart();
+    initGeoSegmentBarChart();
 });
 
 // 📊 Grouped Bar Chart – Monthly Sessions
@@ -165,6 +168,7 @@ function initTrafficComparisonBarChart() {
 function initCompanyAPieChart() {
     const raw = document.getElementById("companyA-traffic-source-script");
     const ctx = document.getElementById("companyA-traffic-source-canvas");
+
     if (!raw || !ctx) {
         console.warn("Missing chart canvas or data script.");
         return;
@@ -411,3 +415,222 @@ function initAudienceSegmentBarChart() {
         }
     })
 };
+
+// 📊 Bar Chart – Gender Segment
+function initGenderSegmentBarChart() {
+    const raw = document.getElementById("gender-segment-script");
+    const ctx = document.getElementById("gender-segment-canvas");
+
+    if (!ctx || !raw) {
+        console.warn("Missing chart canvas or data script.")
+        return;
+    }
+
+    const { genderLabels, companyAGenderSegment, companyBGenderSegment } = JSON.parse(raw.textContent);
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: genderLabels,
+            datasets: [
+                {
+                    label: "Company A",
+                    data: companyAGenderSegment,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                },
+                {
+                    label: "Company B",
+                    data: companyBGenderSegment,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        },
+                    },
+                    position: "bottom",
+                },
+                title: {
+                    display: true,
+                    text: "Gender Segment",
+                    color: "white",
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const value = ctx.raw || 0;
+                            return `${(value * 100).toFixed(1)}%`;
+                        }
+                    },
+                    bodyFont: { family: "Roboto" },
+                    titleFont: { family: "Roboto" }
+                },
+                datalabels: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => `${(value * 100).toFixed(0)}%`,
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    },
+                    title: {
+                        display: true,
+                        text: "% of Total Users",
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            }
+        }
+    });
+}
+
+// 📊 Bar Chart – Geo Segment
+function initGeoSegmentBarChart() {
+    const raw = document.getElementById("geo-segment-script");
+    const ctx = document.getElementById("geo-segment-canvas");
+
+    if (!ctx || !raw) {
+        console.warn("Missing chart canvas or data script.")
+        return;
+    }
+
+    const { geoLabels, companyAGeoSegment, companyBGeoSegment } = JSON.parse(raw.textContent);
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: geoLabels,
+            datasets: [
+                {
+                    label: "Company A",
+                    data: companyAGeoSegment,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                },
+                {
+                    label: "Company B",
+                    data: companyBGeoSegment,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)"
+                },
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    position: "bottom",
+                },
+                title: {
+                    display: true,
+                    text: "Geo Segment",
+                    color: "white",
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const value = ctx.raw || 0;
+                            return `${(value * 100).toFixed(1)}%`;
+                        }
+                    },
+                    bodyFont: { family: "Roboto" },
+                    titleFont: { family: "Roboto" }
+                },
+                datalabels: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => `${(value * 100).toFixed(0)}%`,
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    },
+                    title: {
+                        display: true,
+                        text: "% of Total Users",
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            }
+        }
+    });
+}
+
+
+
+
+

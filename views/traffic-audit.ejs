@@ -26,6 +26,7 @@
                             <strong id="data">DATA: </strong>
                             Sourced from Similarweb API via Postman with raw JSON data
                             exported and integrated server-side using Express router and Embedded JavaScript (EJS).
+                            All data is a cumulative three month average (L3) unless specifically broken out into month.
                         </h3>
                     </div>
                 </div>
@@ -44,9 +45,12 @@
                 <div class="traffic-comparison-copy-grid">
                     <div class="traffic-comparison-copy-flex">
                         <p>
-                            From January to March 2025, <strong id="company-b">Company B </strong>averaged <strong
-                                id="more-sessions">
-                                2.16x more sessions </strong>than <strong id="company-a">Company A</strong>.
+                            From January to March 2025, 
+                            <strong id="company-b">Company B </strong>
+                            averaged 
+                            <strong id="data">2.16x more sessions </strong>
+                            than 
+                            <strong id="company-a">Company A</strong>.
                             Let's look deeper into the data to understand where the users are coming from
                             and what audience segments can be constructed.
                         </p>
@@ -67,6 +71,24 @@
                         <script id="companyB-traffic-source-script" type="application/json">
                             <%- JSON.stringify(companyBTrafficSource) %>
                         </script>
+                    </div>
+                </div>
+                <div class="traffic-source-copy-grid">
+                    <div class="traffic-source-copy-flex">
+                        <p>
+                            <strong id="company-a">Company A </strong>
+                            looks to have utilized a successful SEO strategy, as its organic search traffic 
+                            has outpaced 
+                            <strong id="company-b">Company B </strong>
+                            by
+                            <strong id="data">over 2x </strong>
+                            . However,
+                            <strong id="company-b">Company B </strong>
+                            drives 
+                            <strong id="data">16% more </strong> 
+                            direct traffic to its site, suggesting that the marketing focus is on awareness campaigns. 
+                            It would also explain why their session volume is higher.
+                        </p>
                     </div>
                 </div>
                 <!-- AUDIENCE-SEGMENTS -->
@@ -107,6 +129,22 @@
                                 companyBGeoSegment
                             }) %>
                         </script>
+                    </div>
+                </div>
+
+                <div class="segment-copy-grid">
+                    <div class="segment-copy-flex">
+                        <p>
+                        The profile for 
+                         <strong id="company-a">Company A </strong>
+                        shows its customers tend to be younger, male, and have a modest presence outside of the U.S., with 
+                        <strong id="data"> 16.6% of traffic </strong>
+                        coming from Canada and the United Kingdom. 
+                         <strong id="company-b">Company B</strong>, 
+                        conversely, skews older -- 
+                        <strong id="data">64.6% over the age of 34 </strong>
+                         -- female, and almost entirely within the United States. 
+                        </p>
                     </div>
                 </div>
 

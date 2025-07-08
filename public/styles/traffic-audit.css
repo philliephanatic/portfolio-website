@@ -17,7 +17,7 @@ p {
 .traffic-audit {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(9, auto);
+    grid-template-rows: repeat(12, auto);
     padding: 1rem 1rem;
     gap: 1rem;
 }
@@ -76,18 +76,18 @@ p {
     height: 50%;
 }
 
-#goal,
-#data,
-#more-sessions {
-    color: gold;
+#company-a {
+    color: #36a2eb;
 }
 
 #company-b {
     color: #ff6384;
 }
 
-#company-a {
-    color: #36a2eb;
+#goal,
+#data,
+#more-sessions {
+    color: gold;
 }
 
 .traffic-comparison-chart-grid {
@@ -95,7 +95,8 @@ p {
     grid-row: 4;
 }
 
-canvas {
+/* look into using this for responsive/mobile views */
+canvas { 
     width: 100%;
     height: auto;
     min-height: 30rem;
@@ -112,6 +113,11 @@ canvas {
     display: grid;
     grid-column: span 2;
     grid-row: 5;
+    border: solid;
+    border-color: white;
+    border-width: 0.1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.1rem;
 }
 
 .traffic-source-companyA-chart-grid {
@@ -139,10 +145,26 @@ canvas {
     max-width: 100%;
 }
 
+.traffic-source-copy-grid {
+    grid-column: span 2;
+    grid-row: 7;
+    border: solid;
+    border-color: white;
+    border-width: 0.1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.1rem;
+}
+
+.traffic-source-copy-flex {
+    display: flex;
+    place-items: center; 
+    /* shorthand for align-items + justify-items */
+    text-align: left;
+}
 
 .audience-segment-chart-grid {
     grid-column: span 2;
-    grid-row: 7;
+    grid-row: 8;
     padding-top: 2.5rem;
 }
 
@@ -155,7 +177,7 @@ canvas {
 
 .gender-segment-chart-grid {
     grid-column: 1;
-    grid-row: 8;
+    grid-row: 9;
 }
 
 .gender-segment-chart-flex {
@@ -168,5 +190,23 @@ canvas {
 
 .geo-segment-chart-grid {
     grid-column: 2;
-    grid-row: 8;
+    grid-row: 9;
+}
+
+.segment-copy-grid {
+    display: grid;
+    grid-column: span 2;
+    grid-row: 10;
+    border: solid;
+    border-color: white;
+    border-width: 0.1rem;
+    padding-left: 0.5rem;
+    padding-right: 0.1rem;
+}
+
+.segment-copy-flex {
+    display: flex;
+    place-items: center; 
+    /* shorthand for align-items + justify-items */
+    text-align: left;
 }

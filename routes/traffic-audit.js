@@ -73,7 +73,8 @@ router.get("/", async (req, res) => {
             ]
         };
 
-        // Audience Segments
+        // Segmentation
+        // Age Segment
         function formatAndSortAudienceSegmentData(ageDistribution) {
             return ageDistribution
                 .sort((a, b) => a.minAge - b.minAge)
@@ -102,6 +103,50 @@ router.get("/", async (req, res) => {
         const companyAGeoSegment = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
         const companyBGeoSegment = companyB.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
 
+        // User Behavior
+        // Bounce Rates
+        const bounceRateLabels = { labels: ["Bounce Rate"] };
+        const companyABounceRate = companyA.traffic.map(item => item.bounceRate);
+        const companyBBounceRate = companyB.traffic.map(item => item.bounceRate);
+
+        // Pages Per Visit
+        const pagesPerVisitLabels = { labels: ["Pages per Visit"] };
+        const companyAPagesPerVisit = companyA.traffic.map(item => item.pagesPerVisit);
+        const companyBPagesPerVisit = companyB.traffic.map(item => item.pagesPerVisit);
+
+        
+        
+        
+            // labels: [
+            //     "Bounce Rate",
+            //     "Pages per Visit",
+            //     "Avg Duration Time"
+            // ],
+
+            // values: [
+                // companyA.traffic.map(item => item.bounceRate),
+                // companyA.traffic.map(item => item.pagesPerVisit),
+                // companyA.traffic.map(item => item.visitsAvgDurationFormatted)
+                
+        //         companyA.traffic.pagesPerVisit,
+        //         companyA.traffic.visitsAvgDurationFormatted
+        //     ]
+        // };
+
+        // const companyBUserBehavior = {
+        //     labels: [
+        //         "Bounce Rate",
+        //         "Pages per Visit",
+        //         "Avg Duration Time"
+        //     ],
+
+        //     values: [
+        //         companyB.traffic.bounceRate,
+        //         companyB.traffic.pagesPerVisit,
+        //         companyB.traffic.visitsAvgDurationFormatted
+        //     ]
+        // };
+            
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
@@ -118,9 +163,19 @@ router.get("/", async (req, res) => {
             genderLabels,
             companyAGenderSegment,
             companyBGenderSegment,
+            
             geoLabels,
             companyAGeoSegment,
-            companyBGeoSegment
+            companyBGeoSegment,
+            
+            bounceRateLabels,
+            companyABounceRate,
+            companyBBounceRate,
+
+            pagesPerVisitLabels,
+            companyAPagesPerVisit,
+            companyBPagesPerVisit
+            
         });
 
     } catch (err) {

@@ -92,11 +92,10 @@
                     </div>
                 </div>
                 <!-- AUDIENCE-SEGMENTS -->
-                <div class="audience-segment-chart-grid">
-                    <div class="audience-segment-chart-flex">
-                        <!-- <p>MONTH of APRIL 2024 data</p> -->
-                        <canvas id="audience-segment-canvas"></canvas>
-                        <script id="audience-segment-script" type="application/json">
+                <div class="age-segment-chart-grid">
+                    <div class="age-segment-chart-flex">
+                        <canvas id="age-segment-canvas"></canvas>
+                        <script id="age-segment-script" type="application/json">
                             <%- JSON.stringify({
                                 audienceLabels,
                                 companyAAudienceSegment,
@@ -105,7 +104,6 @@
                         </script>
                     </div>
                 </div>
-
                 <div class="gender-segment-chart-grid">
                     <div class="gender-segment-chart-flex">
                         <canvas id="gender-segment-canvas"></canvas>
@@ -118,7 +116,6 @@
                         </script>
                     </div>
                 </div>
-
                 <div class="geo-segment-chart-grid">
                     <div class="geo-segment-chart-flex">
                         <canvas id="geo-segment-canvas"></canvas>
@@ -131,7 +128,6 @@
                         </script>
                     </div>
                 </div>
-
                 <div class="segment-copy-grid">
                     <div class="segment-copy-flex">
                         <p>
@@ -143,11 +139,23 @@
                          <strong id="company-b">Company B</strong>, 
                         conversely, skews older -- 
                         <strong id="data">64.6% over the age of 34 </strong>
-                         -- female, and almost entirely within the United States. 
+                         -- female, and almost entirely within the United States. Now, let's look at user beahvor. 
                         </p>
                     </div>
                 </div>
-
+                <!-- USER-BEHAVIOR -->
+                 <div class="bounce-rate-chart-grid">
+                    <div class="bounce-rate-chart-flex">
+                        <canvas id="bounce-rate-canvas"></canvas>
+                        <script id="bounce-rate-script" type="application/json">
+                            <%- JSON.stringify({
+                                bounceRateLabels,
+                                companyABounceRate,
+                                companyBBounceRate
+                            }) %>
+                        </script>
+                    </div>
+                </div>
 
             </main>
             <%- include('partials/footer') %>

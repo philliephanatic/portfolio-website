@@ -162,13 +162,13 @@ canvas {
     text-align: left;
 }
 
-.audience-segment-chart-grid {
+.age-segment-chart-grid {
     grid-column: span 2;
     grid-row: 8;
     padding-top: 2.5rem;
 }
 
-.audience-segment-chart-flex {
+.age-segment-chart-flex {
     position: relative;
     margin: auto;
     min-height: 30rem;
@@ -209,4 +209,10 @@ canvas {
     place-items: center; 
     /* shorthand for align-items + justify-items */
     text-align: left;
+}
+
+.bounce-rate-chart-grid {
+    display: grid;
+    grid-column: span 2;
+    grid-row: 11;
 }

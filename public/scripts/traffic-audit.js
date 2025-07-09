@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initAudienceSegmentBarChart();
     initGenderSegmentBarChart();
     initGeoSegmentBarChart();
+    initBounceRateBarChart()
 });
 
 // 📊 Grouped Bar Chart – Monthly Sessions
@@ -302,8 +303,8 @@ function initCompanyBPieChart() {
 
 // 📊 Grouped Bar Chart – Audience Segment
 function initAudienceSegmentBarChart() {
-    const raw = document.getElementById("audience-segment-script");
-    const ctx = document.getElementById("audience-segment-canvas");
+    const raw = document.getElementById("age-segment-script");
+    const ctx = document.getElementById("age-segment-canvas");
 
     if (!ctx || (!raw)) {
         console.warn("Missing chart canvas or data script.")
@@ -627,6 +628,23 @@ function initGeoSegmentBarChart() {
                 }
             }
         }
+    });
+}
+
+//📊 Bar Chart - Bounce Rate
+function initBounceRateBarChart() {
+    const raw = document.getElementById("bounce-rate-script");
+    const ctx = document.getElementById("bounce-rate-canvas");
+
+    if (!ctx || !raw) {
+        console.warn("Missing chart canvas or data script.")
+        return;
+    }
+
+    const { bounceRateLabels, companyABounceRate, companyBBounceRate } = JSON.parse(raw.textContent);
+
+    new Chart(ctx, {
+
     });
 }
 

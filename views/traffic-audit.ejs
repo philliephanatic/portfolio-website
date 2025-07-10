@@ -45,11 +45,11 @@
                 <div class="traffic-comparison-copy-grid">
                     <div class="traffic-comparison-copy-flex">
                         <p>
-                            From January to March 2025, 
+                            From January to March 2025,
                             <strong id="company-b">Company B </strong>
-                            averaged 
+                            averaged
                             <strong id="data">2.16x more sessions </strong>
-                            than 
+                            than
                             <strong id="company-a">Company A</strong>.
                             Let's look deeper into the data to understand where the users are coming from
                             and what audience segments can be constructed.
@@ -77,16 +77,16 @@
                     <div class="traffic-source-copy-flex">
                         <p>
                             <strong id="company-a">Company A </strong>
-                            looks to have utilized a successful SEO strategy, as its organic search traffic 
-                            has outpaced 
+                            looks to have utilized a successful SEO strategy, as its organic search traffic
+                            has outpaced
                             <strong id="company-b">Company B </strong>
                             by
                             <strong id="data">over 2x </strong>
                             . However,
                             <strong id="company-b">Company B </strong>
-                            drives 
-                            <strong id="data">16% more </strong> 
-                            direct traffic to its site, suggesting that the marketing focus is on awareness campaigns. 
+                            drives
+                            <strong id="data">16% more </strong>
+                            direct traffic to its site, suggesting that the marketing focus is on awareness campaigns.
                             It would also explain why their session volume is higher.
                         </p>
                     </div>
@@ -131,20 +131,21 @@
                 <div class="segment-copy-grid">
                     <div class="segment-copy-flex">
                         <p>
-                        The profile for 
-                         <strong id="company-a">Company A </strong>
-                        shows its customers tend to be younger, male, and have a modest presence outside of the U.S., with 
-                        <strong id="data"> 16.6% of traffic </strong>
-                        coming from Canada and the United Kingdom. 
-                         <strong id="company-b">Company B</strong>, 
-                        conversely, skews older -- 
-                        <strong id="data">64.6% over the age of 34 </strong>
-                         -- female, and almost entirely within the United States. Now, let's look at user beahvor. 
+                            The profile for
+                            <strong id="company-a">Company A </strong>
+                            shows its customers tend to be younger, male, and have a modest presence outside of the
+                            U.S., with
+                            <strong id="data"> 16.6% of traffic </strong>
+                            coming from Canada and the United Kingdom.
+                            <strong id="company-b">Company B</strong>,
+                            conversely, skews older --
+                            <strong id="data">64.6% over the age of 34 </strong>
+                            -- female, and almost entirely within the United States. Now, let's look at user beahvor.
                         </p>
                     </div>
                 </div>
                 <!-- USER-BEHAVIOR -->
-                 <div class="bounce-rate-chart-grid">
+                <div class="bounce-rate-chart-grid">
                     <div class="bounce-rate-chart-flex">
                         <canvas id="bounce-rate-canvas"></canvas>
                         <script id="bounce-rate-script" type="application/json">
@@ -152,6 +153,19 @@
                                 bounceRateLabels,
                                 companyABounceRate,
                                 companyBBounceRate
+                            }) %>
+                        </script>
+                    </div>
+                </div>
+
+                <div class="pages-per-visit-chart-grid">
+                    <div class="pages-per-visit-chart-flex">
+                        <canvas id="pages-per-visit-canvas"></canvas>
+                        <script id="pages-per-visit-script" type="application/json">
+                            <%- JSON.stringify({
+                                pagesPerVisitLabels,
+                                companyAPagesPerVisit,
+                                companyBPagesPerVisit
                             }) %>
                         </script>
                     </div>

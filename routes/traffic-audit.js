@@ -97,7 +97,7 @@ router.get("/", async (req, res) => {
         );
         const companyAGenderSegment = Object.values(companyA.demographics.genderDistribution);
         const companyBGenderSegment = Object.values(companyB.demographics.genderDistribution);
-    
+
         // Geo Segment
         const geoLabels = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.countryAlpha2Code);
         const companyAGeoSegment = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
@@ -105,48 +105,15 @@ router.get("/", async (req, res) => {
 
         // User Behavior
         // Bounce Rates
-        const bounceRateLabels = { labels: ["Bounce Rate"] };
-        const companyABounceRate = companyA.traffic.map(item => item.bounceRate);
-        const companyBBounceRate = companyB.traffic.map(item => item.bounceRate);
+        const bounceRateLabels = [""];
+        const companyABounceRate = [companyA.traffic.bounceRate];
+        const companyBBounceRate = [companyB.traffic.bounceRate];
 
         // Pages Per Visit
-        const pagesPerVisitLabels = { labels: ["Pages per Visit"] };
-        const companyAPagesPerVisit = companyA.traffic.map(item => item.pagesPerVisit);
-        const companyBPagesPerVisit = companyB.traffic.map(item => item.pagesPerVisit);
+        const pagesPerVisitLabels = [" "];
+        const companyAPagesPerVisit = [companyA.traffic.pagesPerVisit];
+        const companyBPagesPerVisit = [companyB.traffic.pagesPerVisit];
 
-        
-        
-        
-            // labels: [
-            //     "Bounce Rate",
-            //     "Pages per Visit",
-            //     "Avg Duration Time"
-            // ],
-
-            // values: [
-                // companyA.traffic.map(item => item.bounceRate),
-                // companyA.traffic.map(item => item.pagesPerVisit),
-                // companyA.traffic.map(item => item.visitsAvgDurationFormatted)
-                
-        //         companyA.traffic.pagesPerVisit,
-        //         companyA.traffic.visitsAvgDurationFormatted
-        //     ]
-        // };
-
-        // const companyBUserBehavior = {
-        //     labels: [
-        //         "Bounce Rate",
-        //         "Pages per Visit",
-        //         "Avg Duration Time"
-        //     ],
-
-        //     values: [
-        //         companyB.traffic.bounceRate,
-        //         companyB.traffic.pagesPerVisit,
-        //         companyB.traffic.visitsAvgDurationFormatted
-        //     ]
-        // };
-            
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
@@ -163,11 +130,11 @@ router.get("/", async (req, res) => {
             genderLabels,
             companyAGenderSegment,
             companyBGenderSegment,
-            
+
             geoLabels,
             companyAGeoSegment,
             companyBGeoSegment,
-            
+
             bounceRateLabels,
             companyABounceRate,
             companyBBounceRate,
@@ -175,7 +142,7 @@ router.get("/", async (req, res) => {
             pagesPerVisitLabels,
             companyAPagesPerVisit,
             companyBPagesPerVisit
-            
+
         });
 
     } catch (err) {

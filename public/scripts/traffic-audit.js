@@ -1,5 +1,8 @@
 Chart.register(ChartDataLabels);
 
+// !_TO DO_! work on global settings/defaults to create chart partials
+
+//Global Formatting
 Chart.defaults.set('plugins.datalabels', {
     formatter: (value) => `${(value * 100).toFixed(1)}%`,
     color: "white",
@@ -16,14 +19,18 @@ Chart.defaults.elements.bar.borderWidth = 0;
 // Pie chart global defaults
 Chart.overrides.pie.borderWidth = 0;
 
-// Format to Millions (M)
+// Bespoke Formattting 
+// Millions with "M"
 function formatMillions(value) {
     if (value >= 1_000_000) {
         return (value / 1_000_000).toFixed(1).replace(/\.0$/, '') + "M";
     } return value;
 };
 
-// !_TO DO_! work on global settings/defaults to create chart partials
+// Tens
+function formatTens(value) {
+    return (value * 1).toFixed(0)
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     initTrafficComparisonBarChart();
@@ -32,7 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     initAudienceSegmentBarChart();
     initGenderSegmentBarChart();
     initGeoSegmentBarChart();
-    initBounceRateBarChart()
+    initBounceRateBarChart();
+    initPagesPerVisitBarChart()
 });
 
 // 📊 Grouped Bar Chart – Monthly Sessions
@@ -417,7 +425,7 @@ function initAudienceSegmentBarChart() {
     })
 };
 
-// 📊 Bar Chart – Gender Segment
+// 📊 Grouped Bar Chart – Gender Segment
 function initGenderSegmentBarChart() {
     const raw = document.getElementById("gender-segment-script");
     const ctx = document.getElementById("gender-segment-canvas");
@@ -524,7 +532,7 @@ function initGenderSegmentBarChart() {
     });
 }
 
-// 📊 Bar Chart – Geo Segment
+// 📊 Grouped Bar Chart – Geo Segment
 function initGeoSegmentBarChart() {
     const raw = document.getElementById("geo-segment-script");
     const ctx = document.getElementById("geo-segment-canvas");
@@ -631,7 +639,7 @@ function initGeoSegmentBarChart() {
     });
 }
 
-//📊 Bar Chart - Bounce Rate
+// 📊 Bounce Rate - Grouped Bar Chart
 function initBounceRateBarChart() {
     const raw = document.getElementById("bounce-rate-script");
     const ctx = document.getElementById("bounce-rate-canvas");
@@ -644,10 +652,210 @@ function initBounceRateBarChart() {
     const { bounceRateLabels, companyABounceRate, companyBBounceRate } = JSON.parse(raw.textContent);
 
     new Chart(ctx, {
-
+        type: "bar",
+        data: {
+            labels: bounceRateLabels,
+            datasets: [
+                {
+                    label: "Company A",
+                    data: companyABounceRate,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                },
+                {
+                    label: "Company B",
+                    data: companyBBounceRate,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    position: "bottom",
+                },
+                title: {
+                    display: true,
+                    text: "Bounce Rate",
+                    color: "white",
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const value = ctx.raw || 0;
+                            return `${(value * 100).toFixed(1)}%`;
+                        }
+                    },
+                    bodyFont: { family: "Roboto" },
+                    titleFont: { family: "Roboto" }
+                },
+                datalabels: {
+                    display: true
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => `${(value * 100).toFixed(0)}%`,
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    },
+                    title: {
+                        display: false,
+                        // color: "white",
+                        // font: {
+                        //     family: "Roboto",
+                        //     size: 18
+                        // }
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: false
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            }
+        }
     });
 }
 
+// 📊 Pages Per Visit - Grouped Bar Chart
+function initPagesPerVisitBarChart() {
+    const raw = document.getElementById("pages-per-visit-script");
+    const ctx = document.getElementById("pages-per-visit-canvas");
+
+    if (!ctx || !raw) {
+        console.warn("Missing chart canvas or data script.")
+        return;
+    }
+
+    const { pagesPerVisitLabels, companyAPagesPerVisit, companyBPagesPerVisit } = JSON.parse(raw.textContent);
+
+    new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: pagesPerVisitLabels,
+            datasets: [
+                {
+                    label: "Company A",
+                    data: companyAPagesPerVisit,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                },
+                {
+                    label: "Company B",
+                    data: companyBPagesPerVisit,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    position: "bottom",
+                },
+                title: {
+                    display: true,
+                    text: "Pages per Visit",
+                    color: "white",
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const value = ctx.raw || 0;
+                            return `${(value * 1).toFixed(0)}`
+                        }
+                    },
+                    bodyFont: { family: "Roboto" },
+                    titleFont: { family: "Roboto" }
+                },
+                datalabels: {
+                    display: true,
+                    formatter: value => formatTens(value),
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    },
+                    title: {
+                        display: true,
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: false
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            }
+        }
+    });
+}
 
 
 

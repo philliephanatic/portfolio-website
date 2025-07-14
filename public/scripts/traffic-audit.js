@@ -32,6 +32,14 @@ function formatTens(value) {
     return (value * 1).toFixed(0)
 };
 
+function formatSecondstoMinutes(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+    return `${mins}:${secs}`;
+}
+
+// Time Series
+
 document.addEventListener("DOMContentLoaded", () => {
     initTrafficComparisonBarChart();
     initCompanyAPieChart();
@@ -40,13 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     initGenderSegmentBarChart();
     initGeoSegmentBarChart();
     initBounceRateBarChart();
-    initPagesPerVisitBarChart()
+    initPagesPerVisitBarChart();
+    initAvgVisitDuration()
 });
 
 // 📊 Grouped Bar Chart – Monthly Sessions
 function initTrafficComparisonBarChart() {
-    const raw = document.getElementById("traffic-comparison-chart-script");
-    const ctx = document.getElementById("traffic-comparison-chart-canvas");
+    const raw = document.getElementById("traffic-comparison-script");
+    const ctx = document.getElementById("traffic-comparison-canvas");
 
     if (!ctx || !raw) {
         console.warn("Missing chart canvas or data script.");
@@ -721,23 +730,12 @@ function initBounceRateBarChart() {
                     },
                     title: {
                         display: false,
-                        // color: "white",
-                        // font: {
-                        //     family: "Roboto",
-                        //     size: 18
-                        // }
                     }
                 },
                 x: {
                     ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    title: {
-                        display: false
+                        display: false,
+                       
                     },
                     grid: {
                         color: "transparent"
@@ -829,21 +827,12 @@ function initPagesPerVisitBarChart() {
                         color: "transparent"
                     },
                     title: {
-                        display: true,
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
+                        display: false,
                     }
                 },
                 x: {
                     ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
+                        display: false,
                     },
                     title: {
                         display: false
@@ -857,6 +846,111 @@ function initPagesPerVisitBarChart() {
     });
 }
 
+// 📊 Avg Visit Duration - Grouped Bar Chart
+function initAvgVisitDuration(){
+    const raw = document.getElementById("avg-visit-duration-script");
+    const ctx = document.getElementById("avg-visit-duration-canvas");
 
+    if (!ctx || !raw) {
+        console.warn("Missing chart canvas or data script.");
+        return;
+    }
 
+    const { avgVisitDurationLabels, companyAAvgVisitDuration, companyBAvgVisitDuration } = JSON.parse(raw.textContent);
 
+    new Chart(ctx, {
+        type: "bar",
+        data: { 
+            labels: avgVisitDurationLabels,
+            datasets: [
+                {
+                    label: "Company A",
+                    data: companyAAvgVisitDuration,
+                    backgroundColor: "rgba(54, 162, 235, 0.7)"
+                },
+                {
+                    label: "Company B",
+                    data: companyBAvgVisitDuration,
+                    backgroundColor: "rgba(255, 99, 132, 0.7)"
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    position: "bottom",
+                },
+                title: {
+                    display: true,
+                    text: "Average Session Duration",
+                    color: "white",
+                    font: {
+                        family: "Fjalla One",
+                        size: 30
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => {
+                            const value = ctx.raw || 0;
+                            return formatSecondstoMinutes(value);
+                        }
+                    },
+                    bodyFont: { family: "Roboto" },
+                    titleFont: { family: "Roboto" }
+                },
+                datalabels: {
+                    display: true,
+                    formatter: value => formatSecondstoMinutes(value),
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: value => formatSecondstoMinutes(value),
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    grid: {
+                        color: "transparent"
+                    },
+                    title: {
+                        display: true,
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "white",
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        }
+                    },
+                    title: {
+                        display: false
+                    },
+                    font: {
+                        family: "Roboto",
+                        size: 18    
+                    },
+                    grid: {
+                        color: "transparent"
+                    }
+                }
+            },
+        }
+    });
+}

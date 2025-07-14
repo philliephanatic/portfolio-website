@@ -2,6 +2,7 @@ import express from "express";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import { isDate } from "util/types";
 
 const router = express.Router();
 
@@ -24,6 +25,8 @@ const formatDate = (isoString) => {
 
 router.get("/", async (req, res) => {
     try {
+        console.log("Inside traffic audit route at: " + new Date);
+
         // Read the cleaned JSON file from the secure /data folder
         const raw = await fs.readFile(jsonPath, "utf-8");
 
@@ -105,7 +108,7 @@ router.get("/", async (req, res) => {
 
         // User Behavior
         // Bounce Rates
-        const bounceRateLabels = [""];
+        const bounceRateLabels = [" "];
         const companyABounceRate = [companyA.traffic.bounceRate];
         const companyBBounceRate = [companyB.traffic.bounceRate];
 
@@ -114,6 +117,14 @@ router.get("/", async (req, res) => {
         const companyAPagesPerVisit = [companyA.traffic.pagesPerVisit];
         const companyBPagesPerVisit = [companyB.traffic.pagesPerVisit];
 
+        // Avg Visit Duration
+        const avgVisitDurationLabels = ["Minutes"];
+        const companyAAvgVisitDuration = [companyA.traffic.visitsAvgDurationFormatted];
+        const companyBAvgVisitDuration = [companyB.traffic.visitsAvgDurationFormatted];
+        
+        console.log("labels:", avgVisitDurationLabels, typeof(avgVisitDurationLabels));
+        console.log(companyAAvgVisitDuration, typeof(companyAAvgVisitDuration));
+        console.log(companyBAvgVisitDuration, typeof(companyBAvgVisitDuration));
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
@@ -124,9 +135,11 @@ router.get("/", async (req, res) => {
             companyBTrafficValues,
             companyATrafficSource,
             companyBTrafficSource,
+            
             audienceLabels,
             companyAAudienceSegment,
             companyBAudienceSegment,
+            
             genderLabels,
             companyAGenderSegment,
             companyBGenderSegment,
@@ -141,8 +154,11 @@ router.get("/", async (req, res) => {
 
             pagesPerVisitLabels,
             companyAPagesPerVisit,
-            companyBPagesPerVisit
+            companyBPagesPerVisit,
 
+            avgVisitDurationLabels,
+            companyAAvgVisitDuration,
+            companyBAvgVisitDuration
         });
 
     } catch (err) {

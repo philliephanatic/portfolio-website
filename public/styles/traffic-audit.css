@@ -60,9 +60,6 @@ p {
 }
 
 .copy {
-    border: solid;
-    border-color: white;
-    border-width: 0.1rem;
     padding-left: 0.5rem;
     padding-right: 0.1rem;
 }
@@ -76,6 +73,18 @@ canvas {
 .title {
     text-align: center;
     font-size: 3.5rem;
+}
+
+.two-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.wrapper {
+    background-color: #2F3E6A;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 /* === Hero === */

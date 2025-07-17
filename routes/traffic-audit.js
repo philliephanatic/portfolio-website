@@ -2,7 +2,6 @@ import express from "express";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { isDate } from "util/types";
 
 const router = express.Router();
 
@@ -13,6 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const jsonPath = path.join(__dirname, "../data/cleaned-similarweb-data.json");
 
 // Formatting
+// Date
 const formatDate = (isoString) => {
     const d = new Date(isoString);
     d.setMonth(d.getMonth() - 1);
@@ -23,9 +23,24 @@ const formatDate = (isoString) => {
     })}`;
 };
 
+// Age Order
+function formatAndSortAudienceSegmentData(ageDistribution) {
+            return ageDistribution
+                .sort((a, b) => a.minAge - b.minAge)
+                .map(item => ({
+                    label: `${item.minAge} - ${item.maxAge}`,
+                    value: item.value
+                }));
+        }
+
+// Time String to Seconds
+function convertToSeconds(timeStr) {
+    const parts = timeStr.split(":").map(Number);
+    return parts[0] * 3600 + parts[1] * 60 + parts[2]; // hours, minutes, seconds
+}
+
 router.get("/", async (req, res) => {
     try {
-        console.log("Inside traffic audit route at: " + new Date);
 
         // Read the cleaned JSON file from the secure /data folder
         const raw = await fs.readFile(jsonPath, "utf-8");
@@ -42,7 +57,7 @@ router.get("/", async (req, res) => {
         const companyATrafficValues = companyA.traffic.history.map(item => item.visits);
         const companyBTrafficValues = companyB.traffic.history.map(item => item.visits);
 
-        // Channel Breakdown
+        // Traffic Sources
         const companyATrafficSource = {
             labels: [
                 "Direct",
@@ -78,14 +93,14 @@ router.get("/", async (req, res) => {
 
         // Segmentation
         // Age Segment
-        function formatAndSortAudienceSegmentData(ageDistribution) {
-            return ageDistribution
-                .sort((a, b) => a.minAge - b.minAge)
-                .map(item => ({
-                    label: `${item.minAge} - ${item.maxAge}`,
-                    value: item.value
-                }));
-        }
+        // function formatAndSortAudienceSegmentData(ageDistribution) {
+        //     return ageDistribution
+        //         .sort((a, b) => a.minAge - b.minAge)
+        //         .map(item => ({
+        //             label: `${item.minAge} - ${item.maxAge}`,
+        //             value: item.value
+        //         }));
+        // }
 
         const companyASortedAudience = formatAndSortAudienceSegmentData(companyA.demographics.ageDistribution);
         const companyBSortedAudience = formatAndSortAudienceSegmentData(companyB.demographics.ageDistribution);
@@ -119,12 +134,8 @@ router.get("/", async (req, res) => {
 
         // Avg Visit Duration
         const avgVisitDurationLabels = ["Minutes"];
-        const companyAAvgVisitDuration = [companyA.traffic.visitsAvgDurationFormatted];
-        const companyBAvgVisitDuration = [companyB.traffic.visitsAvgDurationFormatted];
-        
-        console.log("labels:", avgVisitDurationLabels, typeof(avgVisitDurationLabels));
-        console.log(companyAAvgVisitDuration, typeof(companyAAvgVisitDuration));
-        console.log(companyBAvgVisitDuration, typeof(companyBAvgVisitDuration));
+        const companyAAvgVisitDuration = [convertToSeconds(companyA.traffic.visitsAvgDurationFormatted)];
+        const companyBAvgVisitDuration = [convertToSeconds(companyB.traffic.visitsAvgDurationFormatted)];
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {

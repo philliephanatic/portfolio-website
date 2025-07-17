@@ -32,14 +32,6 @@ function formatTens(value) {
     return (value * 1).toFixed(0)
 };
 
-function formatSecondstoMinutes(seconds) {
-    const mins = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
-    return `${mins}:${secs}`;
-}
-
-// Time Series
-
 document.addEventListener("DOMContentLoaded", () => {
     initTrafficComparisonBarChart();
     initCompanyAPieChart();
@@ -735,7 +727,7 @@ function initBounceRateBarChart() {
                 x: {
                     ticks: {
                         display: false,
-                       
+
                     },
                     grid: {
                         color: "transparent"
@@ -809,7 +801,6 @@ function initPagesPerVisitBarChart() {
                     titleFont: { family: "Roboto" }
                 },
                 datalabels: {
-                    display: true,
                     formatter: value => formatTens(value),
                 }
             },
@@ -846,8 +837,8 @@ function initPagesPerVisitBarChart() {
     });
 }
 
-// 📊 Avg Visit Duration - Grouped Bar Chart
-function initAvgVisitDuration(){
+// 📊 Avg Visit Duration - Bar Chart
+function initAvgVisitDuration() {
     const raw = document.getElementById("avg-visit-duration-script");
     const ctx = document.getElementById("avg-visit-duration-canvas");
 
@@ -860,7 +851,7 @@ function initAvgVisitDuration(){
 
     new Chart(ctx, {
         type: "bar",
-        data: { 
+        data: {
             labels: avgVisitDurationLabels,
             datasets: [
                 {
@@ -887,70 +878,70 @@ function initAvgVisitDuration(){
                             size: 18
                         }
                     },
-                    position: "bottom",
+                    position: "bottom"
                 },
                 title: {
                     display: true,
-                    text: "Average Session Duration",
+                    text: "Average Visit Duration",
                     color: "white",
                     font: {
                         family: "Fjalla One",
                         size: 30
                     }
                 },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => {
-                            const value = ctx.raw || 0;
-                            return formatSecondstoMinutes(value);
-                        }
-                    },
-                    bodyFont: { family: "Roboto" },
-                    titleFont: { family: "Roboto" }
-                },
                 datalabels: {
-                    display: true,
-                    formatter: value => formatSecondstoMinutes(value),
+                    formatter: (value) => {
+                        const mins = Math.floor(value / 60);
+                        const secs = Math.floor(value % 60).toString().padStart(2, "0");
+                        return `${mins}:${secs}`;
+                    },
                 }
             },
             scales: {
                 y: {
                     beginAtZero: true,
                     ticks: {
-                        callback: value => formatSecondstoMinutes(value),
+                        color: "white",
+                        callback: (value) => {
+                            const mins = Math.floor(value / 60);
+                            const secs = Math.floor(value % 60).toString().padStart(2, "0");
+                            return `${mins}:${secs}`;
+                        },
+                        font: {
+                            family: "Roboto",
+                            size: 18
+                        },
+                    },
+                    title: {
+                        display: true,
+                        text: "Minutes : Seconds",
                         color: "white",
                         font: {
                             family: "Roboto",
                             size: 18
+                        },
+                        padding: {
+                            bottom: 10,
                         }
                     },
                     grid: {
                         color: "transparent"
                     },
-                    title: {
-                        display: true,
-                    }
                 },
+
                 x: {
                     ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
+                        display: false,
                     },
                     title: {
                         display: false
                     },
-                    font: {
-                        family: "Roboto",
-                        size: 18    
-                    },
                     grid: {
                         color: "transparent"
                     }
-                }
+                },
             },
+
         }
     });
 }

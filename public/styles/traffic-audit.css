@@ -20,22 +20,36 @@ p {
 }
 
 #goal,
-#data,
-#more-sessions {
+#data {
     color: gold;
 }
 
 /* === Grid Layout === */
-.traffic-audit-page {
+.case-study-page {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     padding: 1rem 1rem;
     gap: 1rem;
 }
 
-/* === Utility Classes === */
-.column-full-span {
+.span-2 {
     grid-column: span 2;
+}
+
+.span-3 {
+    grid-column: span 3;
+}
+
+.span-6 {
+    grid-column: span 6;
+}
+
+.span-1-3 {
+    grid-column: 1 / 4;
+}
+
+.span-3-6 {
+    grid-column: 4 / 7;
 }
 
 .column-1 {
@@ -46,11 +60,29 @@ p {
     grid-column: 2;
 }
 
-.flex-center-left {
-    display: flex;
-    place-items: center;
-    text-align: left;
+.column-3 {
+    grid-column: 3;
 }
+
+.two-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.three-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.six-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+/* === Flex Layout === */
+
+
+/* === Utility Classes === */
 
 .chart {
     position: relative;
@@ -59,9 +91,13 @@ p {
     max-width: 100%;
 }
 
-.copy {
-    padding-left: 0.5rem;
-    padding-right: 0.1rem;
+.text-box {
+    padding: 1.5rem;
+    alignment-baseline: text-top;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    text-align: left;
+    justify-content: start
 }
 
 canvas {
@@ -73,11 +109,7 @@ canvas {
 .title {
     text-align: center;
     font-size: 3.5rem;
-}
-
-.two-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    padding: 1.5rem;
 }
 
 .wrapper {
@@ -99,7 +131,7 @@ canvas {
 
 /* MOBILE */
 /* @media (max-width: 375px) {
-    .traffic-audit-page {
+    .case-study-page {
         display: flex;
         flex-direction: column;
         gap: 1rem;

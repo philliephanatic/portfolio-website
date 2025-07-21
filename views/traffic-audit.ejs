@@ -7,39 +7,34 @@
             <header class="hero title">
                 <h1>Traffic Audit Comparison</h1>
             </header>
-            <main class="traffic-audit-page">
+
+            <main class="case-study-page">
                 <!-- MODULE 1 -->
-                <div class="wrapper column-full-span">
-                    <div class="module-1">
-                        <div class="goal-statement flex-center-left">
-                            <h3>
-                                <strong id="goal">GOAL: </strong>
-                                Provide a data-driven audit of two retail brands' website
-                                performance — <strong id="company-a">Company A </strong>and <strong
-                                    id="company-b">Company B
-                                </strong>— and provide recommendations for strategic
-                                improvements.
-                            </h3>
-                        </div>
+                <div class="wrapper span-2">
+                    <div class="goal-statement">
+                        <h3>
+                            <strong id="goal">GOAL: </strong>
+                            Provide a data-driven audit of two retail brands' website
+                            performance — <strong id="company-a">Company A </strong>and <strong id="company-b">Company B
+                            </strong>— and provide recommendations for strategic
+                            improvements.
+                        </h3>
                     </div>
-                    <div class="module-1">
-                        <div class="data-statement flex-center-left">
-                            <h3>
-                                <strong id="data">DATA: </strong>
-                                Sourced from Similarweb API via Postman with raw JSON data
-                                exported and integrated server-side using Express router and Embedded JavaScript (EJS).
-                                All data is a cumulative three month average (L3) unless specifically broken out into
-                                month.
-                            </h3>
-                        </div>
+                    <div class="data-statement">
+                        <h3>
+                            <strong id="data">DATA: </strong>
+                            Sourced from Similarweb API via Postman with raw JSON data
+                            exported and integrated server-side using Express router and Embedded JavaScript (EJS).
+                            All data is a cumulative three month average (L3) unless specifically broken out into
+                            month.
+                        </h3>
                     </div>
                 </div>
-
                 <!-- MODULE 2 -->
                 <!-- TRAFFIC-COMPARISON -->
-                <div class="wrapper column-full-span">
-                    <div class="module-2">
-                        <div class="traffic-comparison chart flex-center-left">
+                <div class="wrapper span-2 six-grid">
+                    <div class="span-6">
+                        <div class="chart">
                             <canvas id="traffic-comparison-canvas"></canvas>
                             <script id="traffic-comparison-script" type="application/json">
                             <%- JSON.stringify({
@@ -47,78 +42,90 @@
                                 companyATrafficValues,
                                 companyBTrafficValues
                             }) %>
-                        </script>
+                            </script>
                         </div>
                     </div>
-                    <div class="module-2">
-                        <div class="traffic-comparison copy flex-center-left">
-                            <p>
-                                From January to March 2025,
-                                <strong id="company-b">Company B </strong>
-                                averaged
-                                <strong id="data">2.16x more sessions </strong>
-                                than
-                                <strong id="company-a">Company A</strong>.
-                                Let's look deeper into the data to understand where the users are coming from
-                                and what audience segments can be constructed.
-                            </p>
-                        </div>
+                    <div class="text-box span-2">
+                        <p>
+                            From January to March 2025,
+                            <strong id="company-b">Company B </strong>
+                            averaged
+                            <strong id="data">2.16x more sessions </strong>
+                            than
+                            <strong id="company-a">Company A</strong>.
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            MORE INFORMATION TO BE ADDED
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            Let's look deeper into the data to understand where the users are coming from
+                            and what audience segments can be constructed.
+                        </p>
                     </div>
                 </div>
                 <!-- MODULE 3 -->
                 <!-- TRAFFIC-SOURCE -->
-                <div class="wrapper column-full-span two-grid">
-                    <div class="module-3 column-full-span title">
+                <div class="wrapper span-2 six-grid">
+                    <div class="span-6 title">
                         <h2>
                             Traffic Sources
                         </h2>
                     </div>
-                    <div class="module-3 column-1">
-                        <div class="traffic-source-companyA chart flex-center-left">
-                            <canvas id="companyA-traffic-source-canvas"></canvas>
-                            <script id="companyA-traffic-source-script" type="application/json">
+                    <div class="traffic-source-companyA chart span-1-3">
+                        <canvas id="companyA-traffic-source-canvas"></canvas>
+                        <script id="companyA-traffic-source-script" type="application/json">
                             <%- JSON.stringify(companyATrafficSource) %>
                         </script>
-                        </div>
                     </div>
-                    <div class="module-3 column-2">
-                        <div class="traffic-source-companyB chart flex-center-left">
-                            <canvas id="companyB-traffic-source-canvas"></canvas>
-                            <script id="companyB-traffic-source-script" type="application/json">
+                    <div class="traffic-source-companyB chart span-3-6">
+                        <canvas id="companyB-traffic-source-canvas"></canvas>
+                        <script id="companyB-traffic-source-script" type="application/json">
                             <%- JSON.stringify(companyBTrafficSource) %>
                         </script>
-                        </div>
                     </div>
-                    <div class="module-3 column-full-span">
-                        <div class="traffic-source copy flex-center-left">
-                            <p>
-                                <strong id="company-a">Company A </strong>
-                                looks to have utilized a successful SEO strategy, as its organic search traffic
-                                has outpaced
-                                <strong id="company-b">Company B </strong>
-                                by
-                                <strong id="data">over 2x </strong>
-                                . However,
-                                <strong id="company-b">Company B </strong>
-                                drives
-                                <strong id="data">16% more </strong>
-                                direct traffic to its site, suggesting that the marketing focus is on awareness
-                                campaigns.
-                                It would also explain why their session volume is higher.
-                            </p>
-                        </div>
+                    <div class="text-box span-2">
+                        <p>
+                            <strong id="company-a">Company A </strong>
+                            looks to have utilized a successful SEO strategy, as its organic search traffic
+                            has outpaced
+                            <strong id="company-b">Company B </strong>
+                            by
+                            <strong id="data">over 2x </strong>
+                            .
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            However,
+                            <strong id="company-b">Company B </strong>
+                            drives
+                            <strong id="data">16% more </strong>
+                            direct traffic to its site, suggesting that the marketing focus is on brand awareness
+                            as opposed to search optimization.
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            It also explains why
+                            <strong id="company-b">Company B </strong>
+                            has higher session volume.
+                        </p>
                     </div>
                 </div>
                 <!-- MODULE 4 -->
                 <!-- AUDIENCE-SEGMENTS -->
-                <div class="wrapper column-full-span two-grid">
-                    <div class="module-4 column-full-span title">
+                <div class="wrapper span-2 six-grid">
+                    <div class="span-6 title">
                         <h2>
                             Audience Segments
                         </h2>
                     </div>
-                    <div class="module-4 column-full-span">
-                        <div class="age-segment chart flex-center-left">
+                    <div class="span-6">
+                        <div class="chart">
                             <canvas id="age-segment-canvas"></canvas>
                             <script id="age-segment-script" type="application/json">
                             <%- JSON.stringify({
@@ -129,83 +136,84 @@
                         </script>
                         </div>
                     </div>
-                    <div class="module-4 column-1">
-                        <div class="gender-segment chart flex-center-left">
-                            <canvas id="gender-segment-canvas"></canvas>
-                            <script id="gender-segment-script" type="application/json">
+
+                    <div class="chart span-1-3">
+                        <canvas id="gender-segment-canvas"></canvas>
+                        <script id="gender-segment-script" type="application/json">
                             <%- JSON.stringify({
                                 genderLabels, 
                                 companyAGenderSegment, 
                                 companyBGenderSegment
                             }) %>
                         </script>
-                        </div>
                     </div>
-                    <div class="module-4 column-2">
-                        <div class="geo-segment chart flex-center-left">
-                            <canvas id="geo-segment-canvas"></canvas>
-                            <script id="geo-segment-script" type="application/json">
+                    <div class="geo-segment chart span-3-6">
+                        <canvas id="geo-segment-canvas"></canvas>
+                        <script id="geo-segment-script" type="application/json">
                             <%- JSON.stringify({
                                 geoLabels,
                                 companyAGeoSegment,
                                 companyBGeoSegment
                             }) %>
                         </script>
-                        </div>
+
                     </div>
-                    <div class="module-4 column-full-span">
-                        <div class="segment copy flex-center-left">
-                            <p>
-                                The profile for
-                                <strong id="company-a">Company A </strong>
-                                shows its customers tend to be younger, male, and have a modest presence outside of the
-                                U.S., with
-                                <strong id="data"> 16.6% of traffic </strong>
-                                coming from Canada and the United Kingdom.
-                                <strong id="company-b">Company B</strong>,
-                                conversely, skews older --
-                                <strong id="data">64.6% over the age of 34 </strong>
-                                -- female, and almost entirely within the United States. Now, let's look at user
-                                beahvor.
-                            </p>
-                        </div>
+                    <div class="text-box span-2">
+                        <p>
+                            The profile for
+                            <strong id="company-a">Company A </strong>
+                            shows its customers tend to be younger, male, and have a modest presence outside of the
+                            U.S., with
+                            <strong id="data"> 16.6% of traffic </strong>
+                            coming from Canada and the United Kingdom.
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            <strong id="company-b">Company B</strong>,
+                            conversely, skews older --
+                            <strong id="data">64.6% over the age of 34 </strong>
+                            -- female, and almost entirely within the United States.
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            Now, let's look at user
+                            beahvor.
+                        </p>
                     </div>
                 </div>
                 <!-- MODULE 5 -->
                 <!-- USER-BEHAVIOR -->
-                <div class="wrapper column-full-span two-grid">
-                    <div class="module-4 column-full-span title">
+                <div class="wrapper span-2 six-grid">
+                    <div class="span-6 title">
                         <h2>
                             User Behavior
                         </h2>
                     </div>
-                    <div class="module-5 column-1">
-                        <div class="bounce-rate chart flex-center-left">
-                            <canvas id="bounce-rate-canvas"></canvas>
-                            <script id="bounce-rate-script" type="application/json">
+
+                    <div class="bounce-rate chart span-1-3">
+                        <canvas id="bounce-rate-canvas"></canvas>
+                        <script id="bounce-rate-script" type="application/json">
                             <%- JSON.stringify({
                                 bounceRateLabels,
                                 companyABounceRate,
                                 companyBBounceRate
                             }) %>
                         </script>
-                        </div>
                     </div>
-                    <div class="module-5 column-2">
-                        <div class="pages-per-visit chart flex-center-left">
-                            <canvas id="pages-per-visit-canvas"></canvas>
-                            <script id="pages-per-visit-script" type="application/json">
+                    <div class="pages-per-visit chart span-3-6">
+                        <canvas id="pages-per-visit-canvas"></canvas>
+                        <script id="pages-per-visit-script" type="application/json">
                             <%- JSON.stringify({
                                 pagesPerVisitLabels,
                                 companyAPagesPerVisit,
                                 companyBPagesPerVisit
                             }) %>
                         </script>
-                        </div>
                     </div>
-
-                    <div class="module-5 column-full-span">
-                        <div class="avg-visit-duration chart flex-center-left">
+                    <div class="span-6">
+                        <div class="chart">
                             <canvas id="avg-visit-duration-canvas"></canvas>
                             <script id="avg-visit-duration-script" type="application/json">
                             <%- JSON.stringify({
@@ -216,21 +224,24 @@
                         </script>
                         </div>
                     </div>
-
-                    <div class="module-5 column-full-span">
-                        <div class="user-behavior copy flex-center-left">
-                            <p>
-                                <strong id="company-a">Company A </strong>
-                                <strong id="data">data </strong>
-                                <strong id="company-b">Company B</strong>
-                                <strong id="data">data </strong>
-                            </p>
-                        </div>
+                    <div class="text-box span-2">
+                        <p>
+                            <strong id="company-a">Company A </strong>
+                            <strong id="data">data </strong>
+                        </p>
                     </div>
-
-                </div>
-
-
+                    <div class="text-box span-2">
+                        <p>
+                            <strong id="company-b">Company B</strong>
+                            <strong id="data">data </strong>
+                        </p>
+                    </div>
+                    <div class="text-box span-2">
+                        <p>
+                            <strong id="company-b">Company B</strong>
+                            <strong id="data">data </strong>
+                        </p>
+                    </div>
             </main>
             <%- include('partials/footer') %>
                 <script src="/scripts/traffic-audit.js"></script>

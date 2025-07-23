@@ -354,7 +354,7 @@ function initAudienceSegmentBarChart() {
                 },
                 title: {
                     display: true,
-                    text: "Age Range of Digital Consumers",
+                    text: "Age",
                     color: "white",
                     font: {
                         family: "Fjalla One",
@@ -471,7 +471,7 @@ function initGenderSegmentBarChart() {
                 },
                 title: {
                     display: true,
-                    text: "Gender Segment",
+                    text: "Gender",
                     color: "white",
                     font: {
                         family: "Fjalla One",
@@ -578,7 +578,7 @@ function initGeoSegmentBarChart() {
                 },
                 title: {
                     display: true,
-                    text: "Geo Segment",
+                    text: "Geography",
                     color: "white",
                     font: {
                         family: "Fjalla One",

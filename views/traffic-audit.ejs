@@ -3,36 +3,59 @@
 <%- include("partials/head") %>
 
     <body>
+
         <%- include("partials/header") %>
-            <header class="hero title">
-                <h1>Traffic Audit Comparison</h1>
+            <header class="hero-case-study span-2">
+                <div class="title">
+                    <h1>Traffic Audit Comparison</h1>
+                    <h2>Case Study</h2>
+                </div>
             </header>
 
             <main class="case-study-page">
                 <!-- MODULE 1 -->
-                <div class="wrapper span-2">
+                 <div class="next-step-label">
+                    Anchor link menu goes here
+                 </div>
+                <div class="wrapper column-1">
+                    <div class="goal-statement-title">
+                        <h3>
+                            <strong id="data">GOAL</strong>
+                        </h3>
+                    </div>
                     <div class="goal-statement">
                         <h3>
-                            <strong id="goal">GOAL: </strong>
-                            Provide a data-driven audit of two retail brands' website
-                            performance — <strong id="company-a">Company A </strong>and <strong id="company-b">Company B
-                            </strong>— and provide recommendations for strategic
+                            Provide a data-driven audit of two retail brands' websites
+                            — <strong id="company-a">Company A </strong>and <strong id="company-b">Company B </strong>—
+                            and provide recommendations for strategic
                             improvements.
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="wrapper column-2">
+                    <div class="data-statement-title">
+                        <h3>
+                            <strong id="data">DATA</strong>
                         </h3>
                     </div>
                     <div class="data-statement">
                         <h3>
-                            <strong id="data">DATA: </strong>
                             Sourced from Similarweb API via Postman with raw JSON data
-                            exported and integrated server-side using Express router and Embedded JavaScript (EJS).
-                            All data is a cumulative three month average (L3) unless specifically broken out into
-                            month.
+                            exported. Data is integrated server-side using Express router, Embedded JavaScript (EJS),
+                            and visualized with Chart.js.
                         </h3>
                     </div>
+
                 </div>
                 <!-- MODULE 2 -->
                 <!-- TRAFFIC-COMPARISON -->
                 <div class="wrapper span-2 six-grid">
+                    <div class="span-6 title">
+                        <h2>
+                            Overview
+                        </h2>
+                    </div>
                     <div class="span-6">
                         <div class="chart">
                             <canvas id="traffic-comparison-canvas"></canvas>
@@ -46,21 +69,36 @@
                         </div>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             From January to March 2025,
                             <strong id="company-b">Company B </strong>
                             averaged
-                            <strong id="data">2.16x more sessions </strong>
-                            than
+                            <strong id="data">2.16x </strong>
+                            more sessions than
                             <strong id="company-a">Company A</strong>.
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
-                            MORE INFORMATION TO BE ADDED
+                            3 Month Total Sessions number
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="next-step-label">
+                            <h4>
+                                NEXT STEP
+                            </h4>
+                        </div>
                         <p>
                             Let's look deeper into the data to understand where the users are coming from
                             and what audience segments can be constructed.
@@ -88,6 +126,11 @@
                         </script>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             <strong id="company-a">Company A </strong>
                             looks to have utilized a successful SEO strategy, as its organic search traffic
@@ -99,6 +142,11 @@
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             However,
                             <strong id="company-b">Company B </strong>
@@ -109,6 +157,11 @@
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="next-step-label">
+                            <h4>
+                                NEXT STEP
+                            </h4>
+                        </div>
                         <p>
                             It also explains why
                             <strong id="company-b">Company B </strong>
@@ -159,6 +212,11 @@
 
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             The profile for
                             <strong id="company-a">Company A </strong>
@@ -169,6 +227,11 @@
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             <strong id="company-b">Company B</strong>,
                             conversely, skews older --
@@ -177,6 +240,11 @@
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="next-step-label">
+                            <h4>
+                                NEXT STEP
+                            </h4>
+                        </div>
                         <p>
                             Now, let's look at user
                             beahvor.
@@ -225,18 +293,33 @@
                         </div>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             <strong id="company-a">Company A </strong>
                             <strong id="data">data </strong>
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="insight-label">
+                            <h4>
+                                INSIGHT
+                            </h4>
+                        </div>
                         <p>
                             <strong id="company-b">Company B</strong>
                             <strong id="data">data </strong>
                         </p>
                     </div>
                     <div class="text-box span-2">
+                        <div class="next-step-label">
+                            <h4>
+                                NEXT STEP
+                            </h4>
+                        </div>
                         <p>
                             <strong id="company-b">Company B</strong>
                             <strong id="data">data </strong>

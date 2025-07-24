@@ -79,6 +79,12 @@ p {
 }
 
 /* === Flex Layout === */
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
 
 
 /* === Utility Classes === */
@@ -121,6 +127,12 @@ p {
     border-radius: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin: .5rem;
+}
+
+
+.number {
+    font-family: "Roboto";
+    font-size: 5rem;
 }
 
 canvas {

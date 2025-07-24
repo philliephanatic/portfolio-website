@@ -1,5 +1,6 @@
 import express from "express";
 import fs from "fs/promises";
+import { type } from "os";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -11,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Correct path to the newly cleaned, private JSON data
 const jsonPath = path.join(__dirname, "../data/cleaned-similarweb-data.json");
 
-// Formatting
+// == Formatting == //
 // Date
 const formatDate = (isoString) => {
     const d = new Date(isoString);
@@ -25,13 +26,13 @@ const formatDate = (isoString) => {
 
 // Age Order
 function formatAndSortAudienceSegmentData(ageDistribution) {
-            return ageDistribution
-                .sort((a, b) => a.minAge - b.minAge)
-                .map(item => ({
-                    label: `${item.minAge} - ${item.maxAge}`,
-                    value: item.value
-                }));
-        }
+    return ageDistribution
+        .sort((a, b) => a.minAge - b.minAge)
+        .map(item => ({
+            label: `${item.minAge} - ${item.maxAge}`,
+            value: item.value
+        }));
+}
 
 // Time String to Seconds
 function convertToSeconds(timeStr) {
@@ -56,6 +57,11 @@ router.get("/", async (req, res) => {
         const labels = companyA.traffic.history.map(item => formatDate(item.date));
         const companyATrafficValues = companyA.traffic.history.map(item => item.visits);
         const companyBTrafficValues = companyB.traffic.history.map(item => item.visits);
+
+        // Percent Difference Sessions
+        const sumcompanyATrafficValues = companyATrafficValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        const sumcompanyBTrafficValues = companyBTrafficValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+        const percentDifferenceTraffic = JSON.parse(((sumcompanyATrafficValues - sumcompanyBTrafficValues) / sumcompanyATrafficValues * -100).toFixed(0));
 
         // Traffic Sources
         const companyATrafficSource = {
@@ -91,17 +97,6 @@ router.get("/", async (req, res) => {
             ]
         };
 
-        // Segmentation
-        // Age Segment
-        // function formatAndSortAudienceSegmentData(ageDistribution) {
-        //     return ageDistribution
-        //         .sort((a, b) => a.minAge - b.minAge)
-        //         .map(item => ({
-        //             label: `${item.minAge} - ${item.maxAge}`,
-        //             value: item.value
-        //         }));
-        // }
-
         const companyASortedAudience = formatAndSortAudienceSegmentData(companyA.demographics.ageDistribution);
         const companyBSortedAudience = formatAndSortAudienceSegmentData(companyB.demographics.ageDistribution);
 
@@ -133,7 +128,7 @@ router.get("/", async (req, res) => {
         const companyBPagesPerVisit = [companyB.traffic.pagesPerVisit];
 
         // Avg Visit Duration
-        const avgVisitDurationLabels = ["Minutes"];
+        const avgVisitDurationLabels = [" "];
         const companyAAvgVisitDuration = [convertToSeconds(companyA.traffic.visitsAvgDurationFormatted)];
         const companyBAvgVisitDuration = [convertToSeconds(companyB.traffic.visitsAvgDurationFormatted)];
 
@@ -146,11 +141,11 @@ router.get("/", async (req, res) => {
             companyBTrafficValues,
             companyATrafficSource,
             companyBTrafficSource,
-            
+
             audienceLabels,
             companyAAudienceSegment,
             companyBAudienceSegment,
-            
+
             genderLabels,
             companyAGenderSegment,
             companyBGenderSegment,
@@ -169,7 +164,9 @@ router.get("/", async (req, res) => {
 
             avgVisitDurationLabels,
             companyAAvgVisitDuration,
-            companyBAvgVisitDuration
+            companyBAvgVisitDuration,
+
+            percentDifferenceTraffic
         });
 
     } catch (err) {

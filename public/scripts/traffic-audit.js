@@ -459,16 +459,7 @@ function initGenderSegmentBarChart() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        },
-                    },
-                    position: "bottom",
-                },
+                legend: { display: false },
                 title: {
                     display: true,
                     text: "Gender",
@@ -566,16 +557,7 @@ function initGeoSegmentBarChart() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    position: "bottom",
-                },
+                legend: { display: false },
                 title: {
                     display: true,
                     text: "Geography",
@@ -681,7 +663,7 @@ function initBounceRateBarChart() {
                             size: 18
                         }
                     },
-                    position: "bottom",
+                    position: "top",
                 },
                 title: {
                     display: true,
@@ -771,16 +753,7 @@ function initPagesPerVisitBarChart() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    position: "bottom",
-                },
+                legend: { display: false },
                 title: {
                     display: true,
                     text: "Pages per Visit",
@@ -870,19 +843,10 @@ function initAvgVisitDuration() {
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    position: "bottom"
-                },
+                legend: { display: false },
                 title: {
                     display: true,
-                    text: "Average Visit Duration",
+                    text: "Avg Visit Duration",
                     color: "white",
                     font: {
                         family: "Fjalla One",

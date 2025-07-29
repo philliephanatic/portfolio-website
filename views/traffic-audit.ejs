@@ -26,9 +26,13 @@
                     <div class="goal-statement">
                         <h3>
                             Provide a data-driven audit of two retail brands' websites
-                            — <strong id="company-a">Company A </strong>and <strong id="company-b">Company B </strong>—
+                            — anonymized as
+                            <strong id="company-a">Company A </strong>
+                            and
+                            <strong id="company-b">Company B </strong>
+                            —
                             and provide recommendations for strategic
-                            improvements.
+                            improvements
                         </h3>
                     </div>
                 </div>
@@ -40,9 +44,9 @@
                     </div>
                     <div class="data-statement">
                         <h3>
-                            Sourced from Similarweb API via Postman with raw JSON data
+                            Sourced from Similarweb API via Postman with raw JSON
                             exported. Data is integrated server-side using Express router, Embedded JavaScript (EJS),
-                            and visualized with Chart.js.
+                            and visualized with Chart.js. All numerical values are generated dynamically
                         </h3>
                     </div>
 
@@ -74,12 +78,14 @@
                             </h4>
                         </div>
                         <p>
-                            From January to March 2025,
                             <strong id="company-b">Company B </strong>
                             averaged
-                            <strong id="data">2.16x </strong>
+                            <strong id="data">
+                                <%- JSON.stringify(percentDifferenceTraffic) %>%
+                            </strong>
                             more sessions than
-                            <strong id="company-a">Company A</strong>.
+                            <strong id="company-a">Company A</strong>
+                            over the last three months
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -88,12 +94,14 @@
                                 INSIGHT
                             </h4>
                         </div>
-                        <div class="number span-2 flex-center">
-                            <%- JSON.stringify(percentDifferenceTraffic) %>
-                            <P class="number">
-                                %
-                            </P>
-                        </div>
+                        <P>
+                            <strong id="company-b">Company B </strong>
+                            rebounded strongly from the post-holiday lull, showing a
+                            <strong id="data">
+                                <%- JSON.stringify(companyBMonthlyPercentChangeTraffic) %>%
+                            </strong>
+                            MoM increase in traffic from January to February
+                        </P>
                     </div>
                     <div class="text-box span-2">
                         <div class="next-step-label">
@@ -102,8 +110,8 @@
                             </h4>
                         </div>
                         <p>
-                            Let's look deeper into the data to understand where the users are coming from
-                            and what audience segments can be constructed.
+                            Dig further into the data to understand traffic sources, audience segments,
+                            and user behavior
                         </p>
                     </div>
                 </div>
@@ -135,12 +143,13 @@
                         </div>
                         <p>
                             <strong id="company-a">Company A </strong>
-                            looks to have utilized a successful SEO strategy, as its organic search traffic
-                            has outpaced
+                            looks to have utilized an effective SEO strategy, as their Organic Search
+                            traffic outpaced
                             <strong id="company-b">Company B </strong>
-                            by
-                            <strong id="data">over 2x </strong>
-                            .
+                            by over
+                            <strong id="data">
+                                <%- JSON.stringify(percentDifferenceOrganicSearch) %>%
+                            </strong>
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -150,12 +159,13 @@
                             </h4>
                         </div>
                         <p>
-                            However,
                             <strong id="company-b">Company B </strong>
-                            drives
-                            <strong id="data">16% more </strong>
-                            direct traffic to its site, suggesting that the marketing focus is on brand awareness
-                            as opposed to search optimization.
+                            drove
+                            <strong id="data">
+                                <%- JSON.stringify(percentDifferenceDirect) %>%
+                            </strong>
+                            more Direct traffic, suggesting that the marketing focus was on brand awareness
+                            as opposed to search optimization
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -165,9 +175,7 @@
                             </h4>
                         </div>
                         <p>
-                            It also explains why
-                            <strong id="company-b">Company B </strong>
-                            has higher session volume.
+                            Scope out user attributes to establish audience segments
                         </p>
                     </div>
                 </div>
@@ -219,12 +227,13 @@
                             </h4>
                         </div>
                         <p>
-                            The profile for
+                            Both companies had similar audiences traits, but
                             <strong id="company-a">Company A </strong>
-                            shows its customers tend to be younger, male, and have a modest presence outside of the
-                            U.S., with
-                            <strong id="data"> 16.6% of traffic </strong>
-                            coming from Canada and the United Kingdom.
+                            users maintained a modest presence outside of the US:
+                            <strong id="data">
+                                <%- JSON.stringify(sumCompanyATopIntlGeos) %>%
+                            </strong>
+                            of traffic came from Canada or the United Kingdom
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -234,10 +243,12 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-b">Company B</strong>,
-                            conversely, skews older --
-                            <strong id="data">64.6% over the age of 34 </strong>
-                            -- female, and almost entirely within the United States.
+                            <strong id="company-b">Company B</strong>
+                            skewed more female, almost entirely within the US, and slightly older:
+                            <strong id="data">
+                                <%- JSON.stringify(sumCompanyBAudienceSegment) %>%
+                            </strong>
+                            over the age of 34
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -247,8 +258,7 @@
                             </h4>
                         </div>
                         <p>
-                            Now, let's look at user
-                            beahvor.
+                            Analyze audience behavior to deepen understanding of user journey
                         </p>
                     </div>
                 </div>
@@ -260,8 +270,7 @@
                             User Behavior
                         </h2>
                     </div>
-
-                    <div class="bounce-rate chart span-1-3">
+                    <div class="bounce-rate chart span-6">
                         <canvas id="bounce-rate-canvas"></canvas>
                         <script id="bounce-rate-script" type="application/json">
                             <%- JSON.stringify({
@@ -269,6 +278,16 @@
                                 companyABounceRate,
                                 companyBBounceRate
                             }) %>
+                        </script>
+                    </div>
+                    <div class="chart span-1-3">
+                        <canvas id="avg-visit-duration-canvas"></canvas>
+                        <script id="avg-visit-duration-script" type="application/json">
+                             <%- JSON.stringify({                         
+                                avgVisitDurationLabels,                            
+                                companyAAvgVisitDuration,                            
+                                companyBAvgVisitDuration                                        
+                                 }) %>                                   
                         </script>
                     </div>
                     <div class="pages-per-visit chart span-3-6">
@@ -281,18 +300,6 @@
                             }) %>
                         </script>
                     </div>
-                    <div class="span-6">
-                        <div class="chart">
-                            <canvas id="avg-visit-duration-canvas"></canvas>
-                            <script id="avg-visit-duration-script" type="application/json">
-                            <%- JSON.stringify({
-                                avgVisitDurationLabels,
-                                companyAAvgVisitDuration,
-                                companyBAvgVisitDuration
-                            }) %>
-                        </script>
-                        </div>
-                    </div>
                     <div class="text-box span-2">
                         <div class="insight-label">
                             <h4>
@@ -300,8 +307,13 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-a">Company A </strong>
-                            <strong id="data">data </strong>
+                            Bounce rate for both companies was comparable, but 
+                            <strong id="company-b">Company B </strong>
+                            users spent
+                            <strong id="data">
+                                <%- JSON.stringify(avgVisitDurationPercentDifference) %>%
+                            </strong>
+                            more time on site
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -311,8 +323,14 @@
                             </h4>
                         </div>
                         <p>
+                            <strong id="company-a">Company A</strong>
+                            <strong id="data">
+                                <%- JSON.stringify(companyAAvgTimePerPage) %>
+                            </strong>
                             <strong id="company-b">Company B</strong>
-                            <strong id="data">data </strong>
+                            <strong id="data">
+                                <%- JSON.stringify(companyBAvgTimePerPage) %>
+                            </strong>
                         </p>
                     </div>
                     <div class="text-box span-2">

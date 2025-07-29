@@ -17,8 +17,8 @@ body {
     scroll-behavior: smooth;
 }
 
-
-/*__MARGINS__*/
+/*__!! look into nesting or parent :has()  !!__*/
+/*__MARGINS__*/ 
 /* small mobile phones */
 @media (max-width: 600px) {
     main {

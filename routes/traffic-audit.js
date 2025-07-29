@@ -1,6 +1,5 @@
 import express from "express";
 import fs from "fs/promises";
-import { type } from "os";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -23,7 +22,6 @@ const formatDate = (isoString) => {
         year: "numeric"
     })}`;
 };
-
 // Age Order
 function formatAndSortAudienceSegmentData(ageDistribution) {
     return ageDistribution
@@ -32,12 +30,41 @@ function formatAndSortAudienceSegmentData(ageDistribution) {
             label: `${item.minAge} - ${item.maxAge}`,
             value: item.value
         }));
-}
-
+};
 // Time String to Seconds
 function convertToSeconds(timeStr) {
     const parts = timeStr.split(":").map(Number);
     return parts[0] * 3600 + parts[1] * 60 + parts[2]; // hours, minutes, seconds
+};
+// Percent Change
+function calculatePercentChange(oldValue, newValue) {
+    if (typeof oldValue !== "number" || typeof newValue !== "number") {
+        throw new Error("Both inputs must be numbers");
+    }
+
+    if (oldValue === 0) {
+        return "Can not divide 0";
+    }
+
+    const change = newValue - oldValue;
+    const percentChange = (change / oldValue) * 100;
+    return Number(percentChange.toFixed(0));
+};
+// Sum Array Percentage
+function sumArrayPercentage(arr) {
+    if (!Array.isArray(arr)) {
+        throw new Error("Input must be an array");
+    }
+
+    return arr.reduce((acc, val) => acc + val, 0).toFixed(2) * 100;
+}
+// Sum Array
+function sumArrayWholeNumber(arr) {
+    if (!Array.isArray(arr)) {
+        throw new Error("Input must be an array");
+    }
+
+    return JSON.parse(arr.reduce((acc, val) => acc + val, 0).toFixed(0));
 }
 
 router.get("/", async (req, res) => {
@@ -59,9 +86,10 @@ router.get("/", async (req, res) => {
         const companyBTrafficValues = companyB.traffic.history.map(item => item.visits);
 
         // Percent Difference Sessions
-        const sumcompanyATrafficValues = companyATrafficValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        const sumcompanyBTrafficValues = companyBTrafficValues.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        const percentDifferenceTraffic = JSON.parse(((sumcompanyATrafficValues - sumcompanyBTrafficValues) / sumcompanyATrafficValues * -100).toFixed(0));
+        const sumCompanyATrafficValues = sumArrayWholeNumber(companyATrafficValues);
+        const sumCompanyBTrafficValues = sumArrayWholeNumber(companyBTrafficValues);
+        const percentDifferenceTraffic = calculatePercentChange(sumCompanyATrafficValues, sumCompanyBTrafficValues);
+        const companyBMonthlyPercentChangeTraffic = calculatePercentChange(companyBTrafficValues[0], companyBTrafficValues[1])
 
         // Traffic Sources
         const companyATrafficSource = {
@@ -97,6 +125,14 @@ router.get("/", async (req, res) => {
             ]
         };
 
+        const percentDifferenceDirect = calculatePercentChange(companyA.trafficSources.directVisitsShare,
+            companyB.trafficSources.directVisitsShare);
+
+        const percentDifferenceOrganicSearch = calculatePercentChange(companyB.trafficSources.organicSearchVisitsShare,
+            companyA.trafficSources.organicSearchVisitsShare);
+
+        // == Audience Segments == //
+        // Age
         const companyASortedAudience = formatAndSortAudienceSegmentData(companyA.demographics.ageDistribution);
         const companyBSortedAudience = formatAndSortAudienceSegmentData(companyB.demographics.ageDistribution);
 
@@ -104,19 +140,23 @@ router.get("/", async (req, res) => {
         const companyAAudienceSegment = companyASortedAudience.map(d => d.value);
         const companyBAudienceSegment = companyBSortedAudience.map(d => d.value);
 
-        // Gender Segment
+        const sumCompanyBAudienceSegment = sumArrayPercentage(companyBAudienceSegment.slice(2, 6));
+
+        // Gender
         const genderLabels = Object.keys(companyA.demographics.genderDistribution).map(label =>
             label.charAt(0).toUpperCase() + label.slice(1)
         );
         const companyAGenderSegment = Object.values(companyA.demographics.genderDistribution);
         const companyBGenderSegment = Object.values(companyB.demographics.genderDistribution);
 
-        // Geo Segment
+        // Geo
         const geoLabels = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.countryAlpha2Code);
         const companyAGeoSegment = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
         const companyBGeoSegment = companyB.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
 
-        // User Behavior
+        const sumCompanyATopIntlGeos = sumArrayPercentage(companyA.geography.topCountriesTraffics.slice(1, 3).map(item => item.visitsShare));
+
+        // == User Behavior == //
         // Bounce Rates
         const bounceRateLabels = [" "];
         const companyABounceRate = [companyA.traffic.bounceRate];
@@ -127,24 +167,52 @@ router.get("/", async (req, res) => {
         const companyAPagesPerVisit = [companyA.traffic.pagesPerVisit];
         const companyBPagesPerVisit = [companyB.traffic.pagesPerVisit];
 
+        const companyAPagesPerVisitParse = JSON.parse(companyAPagesPerVisit);
+        const companyBPagesPerVisitParse = JSON.parse(companyBPagesPerVisit);
+
         // Avg Visit Duration
         const avgVisitDurationLabels = [" "];
         const companyAAvgVisitDuration = [convertToSeconds(companyA.traffic.visitsAvgDurationFormatted)];
         const companyBAvgVisitDuration = [convertToSeconds(companyB.traffic.visitsAvgDurationFormatted)];
 
+        const companyAAvgVisitDurationParse = JSON.parse(companyAAvgVisitDuration);
+        const companyBAvgVisitDurationparse = JSON.parse(companyBAvgVisitDuration);
+        const avgVisitDurationPercentDifference = calculatePercentChange(companyAAvgVisitDurationParse, companyBAvgVisitDurationparse);
+
+        // Avg Time Per Page
+        const companyAAvgTimePerPage = (companyAAvgVisitDurationParse / companyAPagesPerVisitParse).toFixed(0);
+        const companyBAvgTimePerPage = (companyBAvgVisitDurationparse / companyBPagesPerVisitParse).toFixed(0);
+
+        console.log("A Time :", companyAAvgVisitDurationParse)
+        console.log("A Pages :", companyAPagesPerVisitParse)
+        console.log("A Avg Time :", companyAAvgTimePerPage)
+
+        console.log("B Pages :", companyBPagesPerVisitParse)
+        console.log("B Time :", companyBAvgVisitDurationparse)
+        console.log("B Avg Time :", companyBAvgTimePerPage)
+
+
+
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
             title: "Traffic Audit",
             pageStyle: "traffic-audit",
+
             labels,
             companyATrafficValues,
             companyBTrafficValues,
+            percentDifferenceTraffic,
+            companyBMonthlyPercentChangeTraffic,
+
             companyATrafficSource,
             companyBTrafficSource,
+            percentDifferenceDirect,
+            percentDifferenceOrganicSearch,
 
             audienceLabels,
             companyAAudienceSegment,
             companyBAudienceSegment,
+            sumCompanyBAudienceSegment,
 
             genderLabels,
             companyAGenderSegment,
@@ -153,6 +221,7 @@ router.get("/", async (req, res) => {
             geoLabels,
             companyAGeoSegment,
             companyBGeoSegment,
+            sumCompanyATopIntlGeos,
 
             bounceRateLabels,
             companyABounceRate,
@@ -166,7 +235,9 @@ router.get("/", async (req, res) => {
             companyAAvgVisitDuration,
             companyBAvgVisitDuration,
 
-            percentDifferenceTraffic
+            avgVisitDurationPercentDifference,
+            companyAAvgTimePerPage,
+            companyBAvgTimePerPage
         });
 
     } catch (err) {

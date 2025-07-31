@@ -1,3 +1,4 @@
+import { error } from "console";
 import express from "express";
 import fs from "fs/promises";
 import path from "path";
@@ -11,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Correct path to the newly cleaned, private JSON data
 const jsonPath = path.join(__dirname, "../data/cleaned-similarweb-data.json");
 
-// == Formatting == //
+// == move to scripts/utilities.js OR utilities/math.js + /formatting.js OR utilities/ == //
 // Date
 const formatDate = (isoString) => {
     const d = new Date(isoString);
@@ -58,13 +59,21 @@ function sumArrayPercentage(arr) {
 
     return arr.reduce((acc, val) => acc + val, 0).toFixed(2) * 100;
 }
-// Sum Array
+// Sum Array Whole Number
 function sumArrayWholeNumber(arr) {
     if (!Array.isArray(arr)) {
         throw new Error("Input must be an array");
     }
 
     return JSON.parse(arr.reduce((acc, val) => acc + val, 0).toFixed(0));
+}
+// Round to Zero
+function roundToZero(num) {
+    if (num < 0.5) {
+        throw new Error("Round to decimal point - toFixed(2)")
+    }
+
+    return JSON.parse(num.toFixed(0))
 }
 
 router.get("/", async (req, res) => {
@@ -180,18 +189,11 @@ router.get("/", async (req, res) => {
         const avgVisitDurationPercentDifference = calculatePercentChange(companyAAvgVisitDurationParse, companyBAvgVisitDurationparse);
 
         // Avg Time Per Page
-        const companyAAvgTimePerPage = (companyAAvgVisitDurationParse / companyAPagesPerVisitParse).toFixed(0);
-        const companyBAvgTimePerPage = (companyBAvgVisitDurationparse / companyBPagesPerVisitParse).toFixed(0);
+        const companyAAvgTimePerPage = roundToZero(companyAAvgVisitDurationParse / companyAPagesPerVisitParse);
+        const companyBAvgTimePerPage = roundToZero(companyBAvgVisitDurationparse / companyBPagesPerVisitParse);
 
-        console.log("A Time :", companyAAvgVisitDurationParse)
-        console.log("A Pages :", companyAPagesPerVisitParse)
-        console.log("A Avg Time :", companyAAvgTimePerPage)
-
-        console.log("B Pages :", companyBPagesPerVisitParse)
-        console.log("B Time :", companyBAvgVisitDurationparse)
-        console.log("B Avg Time :", companyBAvgTimePerPage)
-
-
+        const avgTimePerPagePercentDifference = calculatePercentChange(companyAAvgTimePerPage, companyBAvgTimePerPage) * -1;
+        console.log(avgTimePerPagePercentDifference)
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {
@@ -237,7 +239,8 @@ router.get("/", async (req, res) => {
 
             avgVisitDurationPercentDifference,
             companyAAvgTimePerPage,
-            companyBAvgTimePerPage
+            companyBAvgTimePerPage,
+            avgTimePerPagePercentDifference
         });
 
     } catch (err) {

@@ -15,21 +15,21 @@
             <main class="case-study-page">
                 <!-- MODULE 1 -->
                 <div class="next-step-label">
-                    Anchor link menu goes here
+                    Sticky Anchor link menu goes here
                 </div>
                 <div class="wrapper column-1">
                     <div class="goal-statement-title">
                         <h3>
-                            <strong id="data">GOAL</strong>
+                            <strong class="data">GOAL</strong>
                         </h3>
                     </div>
                     <div class="goal-statement">
                         <h3>
                             Provide a data-driven audit of two retail brands' websites
                             — anonymized as
-                            <strong id="company-a">Company A </strong>
+                            <strong class="company-a">Company A </strong>
                             and
-                            <strong id="company-b">Company B </strong>
+                            <strong class="company-b">Company B </strong>
                             —
                             and provide recommendations for strategic
                             improvements
@@ -39,7 +39,7 @@
                 <div class="wrapper column-2">
                     <div class="data-statement-title">
                         <h3>
-                            <strong id="data">DATA</strong>
+                            <strong class="data">DATA</strong>
                         </h3>
                     </div>
                     <div class="data-statement">
@@ -78,13 +78,13 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-b">Company B </strong>
+                            <strong class="company-b">Company B </strong>
                             averaged
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(percentDifferenceTraffic) %>%
                             </strong>
                             more sessions than
-                            <strong id="company-a">Company A</strong>
+                            <strong class="company-a">Company A</strong>
                             over the last three months
                         </p>
                     </div>
@@ -95,9 +95,9 @@
                             </h4>
                         </div>
                         <P>
-                            <strong id="company-b">Company B </strong>
+                            <strong class="company-b">Company B </strong>
                             rebounded strongly from the post-holiday lull, showing a
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(companyBMonthlyPercentChangeTraffic) %>%
                             </strong>
                             MoM increase in traffic from January to February
@@ -142,12 +142,12 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-a">Company A </strong>
+                            <strong class="company-a">Company A </strong>
                             looks to have utilized an effective SEO strategy, as their Organic Search
                             traffic outpaced
-                            <strong id="company-b">Company B </strong>
+                            <strong class="company-b">Company B </strong>
                             by over
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(percentDifferenceOrganicSearch) %>%
                             </strong>
                         </p>
@@ -159,9 +159,9 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-b">Company B </strong>
+                            <strong class="company-b">Company B </strong>
                             drove
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(percentDifferenceDirect) %>%
                             </strong>
                             more Direct traffic, suggesting that the marketing focus was on brand awareness
@@ -228,9 +228,9 @@
                         </div>
                         <p>
                             Both companies had similar audiences traits, but
-                            <strong id="company-a">Company A </strong>
+                            <strong class="company-a">Company A </strong>
                             users maintained a modest presence outside of the US:
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(sumCompanyATopIntlGeos) %>%
                             </strong>
                             of traffic came from Canada or the United Kingdom
@@ -243,9 +243,9 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-b">Company B</strong>
+                            <strong class="company-b">Company B</strong>
                             skewed more female, almost entirely within the US, and slightly older:
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(sumCompanyBAudienceSegment) %>%
                             </strong>
                             over the age of 34
@@ -307,10 +307,10 @@
                             </h4>
                         </div>
                         <p>
-                            Bounce rate for both companies was comparable, but 
-                            <strong id="company-b">Company B </strong>
+                            Bounce rate for both companies was comparable, but
+                            <strong class="company-b">Company B </strong>
                             users spent
-                            <strong id="data">
+                            <strong class="data">
                                 <%- JSON.stringify(avgVisitDurationPercentDifference) %>%
                             </strong>
                             more time on site
@@ -323,14 +323,23 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-a">Company A</strong>
-                            <strong id="data">
+                            Although
+                            <strong class="company-b">Company B </strong>
+                            users remained on site for longer,
+                            <strong class="company-a">Company A </strong>
+                            users spent
+                            <strong class="data">
+                                <%- JSON.stringify(avgTimePerPagePercentDifference) %>%
+                            </strong>
+                            more time per page, averaging
+                            <strong class="data">
                                 <%- JSON.stringify(companyAAvgTimePerPage) %>
                             </strong>
-                            <strong id="company-b">Company B</strong>
-                            <strong id="data">
+                            seconds as opposed to
+                            <strong class="data">
                                 <%- JSON.stringify(companyBAvgTimePerPage) %>
                             </strong>
+                            seconds
                         </p>
                     </div>
                     <div class="text-box span-2">
@@ -340,10 +349,54 @@
                             </h4>
                         </div>
                         <p>
-                            <strong id="company-b">Company B</strong>
-                            <strong id="data">data </strong>
+                            Summarize findings and provide assessment
                         </p>
                     </div>
+                </div>
+                <!-- MODULE 6 -->
+                <!-- CONCLUSION & ASSESSMENT -->
+                <div class="wrapper span-2 two-grid">
+                    <div class="title span-2">
+                        <h2>
+                            Conclusion
+                        </h2>
+                    </div>
+                    <div class="text-box column-1">
+                        <div class="flex-center">
+                            <p id="key-point-title">
+                                <strong class="company-a">Company A </strong>key points
+                            </p>
+                        </div>
+                        <div>
+                            <ol>
+                                <li value="1">One</li>
+                                <li>Two</li>
+                                <li>Three</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="text-box column-2">
+                        <div class="flex-center">
+                            <p id="key-point-title">
+                                <strong class="company-b">Company B </strong>key points
+                            </p>
+                        </div>
+                        <div>
+                            <ol>
+                                <li value="1">One</li>
+                                <li>Two</li>
+                                <li>Three</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two-grid span-2 flex-center">
+                    <a href="/seo-audit" class="cta-button cta-button--animated cta-button--wiggle">
+                        Technical SEO Analysis
+                    </a>
+                </div>
+
             </main>
             <%- include('partials/footer') %>
                 <script src="/scripts/traffic-audit.js"></script>

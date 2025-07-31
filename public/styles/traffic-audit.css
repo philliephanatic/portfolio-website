@@ -11,15 +11,15 @@ p {
 }
 
 /* === Branding Colors === */
-#company-a {
+.company-a {
     color: #36a2eb;
 }
 
-#company-b {
+.company-b {
     color: #ff6384;
 }
 
-#data {
+.data {
     color: gold;
 }
 
@@ -93,8 +93,59 @@ p {
     height: 100%;
 }
 
-
 /* === Utility Classes === */
+/*__CTA-Buttons__*/
+.cta-button {
+  display: inline-block;
+  background-color: #36a2eb; 
+  color: #fff;
+
+  padding: 1.4rem 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: "Fjalla One";
+  text-decoration: none;
+  
+  border-radius: 0.8rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.cta-button--animated::after {
+  display: inline-block;
+  margin-left: 0.8rem;
+}
+
+.cta-button--wiggle::after {
+  content: " ➡️ ";
+  font-size: 3rem;
+  animation: wiggle 1.2s infinite ease-in-out;
+  transform-origin: center;
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.cta-button--pulse::after {
+  content: " 🔍";
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.15); opacity: 0.7; }
+}
+
+/*__Charts__*/
 .chart {
     position: relative;
     margin: auto;
@@ -102,6 +153,13 @@ p {
     max-width: 100%;
 }
 
+canvas {
+    width: 100%;
+    height: auto;
+    min-height: 30rem;
+}
+
+/*__Labels__*/
 .insight-label {
     color: #36a2eb;
     font-weight: 700;
@@ -136,18 +194,6 @@ p {
     margin: .5rem;
 }
 
-
-.number {
-    font-family: "Roboto";
-    font-size: 7rem;
-}
-
-canvas {
-    width: 100%;
-    height: auto;
-    min-height: 30rem;
-}
-
 .title {
     text-align: center;
     font-size: 3.5rem;
@@ -168,7 +214,12 @@ canvas {
     align-items: center;
 }
 
-/* === Traffic-Audit Bespoke === */
+/* === Bespoke & IDs === */
+#key-point-title {
+    padding-bottom: 1.5rem;
+    text-transform: uppercase;
+}
+
 .goal-statement-title,
 .data-statement-title {
     text-align: center; 
@@ -200,6 +251,9 @@ canvas {
     text-align: center;
 }
 
+ol {
+    padding-left: 2.1rem;
+}
 
 /* MOBILE */
 /* @media (max-width: 375px) {

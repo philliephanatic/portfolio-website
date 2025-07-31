@@ -18,7 +18,7 @@ body {
 }
 
 /*__!! look into nesting or parent :has()  !!__*/
-/*__MARGINS__*/ 
+/*__MARGINS__*/
 /* small mobile phones */
 @media (max-width: 600px) {
     main {

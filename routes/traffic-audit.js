@@ -193,7 +193,6 @@ router.get("/", async (req, res) => {
         const companyBAvgTimePerPage = roundToZero(companyBAvgVisitDurationparse / companyBPagesPerVisitParse);
 
         const avgTimePerPagePercentDifference = calculatePercentChange(companyAAvgTimePerPage, companyBAvgTimePerPage) * -1;
-        console.log(avgTimePerPagePercentDifference)
 
         // Server-side render with EJS and pass the formatted data
         res.render("traffic-audit.ejs", {

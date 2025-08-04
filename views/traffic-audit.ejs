@@ -5,15 +5,15 @@
     <body>
 
         <%- include("partials/header") %>
+            <!-- HERO -->
             <header class="hero-case-study span-2">
                 <div class="title">
-                    <h1>Traffic Audit Comparison</h1>
+                    <h1>Traffic Audit Assessment</h1>
                     <h2>Case Study</h2>
                 </div>
             </header>
-
             <main class="case-study-page">
-
+                <!-- STICKY NAV -->
                 <div class="sticky-nav-wrapper wrapper span-2">
                     <a href="#overview">Overview </a>
                     <p>&bull;</p>
@@ -25,8 +25,8 @@
                     <p>&bull;</p>
                     <a href="#conclusion">Conclusion</a>
                 </div>
-
                 <!-- MODULE 1 -->
+                <!-- STATEMENTS -->
                 <div class="wrapper column-1">
                     <div class="goal-statement-title">
                         <h3>
@@ -373,37 +373,90 @@
                     <div class="text-box column-1">
                         <div class="flex-center">
                             <p id="key-point-title">
-                                <strong class="company-a">Company A </strong>key points
+                                <strong class="company-a">Company A </strong>
                             </p>
                         </div>
                         <div>
                             <ol>
-                                <li value="1">One</li>
-                                <br>
-                                <li>Two</li>
-                                <br>
-                                <li>Three</li>
+                                <li value="1">
+                                    <p>
+                                        <strong>Strong SEO: </strong>
+                                        <strong class="data">
+                                            <%- JSON.stringify(companyAOrganicSearchTraffic) %>%
+                                        </strong>
+                                        Organic Search traffic
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong>Higher time per page: </strong>
+                                        <strong class="data">
+                                            <%- JSON.stringify(companyAAvgTimePerPage) %>
+                                        </strong>
+                                        seconds
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong>International: </strong>
+                                        <strong class="data">
+                                            <%- JSON.stringify(sumCompanyATopIntlGeos) %>%
+                                        </strong>
+                                        of traffic from Canada and UK
+                                    </p>
+                                </li>
                             </ol>
                         </div>
                     </div>
                     <div class="text-box column-2">
                         <div class="flex-center">
                             <p id="key-point-title">
-                                <strong class="company-b">Company B </strong>key points
+                                <strong class="company-b">Company B </strong>
                             </p>
                         </div>
                         <div>
                             <ol>
-                                <li value="1">One</li>
-                                <br>
-                                <li>Two</li>
-                                <br>
-                                <li>Three</li>
+                                <li value="1">
+                                    <p>
+                                        <strong>Brand driven traffic: </strong>
+                                        <strong class="data">
+                                            <%- JSON.stringify(companyBDirectVisits) %>%
+                                        </strong>
+                                        Direct visits, only
+                                        <strong class="data">
+                                            <%- JSON.stringify(companyBOrganicSearchTraffic) %>%
+                                        </strong>
+                                        Organic Search
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong>High volume: </strong>
+                                        <strong class="data">
+                                            <%- JSON.stringify(percentDifferenceTraffic) %>%
+                                        </strong>
+                                        more sessions
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>
+                                        <strong>US-centric audience:</strong>
+                                        <strong class="data">
+                                            <%- JSON.stringify(companyBUSTraffic) %>%
+                                        </strong>
+                                        of traffic from US
+                                    </p>
+                                </li>
                             </ol>
                         </div>
                     </div>
+                    <div class="text-box span-2 flex-left">
+                        <p>
+                            text goes here
+                        </p>
+                    </div>
                 </div>
-
+                <!-- CTA -->
                 <div class="two-grid span-2 flex-center">
                     <a href="/seo-audit" class="cta-button cta-button--animated cta-button--wiggle">
                         Technical SEO Analysis

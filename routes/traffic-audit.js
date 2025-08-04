@@ -59,7 +59,7 @@ function sumArrayPercentage(arr) {
 
     return arr.reduce((acc, val) => acc + val, 0).toFixed(2) * 100;
 }
-// Sum Array Whole Number
+// Sum Array Whole Number - COMBINE like ROUND NUMBER
 function sumArrayWholeNumber(arr) {
     if (!Array.isArray(arr)) {
         throw new Error("Input must be an array");
@@ -67,13 +67,13 @@ function sumArrayWholeNumber(arr) {
 
     return JSON.parse(arr.reduce((acc, val) => acc + val, 0).toFixed(0));
 }
-// Round to Zero
-function roundToZero(num) {
-    if (num < 0.5) {
-        throw new Error("Round to decimal point - toFixed(2)")
+// Round Number
+function roundNumber(num) {
+    if (num >= 1) {
+        return JSON.parse(num.toFixed(0))
     }
-
-    return JSON.parse(num.toFixed(0))
+    if (num < 1) 
+    return JSON.parse(num.toFixed(2) * 100)
 }
 
 router.get("/", async (req, res) => {
@@ -134,6 +134,11 @@ router.get("/", async (req, res) => {
             ]
         };
 
+        const companyAOrganicSearchTraffic = roundNumber(companyA.trafficSources.organicSearchVisitsShare);
+        const companyBOrganicSearchTraffic = roundNumber(companyB.trafficSources.organicSearchVisitsShare);
+
+        const companyBDirectVisits = roundNumber(companyB.trafficSources.directVisitsShare);
+
         const percentDifferenceDirect = calculatePercentChange(companyA.trafficSources.directVisitsShare,
             companyB.trafficSources.directVisitsShare);
 
@@ -162,8 +167,11 @@ router.get("/", async (req, res) => {
         const geoLabels = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.countryAlpha2Code);
         const companyAGeoSegment = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
         const companyBGeoSegment = companyB.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
+        const sumCompanyATopIntlGeos = sumArrayPercentage(
+            companyA.geography.topCountriesTraffics.slice(1, 3).map(item => item.visitsShare));
 
-        const sumCompanyATopIntlGeos = sumArrayPercentage(companyA.geography.topCountriesTraffics.slice(1, 3).map(item => item.visitsShare));
+        const companyBUSTrafficParse = JSON.parse(companyB.geography.topCountriesTraffics.slice(0, 1).map(item => item.visitsShare));
+        const companyBUSTraffic = roundNumber(companyBUSTrafficParse);
 
         // == User Behavior == //
         // Bounce Rates
@@ -189,9 +197,8 @@ router.get("/", async (req, res) => {
         const avgVisitDurationPercentDifference = calculatePercentChange(companyAAvgVisitDurationParse, companyBAvgVisitDurationparse);
 
         // Avg Time Per Page
-        const companyAAvgTimePerPage = roundToZero(companyAAvgVisitDurationParse / companyAPagesPerVisitParse);
-        const companyBAvgTimePerPage = roundToZero(companyBAvgVisitDurationparse / companyBPagesPerVisitParse);
-
+        const companyAAvgTimePerPage = roundNumber(companyAAvgVisitDurationParse / companyAPagesPerVisitParse);
+        const companyBAvgTimePerPage = roundNumber(companyBAvgVisitDurationparse / companyBPagesPerVisitParse);
         const avgTimePerPagePercentDifference = calculatePercentChange(companyAAvgTimePerPage, companyBAvgTimePerPage) * -1;
 
         // Server-side render with EJS and pass the formatted data
@@ -204,7 +211,12 @@ router.get("/", async (req, res) => {
             companyBTrafficValues,
             percentDifferenceTraffic,
             companyBMonthlyPercentChangeTraffic,
+            companyBUSTraffic,
 
+            companyAOrganicSearchTraffic,
+            companyBOrganicSearchTraffic,
+            companyBDirectVisits,
+           
             companyATrafficSource,
             companyBTrafficSource,
             percentDifferenceDirect,

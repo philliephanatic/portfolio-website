@@ -83,13 +83,17 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
 }
 
 .flex-left {
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: flex-start;
+}
+
+.flex-baseline {
+    display: flex;
+    align-items: baseline;
     height: 100%;
 }
 
@@ -220,17 +224,12 @@ canvas {
     text-transform: uppercase;
 }
 
+/*__Wrappers__*/
 .wrapper {
     background-color: #2F3E6A;
     padding: 1.5rem;
     border-radius: 0.8rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.hero-case-study {
-    padding: 1.5rem;
-    padding-top: 2rem;
-    align-items: center;
 }
 
 .sticky-nav-wrapper {
@@ -254,10 +253,20 @@ canvas {
     color: gold;
 }
 
+/*__Heroes__*/
+.hero-case-study {
+    padding: 1.5rem;
+    padding-top: 2rem;
+    align-items: center;
+}
+
+
+
 /* === Bespoke & IDs === */
 #key-point-title {
     padding-bottom: 1.5rem;
     text-transform: uppercase;
+    align-content: flex-start;
 }
 
 .goal-statement-title,
@@ -294,6 +303,13 @@ canvas {
 ol {
     padding-left: 2.1rem;
 }
+
+.text-box ol {
+    display: grid;
+    grid-template-rows: repeat(3, .25fr);
+    gap: 1rem;
+}
+
 
 /* MOBILE */
 /* @media (max-width: 375px) {

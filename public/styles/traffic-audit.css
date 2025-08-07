@@ -203,6 +203,12 @@ canvas {
     text-align: center;
 }
 
+/*__Text__*/
+.executive-summary {
+    
+}
+
+
 .text-box {
     display: flex;
     flex-direction: column;
@@ -312,18 +318,3 @@ ol {
 
 
 /* MOBILE */
-/* @media (max-width: 375px) {
-    .case-study-page {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    h1 {
-        font-size: 3.5rem;
-    }
-
-     .hero {
-        margin: 2rem;
-    }
-} */

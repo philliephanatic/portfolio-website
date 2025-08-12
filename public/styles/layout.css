@@ -1,7 +1,7 @@
 /* ===== Page Layout & Sections ===== */
-.grid {
+.grid--1 { 
     display: grid;
-    gap: 1rem;
+    grid-template-columns: 1fr; 
 }
 
 .grid--2 { 

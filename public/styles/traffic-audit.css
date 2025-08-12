@@ -19,7 +19,6 @@ p {
 }
 
 .module__title {
-    /* grid-column: span 2; */
     text-align: center;
     font-size: 3.5rem;
     padding: 1.5rem;
@@ -27,6 +26,7 @@ p {
 }
 
 .module {
+    display: grid;    
     background-color: #2F3E6A;
     padding: 1.5rem;
     border-radius: 0.8rem;
@@ -49,16 +49,26 @@ p {
     align-content: flex-start;
 }
 
-.goal-statement-title,
-.data-statement-title {
+#goal-statement__title,
+#data-statement__title {
+    display: flex;
+    min-height: 4.5rem;
     text-align: center;
-    padding-bottom: 0.5rem;
 }
 
-.goal-statement,
-.data-statement {
+#goal-statement,
+#data-statement {
     text-align: left;
+    min-height: 14.5rem;
 }
+
+/* #goal-statement {
+    padding-right: 1rem;
+}
+
+#data-statement {
+    padding-left: 1rem;
+} */
 
 /* .card__title h4 {
     color: #36a2eb;

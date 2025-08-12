@@ -8,11 +8,13 @@
     /*_components_*/
     --card: rgba(255, 255, 255, 0.05);
 
-
     /*_branding-colors_*/
     --brand-a: #36a2eb;
     --brand-b: #ff6384;
     --accent: gold;
+
+    /*_screen-sizes_*/
+    --mobile-min-width: 768px;
 }
 
 * {

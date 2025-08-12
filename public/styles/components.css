@@ -118,22 +118,21 @@ canvas {
 
 /* Sticky Nav */
 .sticky-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     position: sticky;
     top: 0;
     z-index: 1000;
-    flex-wrap: nowrap;
 }
 
-/* .sticky-nav a,
-p {
-    color: var(--accent);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 1.8rem;
-} */
+.sticky-nav__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    list-style: none;
+    flex-wrap: nowrap;
+}
 
 .sticky-nav__link {
     color: var(--accent);
@@ -142,10 +141,9 @@ p {
     font-size: 1.8rem;
 }
 
-.sticky-nav__dot {
+.sticky-nav__list a {
     color: var(--accent);
 }
-
 /* Long form text */
 /* .long-form-text {}
 

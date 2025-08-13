@@ -62,6 +62,15 @@ p {
     min-height: 14.5rem;
 }
 
+/* #traffic-comparison-caption {
+    display: none;
+    max-height: .5rem;
+} */
+
+.figcaption {
+    display: none;
+}
+
 /* #goal-statement {
     padding-right: 1rem;
 }

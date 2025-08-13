@@ -37,7 +37,7 @@
 }
 
 .col-span-6 {
-    grid-column: span 6;
+    grid-column: span 4;
 }
 
 .col-1-3 {

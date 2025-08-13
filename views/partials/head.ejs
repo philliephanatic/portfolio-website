@@ -1,14 +1,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Nolan Young | <%= title || "Portfolio Website" %></title>
-  
+
+  <title>Nolan Young | <%= title || "Portfolio Website" %>
+  </title>
+
   <link rel="stylesheet" href="/styles/global-styles.css" />
+  <link rel="stylesheet" href="/styles/utility.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/components.css" />
   <link rel="stylesheet" href="/styles/header-footer.css" />
   <link rel="stylesheet" href="/styles/<%= pageStyle %>.css" />
-  
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <!-- Make sure chartjs-datalavels appears after Chart.js is loaded. -->
   <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 </head>

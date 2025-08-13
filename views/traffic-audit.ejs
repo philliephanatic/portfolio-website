@@ -61,8 +61,6 @@
                         </p>
                     </section>
                 </article>
-
-
                 <!-- MODULE 2 -->
                 <!-- TRAFFIC-COMPARISON -->
                 <article class="module grid--6 u-span-2">
@@ -71,6 +69,7 @@
                             Overview
                         </h2>
                     </header>
+                    <!-- CHARTS -->
                     <figure class="chart u-span-6">
                         <canvas id="traffic-comparison-canvas"></canvas>
                         <figcaption class="figcaption">
@@ -129,6 +128,7 @@
                         </p>
                     </section>
                 </article>
+
                 <!-- MODULE 3 -->
                 <!-- TRAFFIC-SOURCE -->
                 <article class="module grid--6 u-span-2">
@@ -137,7 +137,7 @@
                             Traffic Sources
                         </h2>
                     </header>
-
+                    <!-- CHARTS -->
                     <figure class="chart u-span-3">
                         <canvas id="companyA-traffic-source-canvas"></canvas>
                         <script id="companyA-traffic-source-script" type="application/json">
@@ -147,7 +147,6 @@
                     <figcaption class="figcaption">
                         Company A Traffic Sources
                     </figcaption>
-
                     <figure class="chart u-span-3">
                         <canvas id="companyB-traffic-source-canvas"></canvas>
                         <script id="companyB-traffic-source-script" type="application/json">
@@ -157,7 +156,7 @@
                     <figcaption class="figcaption">
                         Company B Traffic Sources
                     </figcaption>
-                    
+                    <!-- CARDS -->
                     <section class="card u-span-2 u-flex-left">
                         <header>
                             <h3 class="card__title--blue">
@@ -175,7 +174,6 @@
                             </strong>
                         </p>
                     </section>
-
                     <section class="card u-span-2 u-flex-left">
                         <header>
                             <h3 class="card__title--blue">
@@ -192,7 +190,6 @@
                             as opposed to search optimization
                         </p>
                     </section>
-
                     <section class="card u-span-2 u-flex-left">
                         <header>
                             <h3 class="card__title--gold">
@@ -204,64 +201,30 @@
                         </p>
                     </section>
                 </article>
-
-
-                <!-- <div class="module col-span-2 grid--6">
-                    <div class="col-span-6 module__title">
-
-                    </div>
-                    <div class="chart col-1-3">
-
-                    </div>
-                    <div class="chart col-3-6">
-
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title">
-
-                        </div>
-                        <p>
-
-                        </p>
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title ">
-
-                        </div>
-                        <p>
-
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title">
-
-                        </div>
-                        <p>
-                        </p>
-                    </div>
-                </div> -->
-
-
                 <!-- MODULE 4 -->
                 <!-- AUDIENCE-SEGMENTS -->
-                <div class="module col-span-2 grid--6">
-                    <div class="col-span-6 module__title">
+                <article class="module grid--6 u-span-2">
+                    <header class="module__title u-span-6">
                         <h2>
                             Audience Segments
                         </h2>
-                    </div>
-                    <div class="col-span-6">
-                        <div class="chart">
-                            <canvas id="age-segment-canvas"></canvas>
-                            <script id="age-segment-script" type="application/json">
+                    </header>
+                    <!-- CHARTS -->
+                    <figure class="chart u-span-6">
+                        <canvas id="age-segment-canvas"></canvas>
+                        <script id="age-segment-script" type="application/json">
                             <%- JSON.stringify({
                                 audienceLabels,
                                 companyAAudienceSegment,
                                 companyBAudienceSegment
                             }) %>
                         </script>
-                        </div>
-                    </div>
-                    <div class="chart col-1-3">
+                    </figure>
+                    <figcaption class="figcaption">
+                        Age Segment
+                    </figcaption>
+
+                    <figure class="chart u-span-3">
                         <canvas id="gender-segment-canvas"></canvas>
                         <script id="gender-segment-script" type="application/json">
                             <%- JSON.stringify({
@@ -270,8 +233,12 @@
                                 companyBGenderSegment
                             }) %>
                         </script>
-                    </div>
-                    <div class="geo-segment chart col-3-6">
+                    </figure>
+                    <figcaption class="figcaption">
+                        Gender Segment
+                    </figcaption>
+
+                    <figure class="chart u-span-3">
                         <canvas id="geo-segment-canvas"></canvas>
                         <script id="geo-segment-script" type="application/json">
                             <%- JSON.stringify({
@@ -280,14 +247,17 @@
                                 companyBGeoSegment
                             }) %>
                         </script>
-
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title ">
+                    </figure>
+                    <figcaption class="figcaption">
+                        Geo Segment
+                    </figcaption>
+                    <!-- CARDS -->
+                    <section class="card u-span-2 u-flex-left">
+                        <header>
                             <h3 class="card__title--blue">
                                 INSIGHT
                             </h3>
-                        </div>
+                        </header>
                         <p>
                             Both companies had similar audiences traits, but
                             <strong class="token--blue">Company A </strong>
@@ -297,13 +267,13 @@
                             </strong>
                             of traffic came from Canada or the United Kingdom
                         </p>
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title ">
+                    </section>
+                    <section class="card u-span-2 u-flex-left">
+                        <header>
                             <h3 class="card__title--blue">
                                 INSIGHT
                             </h3>
-                        </div>
+                        </header>
                         <p>
                             <strong class="token--red">Company B</strong>
                             skewed more female, almost entirely within the U.S., and slightly older:
@@ -312,18 +282,21 @@
                             </strong>
                             over the age of 34
                         </p>
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title ">
+                    </section>
+                    <section class="card u-span-2 u-flex-left">
+                        <header>
                             <h3 class="card__title--gold">
                                 NEXT STEP
                             </h3>
-                        </div>
+                        </header>
                         <p>
                             Analyze audience behavior to deepen understanding of user journey
                         </p>
-                    </div>
-                </div>
+                    </section>
+                </article>
+
+               
+
                 <!-- MODULE 5 -->
                 <!-- USER-BEHAVIOR -->
                 <div class="module col-span-2 grid--6">

@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initAvgVisitDuration()
 });
 
+
 // 📊 Grouped Bar Chart – Monthly Sessions
 function initTrafficComparisonBarChart() {
     const raw = document.getElementById("traffic-comparison-script");
@@ -908,20 +909,4 @@ function initAvgVisitDuration() {
 
         }
     });
-}
-
-//Sticky Nav Scroll Stop
-// const options = {
-//     root: document.querySelector("#sticky-nav-stop"),
-//     rootMargin: "0px",
-//     scrollMargin: "0px",
-//     threshold: 1.0,
-// };
-
-// const observer = new IntersectionObserver(callback, options);
-
-// const callback = (entries, observer) => {
-//     entries.forEach((entry) => {
-//         entry.boundingClientRect
-//     })
-// }
+};

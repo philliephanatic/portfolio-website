@@ -11,7 +11,7 @@
 
 /*__Modules__*/
 .module {
-    display: grid;    
+    display: grid;
     background-color: #2F3E6A;
     padding: 1.5rem;
     border-radius: 0.8rem;
@@ -156,6 +156,8 @@ ol {
     position: sticky;
     top: 0;
     z-index: 1000;
+    will-change: transform;
+    transition: transform 0.3s ease-out;
 }
 
 .sticky-nav__list {
@@ -176,6 +178,13 @@ ol {
     font-size: 1.8rem;
 }
 
-.sticky-nav__list a {
+.sticky-nav__sep {
+    list-style: none;
     color: var(--accent);
+}
+
+.sticky-nav-scope {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;                          
 }

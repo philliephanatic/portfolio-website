@@ -13,9 +13,8 @@
 }
 
 #key-point-title {
-    padding-bottom: 1.5rem;
-    text-transform: uppercase;
-    align-content: flex-start;
+    font-family: "Fjalla One";
+    font-size: 2.5rem;
 }
 
 #exec-summary h3 {
@@ -28,6 +27,3 @@
 #exec-summary p {
     padding-bottom: 1rem;
 }
-
-
-

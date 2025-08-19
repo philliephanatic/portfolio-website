@@ -1,4 +1,30 @@
 /* ===== Reusable Components ===== */
+
+/*__Heroes__*/
+.hero-case-study {
+    grid-column: span 2;
+    background-color: #2F3E6A;
+    padding: 1.5rem;
+    padding-top: 2rem;
+    align-items: center;
+}
+
+/*__Modules__*/
+.module {
+    display: grid;    
+    background-color: #2F3E6A;
+    padding: 1.5rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.module__title {
+    text-align: center;
+    font-size: 3.5rem;
+    padding: 1.5rem;
+    text-transform: uppercase;
+}
+
 /*__Cards__*/
 .card {
     display: flex;
@@ -7,9 +33,7 @@
     justify-content: start;
     padding: 1.5rem;
     alignment-baseline: text-top;
-
     background: var(--card);
-
     border-radius: 0.8rem;
     border: 1px solid rgba(255, 255, 255, 0.2);
     margin: .5rem;
@@ -21,7 +45,15 @@
     text-transform: uppercase;
     letter-spacing: 0.1rem;
     margin-bottom: 0.5rem;
+    padding: 0;
     text-align: center;
+    text-wrap: nowrap;
+}
+
+.card ol {
+    display: grid;
+    grid-template-rows: repeat(3, .25fr);
+    gap: 1rem;
 }
 
 .card__title--blue {
@@ -37,13 +69,11 @@
     display: inline-block;
     background: var(--brand-a);
     color: #fff;
-
     padding: 1.4rem 3rem;
     font-size: 3rem;
     font-weight: bold;
     font-family: "Fjalla One";
     text-decoration: none;
-
     border-radius: 0.8rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     text-align: center;
@@ -116,7 +146,12 @@ canvas {
     min-height: 30rem;
 }
 
-/* Sticky Nav */
+/*__Lists__*/
+ol {
+    padding-left: 2.1rem;
+}
+
+/*__Sticky Nav__*/
 .sticky-nav {
     position: sticky;
     top: 0;
@@ -144,9 +179,3 @@ canvas {
 .sticky-nav__list a {
     color: var(--accent);
 }
-/* Long form text */
-/* .long-form-text {}
-
-.long-form-text__title {}
-
-.long-form-text__section {} */

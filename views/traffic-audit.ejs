@@ -72,7 +72,7 @@
                     <!-- CHARTS -->
                     <figure class="chart u-span-6">
                         <canvas id="traffic-comparison-canvas"></canvas>
-                        <figcaption class="figcaption">
+                        <figcaption class="visually-hidden">
                             Monthly Sessions
                         </figcaption>
                         <script id="traffic-comparison-script" type="application/json">
@@ -84,9 +84,9 @@
                             </script>
                     </figure>
                     <!-- CARDS -->
-                    <section class="card u-span-2 u-flex-left">
-                        <header>
-                            <h3 class="card__title--blue">
+                    <section class="card u-span-2 u-flex-center">
+                        <header class="grid--2 u-span-2 u-flex-center">
+                            <h3 class="card__title card__title--blue">
                                 Insight
                             </h3>
                         </header>
@@ -97,13 +97,13 @@
                                 <%- JSON.stringify(percentDifferenceTraffic) %>%
                             </strong>
                             more sessions than
-                            <strong class="token--blue">Company A</strong>
+                            <strong class="token--blue--bold">Company A</strong>
                             over the last three months
                         </p>
                     </section>
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--blue">
+                            <h3 class="card__title card__title--blue">
                                 Insight
                             </h3>
                         </header>
@@ -116,9 +116,9 @@
                             MoM increase in traffic from January to February
                         </P>
                     </section>
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--gold">
+                            <h3 class="card__title card__title--gold">
                                 NEXT STEP
                             </h3>
                         </header>
@@ -144,7 +144,7 @@
                             <%- JSON.stringify(companyATrafficSource) %>
                         </script>
                     </figure>
-                    <figcaption class="figcaption">
+                    <figcaption class="visually-hidden">
                         Company A Traffic Sources
                     </figcaption>
                     <figure class="chart u-span-3">
@@ -153,18 +153,18 @@
                             <%- JSON.stringify(companyBTrafficSource) %>
                         </script>
                     </figure>
-                    <figcaption class="figcaption">
+                    <figcaption class="visually-hidden">
                         Company B Traffic Sources
                     </figcaption>
                     <!-- CARDS -->
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--blue">
+                            <h3 class="card__title card__title--blue">
                                 INSIGHT
                             </h3>
                         </header>
                         <p>
-                            <strong class="token--blue">Company A </strong>
+                            <strong class="token--blue--bold">Company A </strong>
                             looks to have utilized an effective SEO strategy, as their Organic Search
                             traffic outpaced
                             <strong class="token--red">Company B </strong>
@@ -174,9 +174,9 @@
                             </strong>
                         </p>
                     </section>
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--blue">
+                            <h3 class="card__title card__title--blue">
                                 INSIGHT
                             </h3>
                         </header>
@@ -190,9 +190,9 @@
                             as opposed to search optimization
                         </p>
                     </section>
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--gold">
+                            <h3 class="card__title card__title--gold">
                                 NEXT STEP
                             </h3>
                         </header>
@@ -209,7 +209,6 @@
                             Audience Segments
                         </h2>
                     </header>
-                    <!-- CHARTS -->
                     <figure class="chart u-span-6">
                         <canvas id="age-segment-canvas"></canvas>
                         <script id="age-segment-script" type="application/json">
@@ -220,7 +219,7 @@
                             }) %>
                         </script>
                     </figure>
-                    <figcaption class="figcaption">
+                    <figcaption class="visually-hidden">
                         Age Segment
                     </figcaption>
 
@@ -234,7 +233,7 @@
                             }) %>
                         </script>
                     </figure>
-                    <figcaption class="figcaption">
+                    <figcaption class="visually-hidden">
                         Gender Segment
                     </figcaption>
 
@@ -248,19 +247,19 @@
                             }) %>
                         </script>
                     </figure>
-                    <figcaption class="figcaption">
+                    <figcaption class="visually-hidden">
                         Geo Segment
                     </figcaption>
                     <!-- CARDS -->
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--blue">
+                            <h3 class="card__title card__title--blue">
                                 INSIGHT
                             </h3>
                         </header>
                         <p>
                             Both companies had similar audiences traits, but
-                            <strong class="token--blue">Company A </strong>
+                            <strong class="token--blue--bold">Company A </strong>
                             users maintained a modest presence outside of the U.S.:
                             <strong class="token--gold">
                                 <%- JSON.stringify(sumCompanyATopIntlGeos) %>%
@@ -268,9 +267,9 @@
                             of traffic came from Canada or the United Kingdom
                         </p>
                     </section>
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--blue">
+                            <h3 class="card__title card__title--blue">
                                 INSIGHT
                             </h3>
                         </header>
@@ -283,9 +282,9 @@
                             over the age of 34
                         </p>
                     </section>
-                    <section class="card u-span-2 u-flex-left">
+                    <section class="card u-span-2 u-flex-center">
                         <header>
-                            <h3 class="card__title--gold">
+                            <h3 class="card__title card__title--gold">
                                 NEXT STEP
                             </h3>
                         </header>
@@ -295,17 +294,17 @@
                     </section>
                 </article>
 
-               
+
 
                 <!-- MODULE 5 -->
                 <!-- USER-BEHAVIOR -->
-                <div class="module col-span-2 grid--6">
-                    <div class="col-span-6 module__title">
+                <article class="module grid--6 u-span-2">
+                    <header class="module__title u-span-6">
                         <h2>
                             User Behavior
                         </h2>
-                    </div>
-                    <div class="bounce-rate chart col-span-6">
+                    </header>
+                    <figure class="chart u-span-6">
                         <canvas id="bounce-rate-canvas"></canvas>
                         <script id="bounce-rate-script" type="application/json">
                             <%- JSON.stringify({
@@ -314,18 +313,26 @@
                                 companyBBounceRate
                             }) %>
                         </script>
-                    </div>
-                    <div class="chart col-1-3">
+                    </figure>
+                    <figcaption class="visually-hidden">
+                        Bounce Rate
+                    </figcaption>
+
+                    <figure class="chart u-span-3">
                         <canvas id="avg-visit-duration-canvas"></canvas>
                         <script id="avg-visit-duration-script" type="application/json">
                              <%- JSON.stringify({                         
                                 avgVisitDurationLabels,                            
                                 companyAAvgVisitDuration,                            
                                 companyBAvgVisitDuration                                        
-                                 }) %>                                   
-                        </script>
-                    </div>
-                    <div class="pages-per-visit chart col-3-6">
+                                 }) %>
+                            </script>
+                    </figure>
+                    <figcaption class="visually-hidden">
+                        Average Visit Duration
+                    </figcaption>
+
+                    <figure class="chart u-span-3">
                         <canvas id="pages-per-visit-canvas"></canvas>
                         <script id="pages-per-visit-script" type="application/json">
                             <%- JSON.stringify({
@@ -334,13 +341,17 @@
                                 companyBPagesPerVisit
                             }) %>
                         </script>
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title">
-                            <h3 class="card__title--blue">
+                    </figure>
+                    <figcaption class="visually-hidden">
+                        Pages per Visit
+                    </figcaption>
+                    <!-- CARDS -->
+                    <section class="card u-span-2 u-flex-center">
+                        <header>
+                            <h3 class="card__title card__title--blue">
                                 INSIGHT
                             </h3>
-                        </div>
+                        </header>
                         <p>
                             Bounce rate for both companies was comparable, but
                             <strong class="token--red">Company B </strong>
@@ -350,18 +361,18 @@
                             </strong>
                             more time on site
                         </p>
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title">
-                            <h3 class="card__title--blue">
+                    </section>
+                    <section class="card u-span-2 u-flex-center">
+                        <header>
+                            <h3 class="card__title card__title--blue">
                                 INSIGHT
                             </h3>
-                        </div>
+                        </header>
                         <p>
                             Although
                             <strong class="token--red">Company B </strong>
                             users remained on site for longer,
-                            <strong class="token--blue">Company A </strong>
+                            <strong class="token--blue--bold">Company A </strong>
                             users spent
                             <strong class="token--gold">
                                 <%- JSON.stringify(avgTimePerPagePercentDifference) %>%
@@ -376,113 +387,111 @@
                             </strong>
                             seconds
                         </p>
-                    </div>
-                    <div class="card col-span-2">
-                        <div class="card__title ">
-                            <h3 class="card__title--gold">
+                    </section>
+                    <section class="card u-span-2 u-flex-center">
+                        <header class="card__title--gold">
+                            <h3 class="card__title card__title--gold">
                                 NEXT STEP
                             </h3>
-                        </div>
+                        </header>
                         <p>
                             Summarize findings and provide assessment
+
                         </p>
-                    </div>
-                </div>
+                    </section>
+                </article>
                 <!-- MODULE 6 -->
                 <!-- CONCLUSION & ASSESSMENT -->
-                <div class="module col-span-2 grid--2">
-                    <div class="module__title col-span-2">
+                <article class="module grid--2 u-span-2" id="#sticky-nav-stop">
+                    <header class="module__title u-span-2">
                         <h2>
                             Conclusion
                         </h2>
-                    </div>
-                    <div class="card column-1">
-                        <div class="u-flex-center">
-                            <p id="key-point-title">
-                                <strong class="token--blue">Company A </strong>
-                            </p>
-                        </div>
-                        <div>
-                            <ol>
-                                <li value="1">
-                                    <p>
-                                        <strong>Strong SEO: </strong>
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(companyAOrganicSearchTraffic) %>%
-                                        </strong>
-                                        Organic Search traffic
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>Higher time per page: </strong>
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(companyAAvgTimePerPage) %>
-                                        </strong>
-                                        seconds
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>International: </strong>
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(sumCompanyATopIntlGeos) %>%
-                                        </strong>
-                                        of traffic from Canada and UK
-                                    </p>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="card column-2">
-                        <div class="u-flex-center">
-                            <p id="key-point-title">
-                                <strong class="token--red">Company B </strong>
-                            </p>
-                        </div>
-                        <div>
-                            <ol>
-                                <li value="1">
-                                    <p>
-                                        <strong>Brand driven traffic: </strong>
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(companyBDirectVisits) %>%
-                                        </strong>
-                                        Direct visits, only
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(companyBOrganicSearchTraffic) %>%
-                                        </strong>
-                                        Organic Search
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>High volume: </strong>
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(percentDifferenceTraffic) %>%
-                                        </strong>
-                                        more sessions
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>
-                                        <strong>U.S.-centric audience:</strong>
-                                        <strong class="token--gold">
-                                            <%- JSON.stringify(companyBUSTraffic) %>%
-                                        </strong>
-                                        of traffic from U.S.
-                                    </p>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <div class="long-form-text col-span-2">
-
-                        <h2 class="long-form-text__title">Executive Summary</h2>
-
-                        <div class="long-form-text__module">
-                            <h2>1. Overall Assessment</h3>
+                    </header>
+                    <section class="card">
+                        <header id="key-point-title">
+                            <strong class="token--blue--bold">Company A </strong>
+                        </header>
+                        <ol>
+                            <li>
+                                <p>
+                                    <strong>Strong SEO: </strong>
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(companyAOrganicSearchTraffic) %>%
+                                    </strong>
+                                    Organic Search traffic
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>Higher time per page: </strong>
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(companyAAvgTimePerPage) %>
+                                    </strong>
+                                    seconds
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>International: </strong>
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(sumCompanyATopIntlGeos) %>%
+                                    </strong>
+                                    of traffic from Canada and UK
+                                </p>
+                            </li>
+                        </ol>
+                    </section>
+                    <section class="card">
+                        <header id="key-point-title">
+                            <strong class="token--red">Company B </strong>
+                        </header>
+                        <ol>
+                            <li>
+                                <p>
+                                    <strong>Brand driven traffic: </strong>
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(companyBDirectVisits) %>%
+                                    </strong>
+                                    Direct visits, only
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(companyBOrganicSearchTraffic) %>%
+                                    </strong>
+                                    Organic Search
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>High volume: </strong>
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(percentDifferenceTraffic) %>%
+                                    </strong>
+                                    more sessions
+                                </p>
+                            </li>
+                            <li>
+                                <p>
+                                    <strong>U.S.-centric audience:</strong>
+                                    <strong class="token--gold">
+                                        <%- JSON.stringify(companyBUSTraffic) %>%
+                                    </strong>
+                                    of traffic from U.S.
+                                </p>
+                            </li>
+                        </ol>
+                        </ol>
+                    </section>
+                    <section class="card u-span-2" id="exec-summary">
+                        <header class="module__title u-span-2">
+                            <h2>
+                                Executive Summary
+                            </h2>
+                        </header>
+                        <ol>
+                            <li>
+                                <h3>
+                                    Overall Assessment
+                                </h3>
                                 <p>
                                     The comparative assessment reveals two distinct web marketing strategies aligned
                                     with
@@ -490,38 +499,46 @@
                                     sessions,
                                     while Company A demonstrates strength in search discoverability and engagement.
                                 </p>
-                        </div>
-
-                        <div class="long-form-text__module">
-                            <h2>2. Company B – Strengths & Focus</h3>
+                            </li>
+                            <li>
+                                <h3>
+                                    Company A – Strengths & Focus
+                                </h3>
                                 <p>
-                                    Company B outpaces Company A in total sessions, driven by <strong>65% direct
-                                        traffic</strong> and a diversified paid/social mix. Its audience is
-                                    primarily
-                                    U.S.-based, female, and over the age of 34 — well-aligned with broad,
-                                    family-oriented
-                                    branding.
-                                </p>
-                        </div>
-
-                        <div class="long-form-text__module">
-                            <h2>3. Company A – Strengths & Focus</h3>
-                                <p>
-                                    Company A generates <strong>25% of traffic from organic search</strong>,
-                                    indicating
-                                    a
-                                    strong content and SEO strategy. International reach is broader, with
-                                    <strong>16% of
-                                        traffic from the UK and Canada</strong>. Engagement is higher at <strong>48
-                                        seconds
-                                        per page</strong> — 33% more than Company B — suggesting a curated,
+                                    Company A generates
+                                    <strong class="token--gold">25% </strong>
+                                    of traffic from organic search,
+                                    indicating a strong content and SEO strategy. International reach is broader, with
+                                    <strong class="token--gold">16%</strong>. of
+                                    traffic from the UK and Canada Engagement is higher at
+                                    <strong class="token--gold">48 </strong>
+                                    seconds per page —
+                                    <strong class="token--gold">33% </strong>
+                                    more than Company B — suggesting a curated,
                                     product-focused
                                     experience.
                                 </p>
-                        </div>
-
-                        <div class="long-form-text__module">
-                            <h2>4. Strategic Recommendations</h3>
+                            </li>
+                            <li>
+                                <h3>
+                                    Company B – Strengths & Focus
+                                </h3>
+                                <p>
+                                    Company B outpaces Company A in total sessions, driven by
+                                    <strong class="token--gold">65% </strong>
+                                    direct traffic and a diversified paid/social mix. Its audience is
+                                    primarily
+                                    U.S.-based, female, and over the age of 
+                                    <strong class="token--gold">34 </strong>
+                                     — well-aligned with broad,
+                                    family-oriented
+                                    branding.
+                                </p>
+                            </li>
+                            <li>
+                                <h3>
+                                    Strategic Recommendations
+                                </h3>
                                 <p>
                                     Company A should invest in brand amplification and loyalty-building within the
                                     U.S.
@@ -531,26 +548,26 @@
                                     conversion
                                     efficiency.
                                 </p>
-                        </div>
-
-                        <div class="long-form-text__module">
-                            <h2>5. Key Insight</h3>
+                            </li>
+                            <li>
+                                <h3>
+                                    Key Insight
+                                </h3>
                                 <p>
                                     Each brand’s web performance reflects its current marketing priorities — both
                                     could
                                     improve outcomes by adopting elements of the other’s approach.
                                 </p>
-                        </div>
-
-                    </div>
-
-                </div>
+                            </li>
+                        </ol>
+                    </section>
+                </article>
                 <!-- CTA -->
-                <div class="grid--2 col-span-2 u-flex-center">
+                <section class="u-span-2 u-flex-center">
                     <a href="/seo-audit" class="btn btn--animated btn--wiggle">
                         Technical SEO Analysis
                     </a>
-                </div>
+                </section>
 
             </main>
             <%- include('partials/footer') %>

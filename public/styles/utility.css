@@ -32,11 +32,6 @@
     grid-column: span 6;
 }
 
-/* spacing */
-.u-padding-b-10px {
-    padding-bottom: 1rem;
-}
-
 /* Text Alignment */
 .u-text-center {
     text-align: center;

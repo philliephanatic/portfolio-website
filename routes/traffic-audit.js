@@ -1,264 +1,225 @@
-import { error } from "console";
+//__!!CHARTS DATA!!__//
+// portfolio-website/routes/traffic-audit.js
+
 import express from "express";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
+import {
+  formatDate,
+  formatAndSortAudienceSegmentData,
+  convertToSeconds,
+  calculatePercentChange,
+  sumArrayPercentage,
+  sumArrayWholeNumber,
+  roundNumber,
+} from "../lib/analytics.js";
 
 const router = express.Router();
-
-// Reconstruct __dirname since it's not available in ES modules
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-// Correct path to the newly cleaned, private JSON data
 const jsonPath = path.join(__dirname, "../data/cleaned-similarweb-data.json");
 
-// == move to scripts/utilities.js OR utilities/math.js + /formatting.js OR utilities/ == //
-// Date
-const formatDate = (isoString) => {
-    const d = new Date(isoString);
-    d.setMonth(d.getMonth() - 1);
+router.get("/", async (_req, res) => {
+  try {
+    const raw = await fs.readFile(jsonPath, "utf-8");
+    const data = JSON.parse(raw);
 
-    return `${d.toLocaleString("en-US", {
-        month: "long",
-        year: "numeric"
-    })}`;
-};
-// Age Order
-function formatAndSortAudienceSegmentData(ageDistribution) {
-    return ageDistribution
-        .sort((a, b) => a.minAge - b.minAge)
-        .map(item => ({
-            label: `${item.minAge} - ${item.maxAge}`,
-            value: item.value
-        }));
-};
-// Time String to Seconds
-function convertToSeconds(timeStr) {
-    const parts = timeStr.split(":").map(Number);
-    return parts[0] * 3600 + parts[1] * 60 + parts[2]; // hours, minutes, seconds
-};
-// Percent Change
-function calculatePercentChange(oldValue, newValue) {
-    if (typeof oldValue !== "number" || typeof newValue !== "number") {
-        throw new Error("Both inputs must be numbers");
-    }
+    const companyA = data.find((d) => d.name === "abercrombie.com");
+    const companyB = data.find((d) => d.name === "oldnavy.gap.com");
 
-    if (oldValue === 0) {
-        return "Can not divide 0";
-    }
+    // === Monthly Sessions ===
+    const labels = companyA.traffic.history.map((i) => formatDate(i.date));
+    const companyATrafficValues = companyA.traffic.history.map((i) => i.visits);
+    const companyBTrafficValues = companyB.traffic.history.map((i) => i.visits);
 
-    const change = newValue - oldValue;
-    const percentChange = (change / oldValue) * 100;
-    return Number(percentChange.toFixed(0));
-};
-// Sum Array Percentage
-function sumArrayPercentage(arr) {
-    if (!Array.isArray(arr)) {
-        throw new Error("Input must be an array");
-    }
+    const sumCompanyATrafficValues = sumArrayWholeNumber(companyATrafficValues);
+    const sumCompanyBTrafficValues = sumArrayWholeNumber(companyBTrafficValues);
+    const percentDifferenceTraffic = calculatePercentChange(
+      sumCompanyATrafficValues,
+      sumCompanyBTrafficValues
+    );
+    const companyBMonthlyPercentChangeTraffic = calculatePercentChange(
+      companyBTrafficValues[0],
+      companyBTrafficValues[1]
+    );
 
-    return arr.reduce((acc, val) => acc + val, 0).toFixed(2) * 100;
-}
-// Sum Array Whole Number - COMBINE like ROUND NUMBER
-function sumArrayWholeNumber(arr) {
-    if (!Array.isArray(arr)) {
-        throw new Error("Input must be an array");
-    }
+    // === Traffic Sources ===
+    const companyATrafficSource = {
+      labels: ["Direct", "Referral", "Organic Search", "Paid Search", "Social"],
+      values: [
+        companyA.trafficSources.directVisitsShare,
+        companyA.trafficSources.referralVisitsShare,
+        companyA.trafficSources.organicSearchVisitsShare,
+        companyA.trafficSources.paidSearchVisitsShare,
+        companyA.trafficSources.socialNetworksVisitsShare,
+      ],
+    };
+    const companyBTrafficSource = {
+      labels: ["Direct", "Referral", "Organic Search", "Paid Search", "Social"],
+      values: [
+        companyB.trafficSources.directVisitsShare,
+        companyB.trafficSources.referralVisitsShare,
+        companyB.trafficSources.organicSearchVisitsShare,
+        companyB.trafficSources.paidSearchVisitsShare,
+        companyB.trafficSources.socialNetworksVisitsShare,
+      ],
+    };
 
-    return JSON.parse(arr.reduce((acc, val) => acc + val, 0).toFixed(0));
-}
-// Round Number
-function roundNumber(num) {
-    if (num >= 1) {
-        return JSON.parse(num.toFixed(0))
-    }
-    if (num < 1) 
-    return JSON.parse(num.toFixed(2) * 100)
-}
+    const companyAOrganicSearchTraffic = roundNumber(
+      companyA.trafficSources.organicSearchVisitsShare
+    );
+    const companyBOrganicSearchTraffic = roundNumber(
+      companyB.trafficSources.organicSearchVisitsShare
+    );
+    const companyBDirectVisits = roundNumber(
+      companyB.trafficSources.directVisitsShare
+    );
 
-router.get("/", async (req, res) => {
-    try {
+    const percentDifferenceDirect = calculatePercentChange(
+      companyA.trafficSources.directVisitsShare,
+      companyB.trafficSources.directVisitsShare
+    );
+    const percentDifferenceOrganicSearch = calculatePercentChange(
+      companyB.trafficSources.organicSearchVisitsShare,
+      companyA.trafficSources.organicSearchVisitsShare
+    );
 
-        // Read the cleaned JSON file from the secure /data folder
-        const raw = await fs.readFile(jsonPath, "utf-8");
+    // === Audience Segments ===
+    const companyASortedAudience = formatAndSortAudienceSegmentData(
+      companyA.demographics.ageDistribution
+    );
+    const companyBSortedAudience = formatAndSortAudienceSegmentData(
+      companyB.demographics.ageDistribution
+    );
 
-        // The file now contains an array of objects
-        const data = JSON.parse(raw);
+    const audienceLabels = companyASortedAudience.map((d) => d.label);
+    const companyAAudienceSegment = companyASortedAudience.map((d) => d.value);
+    const companyBAudienceSegment = companyBSortedAudience.map((d) => d.value);
+    const sumCompanyBAudienceSegment = sumArrayPercentage(
+      companyBAudienceSegment.slice(2, 6)
+    ); // >34
 
-        // Isolate Company A and Company B
-        const companyA = data.find((d) => d.name === "abercrombie.com");
-        const companyB = data.find((d) => d.name === "oldnavy.gap.com");
+    const genderLabels = Object.keys(
+      companyA.demographics.genderDistribution
+    ).map((l) => l.charAt(0).toUpperCase() + l.slice(1));
+    const companyAGenderSegment = Object.values(
+      companyA.demographics.genderDistribution
+    );
+    const companyBGenderSegment = Object.values(
+      companyB.demographics.genderDistribution
+    );
 
-        // Monthly Sessions
-        const labels = companyA.traffic.history.map(item => formatDate(item.date));
-        const companyATrafficValues = companyA.traffic.history.map(item => item.visits);
-        const companyBTrafficValues = companyB.traffic.history.map(item => item.visits);
+    const geoLabels = companyA.geography.topCountriesTraffics
+      .slice(0, 3)
+      .map((i) => i.countryAlpha2Code);
+    const companyAGeoSegment = companyA.geography.topCountriesTraffics
+      .slice(0, 3)
+      .map((i) => i.visitsShare);
+    const companyBGeoSegment = companyB.geography.topCountriesTraffics
+      .slice(0, 3)
+      .map((i) => i.visitsShare);
+    const sumCompanyATopIntlGeos = sumArrayPercentage(
+      companyA.geography.topCountriesTraffics
+        .slice(1, 3)
+        .map((i) => i.visitsShare)
+    );
 
-        // Percent Difference Sessions
-        const sumCompanyATrafficValues = sumArrayWholeNumber(companyATrafficValues);
-        const sumCompanyBTrafficValues = sumArrayWholeNumber(companyBTrafficValues);
-        const percentDifferenceTraffic = calculatePercentChange(sumCompanyATrafficValues, sumCompanyBTrafficValues);
-        const companyBMonthlyPercentChangeTraffic = calculatePercentChange(companyBTrafficValues[0], companyBTrafficValues[1])
+    const companyBUSTraffic = roundNumber(
+      Number(companyB.geography.topCountriesTraffics[0]?.visitsShare || 0)
+    );
 
-        // Traffic Sources
-        const companyATrafficSource = {
-            labels: [
-                "Direct",
-                "Referral",
-                "Organic Search",
-                "Paid Search",
-                "Social"
-            ],
-            values: [
-                companyA.trafficSources.directVisitsShare,
-                companyA.trafficSources.referralVisitsShare,
-                companyA.trafficSources.organicSearchVisitsShare,
-                companyA.trafficSources.paidSearchVisitsShare,
-                companyA.trafficSources.socialNetworksVisitsShare
-            ]
-        };
-        const companyBTrafficSource = {
-            labels: [
-                "Direct",
-                "Referral",
-                "Organic Search",
-                "Paid Search",
-                "Social"
-            ],
-            values: [
-                companyB.trafficSources.directVisitsShare,
-                companyB.trafficSources.referralVisitsShare,
-                companyB.trafficSources.organicSearchVisitsShare,
-                companyB.trafficSources.paidSearchVisitsShare,
-                companyB.trafficSources.socialNetworksVisitsShare
-            ]
-        };
+    // === User Behavior ===
+    const bounceRateLabels = [" "];
+    const companyABounceRate = [companyA.traffic.bounceRate];
+    const companyBBounceRate = [companyB.traffic.bounceRate];
 
-        const companyAOrganicSearchTraffic = roundNumber(companyA.trafficSources.organicSearchVisitsShare);
-        const companyBOrganicSearchTraffic = roundNumber(companyB.trafficSources.organicSearchVisitsShare);
+    const pagesPerVisitLabels = [" "];
+    const companyAPagesPerVisit = [companyA.traffic.pagesPerVisit];
+    const companyBPagesPerVisit = [companyB.traffic.pagesPerVisit];
 
-        const companyBDirectVisits = roundNumber(companyB.trafficSources.directVisitsShare);
+    const avgVisitDurationLabels = [" "];
+    const aDurSec = convertToSeconds(
+      companyA.traffic.visitsAvgDurationFormatted
+    );
+    const bDurSec = convertToSeconds(
+      companyB.traffic.visitsAvgDurationFormatted
+    );
+    const companyAAvgVisitDuration = [aDurSec];
+    const companyBAvgVisitDuration = [bDurSec];
 
-        const percentDifferenceDirect = calculatePercentChange(companyA.trafficSources.directVisitsShare,
-            companyB.trafficSources.directVisitsShare);
+    const avgVisitDurationPercentDifference = calculatePercentChange(
+      aDurSec,
+      bDurSec
+    );
 
-        const percentDifferenceOrganicSearch = calculatePercentChange(companyB.trafficSources.organicSearchVisitsShare,
-            companyA.trafficSources.organicSearchVisitsShare);
+    // Avg time per page (seconds, rounded)
+    const companyAAvgTimePerPage = Math.round(
+      aDurSec / Number(companyA.traffic.pagesPerVisit || 1)
+    );
+    const companyBAvgTimePerPage = Math.round(
+      bDurSec / Number(companyB.traffic.pagesPerVisit || 1)
+    );
+    // “A vs B” — keep your original sign convention if needed:
+    const avgTimePerPagePercentDifference = calculatePercentChange(
+      companyBAvgTimePerPage,
+      companyAAvgTimePerPage
+    );
 
-        // == Audience Segments == //
-        // Age
-        const companyASortedAudience = formatAndSortAudienceSegmentData(companyA.demographics.ageDistribution);
-        const companyBSortedAudience = formatAndSortAudienceSegmentData(companyB.demographics.ageDistribution);
+    res.render("traffic-audit.ejs", {
+      title: "Traffic Audit",
+      pageStyle: "traffic-audit",
 
-        const audienceLabels = companyASortedAudience.map(d => d.label);
-        const companyAAudienceSegment = companyASortedAudience.map(d => d.value);
-        const companyBAudienceSegment = companyBSortedAudience.map(d => d.value);
+      labels,
+      companyATrafficValues,
+      companyBTrafficValues,
+      percentDifferenceTraffic,
+      companyBMonthlyPercentChangeTraffic,
+      companyBUSTraffic,
 
-        const sumCompanyBAudienceSegment = sumArrayPercentage(companyBAudienceSegment.slice(2, 6));
+      companyAOrganicSearchTraffic,
+      companyBOrganicSearchTraffic,
+      companyBDirectVisits,
 
-        // Gender
-        const genderLabels = Object.keys(companyA.demographics.genderDistribution).map(label =>
-            label.charAt(0).toUpperCase() + label.slice(1)
-        );
-        const companyAGenderSegment = Object.values(companyA.demographics.genderDistribution);
-        const companyBGenderSegment = Object.values(companyB.demographics.genderDistribution);
+      companyATrafficSource,
+      companyBTrafficSource,
+      percentDifferenceDirect,
+      percentDifferenceOrganicSearch,
 
-        // Geo
-        const geoLabels = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.countryAlpha2Code);
-        const companyAGeoSegment = companyA.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
-        const companyBGeoSegment = companyB.geography.topCountriesTraffics.slice(0, 3).map(item => item.visitsShare);
-        const sumCompanyATopIntlGeos = sumArrayPercentage(
-            companyA.geography.topCountriesTraffics.slice(1, 3).map(item => item.visitsShare));
+      audienceLabels,
+      companyAAudienceSegment,
+      companyBAudienceSegment,
+      sumCompanyBAudienceSegment,
 
-        const companyBUSTrafficParse = JSON.parse(companyB.geography.topCountriesTraffics.slice(0, 1).map(item => item.visitsShare));
-        const companyBUSTraffic = roundNumber(companyBUSTrafficParse);
+      genderLabels,
+      companyAGenderSegment,
+      companyBGenderSegment,
 
-        // == User Behavior == //
-        // Bounce Rates
-        const bounceRateLabels = [" "];
-        const companyABounceRate = [companyA.traffic.bounceRate];
-        const companyBBounceRate = [companyB.traffic.bounceRate];
+      geoLabels,
+      companyAGeoSegment,
+      companyBGeoSegment,
+      sumCompanyATopIntlGeos,
 
-        // Pages Per Visit
-        const pagesPerVisitLabels = [" "];
-        const companyAPagesPerVisit = [companyA.traffic.pagesPerVisit];
-        const companyBPagesPerVisit = [companyB.traffic.pagesPerVisit];
+      bounceRateLabels,
+      companyABounceRate,
+      companyBBounceRate,
 
-        const companyAPagesPerVisitParse = JSON.parse(companyAPagesPerVisit);
-        const companyBPagesPerVisitParse = JSON.parse(companyBPagesPerVisit);
+      pagesPerVisitLabels,
+      companyAPagesPerVisit,
+      companyBPagesPerVisit,
 
-        // Avg Visit Duration
-        const avgVisitDurationLabels = [" "];
-        const companyAAvgVisitDuration = [convertToSeconds(companyA.traffic.visitsAvgDurationFormatted)];
-        const companyBAvgVisitDuration = [convertToSeconds(companyB.traffic.visitsAvgDurationFormatted)];
+      avgVisitDurationLabels,
+      companyAAvgVisitDuration,
+      companyBAvgVisitDuration,
 
-        const companyAAvgVisitDurationParse = JSON.parse(companyAAvgVisitDuration);
-        const companyBAvgVisitDurationparse = JSON.parse(companyBAvgVisitDuration);
-        const avgVisitDurationPercentDifference = calculatePercentChange(companyAAvgVisitDurationParse, companyBAvgVisitDurationparse);
-
-        // Avg Time Per Page
-        const companyAAvgTimePerPage = roundNumber(companyAAvgVisitDurationParse / companyAPagesPerVisitParse);
-        const companyBAvgTimePerPage = roundNumber(companyBAvgVisitDurationparse / companyBPagesPerVisitParse);
-        const avgTimePerPagePercentDifference = calculatePercentChange(companyAAvgTimePerPage, companyBAvgTimePerPage) * -1;
-
-        // Server-side render with EJS and pass the formatted data
-        res.render("traffic-audit.ejs", {
-            title: "Traffic Audit",
-            pageStyle: "traffic-audit",
-
-            labels,
-            companyATrafficValues,
-            companyBTrafficValues,
-            percentDifferenceTraffic,
-            companyBMonthlyPercentChangeTraffic,
-            companyBUSTraffic,
-
-            companyAOrganicSearchTraffic,
-            companyBOrganicSearchTraffic,
-            companyBDirectVisits,
-           
-            companyATrafficSource,
-            companyBTrafficSource,
-            percentDifferenceDirect,
-            percentDifferenceOrganicSearch,
-
-            audienceLabels,
-            companyAAudienceSegment,
-            companyBAudienceSegment,
-            sumCompanyBAudienceSegment,
-
-            genderLabels,
-            companyAGenderSegment,
-            companyBGenderSegment,
-
-            geoLabels,
-            companyAGeoSegment,
-            companyBGeoSegment,
-            sumCompanyATopIntlGeos,
-
-            bounceRateLabels,
-            companyABounceRate,
-            companyBBounceRate,
-
-            pagesPerVisitLabels,
-            companyAPagesPerVisit,
-            companyBPagesPerVisit,
-
-            avgVisitDurationLabels,
-            companyAAvgVisitDuration,
-            companyBAvgVisitDuration,
-
-            avgVisitDurationPercentDifference,
-            companyAAvgTimePerPage,
-            companyBAvgTimePerPage,
-            avgTimePerPagePercentDifference
-        });
-
-    } catch (err) {
-        console.error("Traffic audit error:", err.message);
-        res.status(500).send("Failed to load traffic data");
-    }
+      avgVisitDurationPercentDifference,
+      companyAAvgTimePerPage,
+      companyBAvgTimePerPage,
+      avgTimePerPagePercentDifference,
+    });
+  } catch (err) {
+    console.error("Traffic audit error:", err.message);
+    res.status(500).send("Failed to load traffic data");
+  }
 });
 
-// exports the router object so that it can be imported and used in server.js
 export default router;

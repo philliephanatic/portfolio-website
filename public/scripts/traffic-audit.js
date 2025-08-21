@@ -1,912 +1,512 @@
-Chart.register(ChartDataLabels);
+//__!!CHARTS ONLY!!__//
+// /public/scripts/traffic-audit.js
 
-// !_TO DO_! work on global settings/defaults to create chart partials
+import { onReady, getJSON, fmt } from "./utils/index.js";
+import { applyGlobalChartDefaults } from "./charts/config.js";
 
-//Global Formatting
-Chart.defaults.set('plugins.datalabels', {
-    formatter: (value) => `${(value * 100).toFixed(1)}%`,
-    color: "white",
-    font: {
-        family: "Roboto",
-        size: 14
-    },
-
+// Reusable scale snippet: no grid, no borders, no tick marks
+const noGrid = () => ({
+  grid: { display: false, drawBorder: false, drawTicks: false },
+  border: { display: false },
 });
 
-// Bar chart global defaults
-Chart.defaults.elements.bar.borderWidth = 0;
+/* global Chart */
+applyGlobalChartDefaults();
 
-// Pie chart global defaults
-Chart.overrides.pie.borderWidth = 0;
-
-// Bespoke Formattting 
-// Millions with "M"
-function formatMillions(value) {
-    if (value >= 1_000_000) {
-        return (value / 1_000_000).toFixed(1).replace(/\.0$/, '') + "M";
-    } return value;
-};
-
-// Tens
-function formatTens(value) {
-    return (value * 1).toFixed(0)
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-    initTrafficComparisonBarChart();
-    initCompanyAPieChart();
-    initCompanyBPieChart();
-    initAudienceSegmentBarChart();
-    initGenderSegmentBarChart();
-    initGeoSegmentBarChart();
-    initBounceRateBarChart();
-    initPagesPerVisitBarChart();
-    initAvgVisitDuration()
+onReady(() => {
+  initTrafficComparisonBarChart();
+  initCompanyAPieChart();
+  initCompanyBPieChart();
+  initAudienceSegmentBarChart();
+  initGenderSegmentBarChart();
+  initGeoSegmentBarChart();
+  initBounceRateBarChart();
+  initPagesPerVisitBarChart();
+  initAvgVisitDuration();
 });
 
-
-// 📊 Grouped Bar Chart – Monthly Sessions
+// 📊 Grouped Bar – Monthly Sessions
 function initTrafficComparisonBarChart() {
-    const raw = document.getElementById("traffic-comparison-script");
-    const ctx = document.getElementById("traffic-comparison-canvas");
+  const data = getJSON("traffic-comparison-script");
+  const ctx = document.getElementById("traffic-comparison-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || !raw) {
-        console.warn("Missing chart canvas or data script.");
-        return;
-    }
-
-    const { labels, companyATrafficValues, companyBTrafficValues } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyATrafficValues,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)",
-                },
-                {
-                    label: "Company B",
-                    data: companyBTrafficValues,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                }
-            ]
+  const { labels, companyATrafficValues, companyBTrafficValues } = data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyATrafficValues,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: "Monthly Sessions",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-
-                },
-                datalabels: {
-                    display: true,
-                    formatter: value => formatMillions(value),
-                    color: "white",
-                    font: {
-                        family: "Roboto",
-                        size: 14
-                    }
-                },
-                tooltip: {
-                    bodyFont: {
-                        family: "Roboto"
-                    },
-                    titleFont: {
-                        family: "Roboto"
-                    }
-                }
-            },
-
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: value => new Intl.NumberFormat("en-US").format(value),
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: "Sessions",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        },
-                        padding: {
-                            bottom: 10,
-                        }
-                    },
-                    grid: {
-                        color: "transparent",
-                    }
-                },
-                x: {
-                    border: {
-                        display: "none",
-                    },
-                    ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: "Month",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        },
-                        padding: {
-                            top: 0,
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            },
-        }
-    });
+        {
+          label: "Company B",
+          data: companyBTrafficValues,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Monthly Sessions" },
+        datalabels: { formatter: (v) => fmt.millions(v) },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => `${ctx.dataset.label}: ${fmt.number(ctx.raw)}`,
+          },
+          bodyFont: { family: "Roboto" },
+          titleFont: { family: "Roboto" },
+        },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: { callback: (v) => fmt.number(v), font: { size: 18 } },
+          title: {
+            display: true,
+            text: "Sessions",
+            font: { size: 18 },
+            padding: { bottom: 10 },
+          },
+        },
+        x: {
+          ...noGrid(),
+          border: { display: false },
+          ticks: { font: { size: 18 } },
+          title: { display: true, text: "Month", font: { size: 18 } },
+        },
+      },
+    },
+  });
 }
 
-// 🥧 Pie Chart – Company A Traffic Sources
+// 🥧 Pie – Company A Traffic Sources
 function initCompanyAPieChart() {
-    const raw = document.getElementById("companyA-traffic-source-script");
-    const ctx = document.getElementById("companyA-traffic-source-canvas");
+  const data = getJSON("companyA-traffic-source-script");
+  const ctx = document.getElementById("companyA-traffic-source-canvas");
+  if (!data || !ctx) return;
 
-    if (!raw || !ctx) {
-        console.warn("Missing chart canvas or data script.");
-        return;
-    }
-
-    const { labels, values } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "pie",
-        data: {
-            labels,
-            datasets: [{
-                data: values,
-                backgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF"
-                ],
-                hoverOffset: 10
-            }]
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: data.labels,
+      datasets: [
+        {
+          data: data.values,
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#9966FF",
+          ],
+          hoverOffset: 10,
         },
-        options: {
-            response: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: "Company A Traffic Sources",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                legend: {
-                    font: {
-                        family: "Roboto",
-                        size: 18
-                    },
-                    position: "bottom",
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto"
-                        },
-                        usePointStyle: true,
-                        pointStyle: "circle"
-                    },
-                },
-                datalabels: {
-                    display: "auto",
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (ctx) {
-                            const label = ctx.label || "";
-                            const value = ctx.raw || 0;
-                            return `${label}: ${(value * 100).toFixed(1)}%`
-                        }
-                    }
-                }
-            }
-        }
-    })
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Company A Traffic Sources" },
+        datalabels: { formatter: (v) => fmt.percent(v) },
+        legend: {
+          position: "bottom",
+          labels: { usePointStyle: true, pointStyle: "circle" },
+        },
+        tooltip: {
+          callbacks: { label: (c) => `${c.label}: ${fmt.percent(c.raw)}` },
+        },
+      },
+    },
+  });
 }
 
-// 🥧 Pie Chart – Company B Traffic Sources
+// 🥧 Pie – Company B Traffic Sources
 function initCompanyBPieChart() {
-    const raw = document.getElementById("companyB-traffic-source-script");
-    const ctx = document.getElementById("companyB-traffic-source-canvas");
-    if (!raw || !ctx) {
-        console.warn("Missing chart canvas or data script.")
-        return;
-    }
+  const data = getJSON("companyB-traffic-source-script");
+  const ctx = document.getElementById("companyB-traffic-source-canvas");
+  if (!data || !ctx) return;
 
-    const { labels, values } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "pie",
-        data: {
-            labels,
-            datasets: [{
-                data: values,
-                backgroundColor: [
-                    "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40", "#C9CBCF"
-                ],
-                hoverOffset: 10
-            }]
+  new Chart(ctx, {
+    type: "pie",
+    data: {
+      labels: data.labels,
+      datasets: [
+        {
+          data: data.values,
+          backgroundColor: [
+            "#FF6384",
+            "#36A2EB",
+            "#FFCE56",
+            "#4BC0C0",
+            "#9966FF",
+            "#FF9F40",
+            "#C9CBCF",
+          ],
+          hoverOffset: 10,
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                title: {
-                    display: true,
-                    text: "Company B Traffic Sources",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                datalabels: {
-                    display: "auto",
-                },
-                legend: {
-                    font: {
-                        family: "Roboto",
-                        size: 18
-                    },
-                    position: "bottom",
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto"
-                        },
-                        usePointStyle: true,
-                        pointStyle: "circle"
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: function (ctx) {
-                            const label = ctx.label || "";
-                            const value = ctx.raw || 0;
-                            return `${label}: ${(value * 100).toFixed(1)}%`
-                        }
-                    }
-                }
-            }
-        }
-    })
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Company B Traffic Sources" },
+        datalabels: { formatter: (v) => fmt.percent(v) },
+        legend: {
+          position: "bottom",
+          labels: { usePointStyle: true, pointStyle: "circle" },
+        },
+        tooltip: {
+          callbacks: { label: (c) => `${c.label}: ${fmt.percent(c.raw)}` },
+        },
+      },
+    },
+  });
 }
 
-// 📊 Grouped Bar Chart – Audience Segment
+// 📊 Bar – Audience Segment
 function initAudienceSegmentBarChart() {
-    const raw = document.getElementById("age-segment-script");
-    const ctx = document.getElementById("age-segment-canvas");
+  const data = getJSON("age-segment-script");
+  const ctx = document.getElementById("age-segment-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || (!raw)) {
-        console.warn("Missing chart canvas or data script.")
-        return;
-    }
-
-    const { audienceLabels, companyAAudienceSegment, companyBAudienceSegment } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: audienceLabels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyAAudienceSegment,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)",
-                },
-                {
-                    label: "Company B",
-                    data: companyBAudienceSegment,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                }
-            ]
+  const { audienceLabels, companyAAudienceSegment, companyBAudienceSegment } =
+    data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: audienceLabels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyAAudienceSegment,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    }
-                },
-                title: {
-                    display: true,
-                    text: "Age",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                tooltip: {
-                    bodyFont: {
-                        family: "Roboto"
-                    },
-                    titleFont: {
-                        family: "Roboto"
-                    },
-                    callbacks: {
-                        label: function (ctx) {
-                            const value = ctx.raw || 0;
-                            return `${(value * 100).toFixed(1)}%`
-                        }
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: value => new Intl.NumberFormat("en-US", { style: "percent" }).format(value),
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: "% of Total Sessions",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    title: {
-                        display: true,
-                        text: "Age Range",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            }
-        }
-    })
-};
+        {
+          label: "Company B",
+          data: companyBAudienceSegment,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Age" },
+        tooltip: { callbacks: { label: (c) => fmt.percent(c.raw) } },
+        datalabels: { formatter: (v) => fmt.percent(v, 0) },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: {
+            callback: (v) =>
+              new Intl.NumberFormat("en-US", { style: "percent" }).format(v),
+            font: { size: 18 },
+          },
+          title: {
+            display: true,
+            text: "% of Total Sessions",
+            font: { size: 18 },
+          },
+        },
+        x: {
+          ...noGrid(),
+          ticks: { font: { size: 18 } },
+          title: { display: true, text: "Age Range", font: { size: 18 } },
+        },
+      },
+    },
+  });
+}
 
-// 📊 Grouped Bar Chart – Gender Segment
+// 📊 Bar – Gender Segment
 function initGenderSegmentBarChart() {
-    const raw = document.getElementById("gender-segment-script");
-    const ctx = document.getElementById("gender-segment-canvas");
+  const data = getJSON("gender-segment-script");
+  const ctx = document.getElementById("gender-segment-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || !raw) {
-        console.warn("Missing chart canvas or data script.")
-        return;
-    }
-
-    const { genderLabels, companyAGenderSegment, companyBGenderSegment } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: genderLabels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyAGenderSegment,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)"
-                },
-                {
-                    label: "Company B",
-                    data: companyBGenderSegment,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                }
-            ]
+  const { genderLabels, companyAGenderSegment, companyBGenderSegment } = data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: genderLabels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyAGenderSegment,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: "Gender",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => {
-                            const value = ctx.raw || 0;
-                            return `${(value * 100).toFixed(1)}%`;
-                        }
-                    },
-                    bodyFont: { family: "Roboto" },
-                    titleFont: { family: "Roboto" }
-                },
-                datalabels: {
-                    display: true
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: value => `${(value * 100).toFixed(0)}%`,
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    },
-                    title: {
-                        display: true,
-                        text: "% of Total Users",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            }
-        }
-    });
+        {
+          label: "Company B",
+          data: companyBGenderSegment,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Gender" },
+        legend: { display: false },
+        datalabels: { formatter: (v) => fmt.percent(v, 0) },
+        tooltip: { callbacks: { label: (c) => fmt.percent(c.raw) } },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: {
+            callback: (v) => `${(v * 100).toFixed(0)}%`,
+            font: { size: 18 },
+          },
+          title: {
+            display: true,
+            text: "% of Total Users",
+            font: { size: 18 },
+          },
+        },
+        x: {
+          ...noGrid(),
+          ticks: { font: { size: 18 } },
+        },
+      },
+    },
+  });
 }
 
-// 📊 Grouped Bar Chart – Geo Segment
+// 📊 Bar – Geo Segment
 function initGeoSegmentBarChart() {
-    const raw = document.getElementById("geo-segment-script");
-    const ctx = document.getElementById("geo-segment-canvas");
+  const data = getJSON("geo-segment-script");
+  const ctx = document.getElementById("geo-segment-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || !raw) {
-        console.warn("Missing chart canvas or data script.")
-        return;
-    }
-
-    const { geoLabels, companyAGeoSegment, companyBGeoSegment } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: geoLabels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyAGeoSegment,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)"
-                },
-                {
-                    label: "Company B",
-                    data: companyBGeoSegment,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                },
-            ]
+  const { geoLabels, companyAGeoSegment, companyBGeoSegment } = data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: geoLabels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyAGeoSegment,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: "Geography",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => {
-                            const value = ctx.raw || 0;
-                            return `${(value * 100).toFixed(1)}%`;
-                        }
-                    },
-                    bodyFont: { family: "Roboto" },
-                    titleFont: { family: "Roboto" }
-                },
-                datalabels: {
-                    display: true
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: value => `${(value * 100).toFixed(0)}%`,
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    },
-                    title: {
-                        display: true,
-                        text: "% of Total Users",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    }
-                },
-                x: {
-                    ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            }
-        }
-    });
+        {
+          label: "Company B",
+          data: companyBGeoSegment,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Geography" },
+        legend: { display: false },
+        datalabels: { formatter: (v) => fmt.percent(v, 0) },
+        tooltip: { callbacks: { label: (c) => fmt.percent(c.raw) } },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: {
+            callback: (v) => `${(v * 100).toFixed(0)}%`,
+            font: { size: 18 },
+          },
+          title: {
+            display: true,
+            text: "% of Total Users",
+            font: { size: 18 },
+          },
+        },
+        x: {
+          ...noGrid(),
+          ticks: { font: { size: 18 } },
+        },
+      },
+    },
+  });
 }
 
-// 📊 Bounce Rate - Grouped Bar Chart
+// 📊 Bar – Bounce Rate
 function initBounceRateBarChart() {
-    const raw = document.getElementById("bounce-rate-script");
-    const ctx = document.getElementById("bounce-rate-canvas");
+  const data = getJSON("bounce-rate-script");
+  const ctx = document.getElementById("bounce-rate-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || !raw) {
-        console.warn("Missing chart canvas or data script.")
-        return;
-    }
-
-    const { bounceRateLabels, companyABounceRate, companyBBounceRate } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: bounceRateLabels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyABounceRate,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)"
-                },
-                {
-                    label: "Company B",
-                    data: companyBBounceRate,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                }
-            ]
+  const { bounceRateLabels, companyABounceRate, companyBBounceRate } = data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: bounceRateLabels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyABounceRate,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    labels: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    position: "top",
-                },
-                title: {
-                    display: true,
-                    text: "Bounce Rate",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => {
-                            const value = ctx.raw || 0;
-                            return `${(value * 100).toFixed(1)}%`;
-                        }
-                    },
-                    bodyFont: { family: "Roboto" },
-                    titleFont: { family: "Roboto" }
-                },
-                datalabels: {
-                    display: true
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: value => `${(value * 100).toFixed(0)}%`,
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    },
-                    title: {
-                        display: false,
-                    }
-                },
-                x: {
-                    ticks: {
-                        display: false,
-
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            }
-        }
-    });
+        {
+          label: "Company B",
+          data: companyBBounceRate,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Bounce Rate" },
+        legend: { position: "top" },
+        datalabels: { formatter: (v) => fmt.percent(v) },
+        tooltip: {
+          callbacks: {
+            label: (c) => `${c.dataset.label}: ${fmt.percent(c.raw)}`,
+          },
+        },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: {
+            callback: (v) => `${(v * 100).toFixed(0)}%`,
+            font: { size: 18 },
+          },
+        },
+        x: {
+          ...noGrid(),
+          ticks: { display: false },
+        },
+      },
+    },
+  });
 }
 
-// 📊 Pages Per Visit - Grouped Bar Chart
+// 📊 Bar – Pages per Visit
 function initPagesPerVisitBarChart() {
-    const raw = document.getElementById("pages-per-visit-script");
-    const ctx = document.getElementById("pages-per-visit-canvas");
+  const data = getJSON("pages-per-visit-script");
+  const ctx = document.getElementById("pages-per-visit-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || !raw) {
-        console.warn("Missing chart canvas or data script.")
-        return;
-    }
-
-    const { pagesPerVisitLabels, companyAPagesPerVisit, companyBPagesPerVisit } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: pagesPerVisitLabels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyAPagesPerVisit,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)"
-                },
-                {
-                    label: "Company B",
-                    data: companyBPagesPerVisit,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                }
-            ]
+  const { pagesPerVisitLabels, companyAPagesPerVisit, companyBPagesPerVisit } =
+    data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: pagesPerVisitLabels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyAPagesPerVisit,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: "Pages per Visit",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => {
-                            const value = ctx.raw || 0;
-                            return `${(value * 1).toFixed(0)}`
-                        }
-                    },
-                    bodyFont: { family: "Roboto" },
-                    titleFont: { family: "Roboto" }
-                },
-                datalabels: {
-                    formatter: value => formatTens(value),
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    },
-                    title: {
-                        display: false,
-                    }
-                },
-                x: {
-                    ticks: {
-                        display: false,
-                    },
-                    title: {
-                        display: false
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                }
-            }
-        }
-    });
+        {
+          label: "Company B",
+          data: companyBPagesPerVisit,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Pages per Visit" },
+        legend: { display: false },
+        datalabels: { formatter: (v) => fmt.tens(v) },
+        tooltip: {
+          callbacks: { label: (c) => `${c.dataset.label}: ${fmt.tens(c.raw)}` },
+        },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: { font: { size: 18 } },
+        },
+        x: {
+          ...noGrid(),
+          ticks: { display: false },
+        },
+      },
+    },
+  });
 }
 
-// 📊 Avg Visit Duration - Bar Chart
+// 📊 Bar – Avg Visit Duration (mm:ss)
 function initAvgVisitDuration() {
-    const raw = document.getElementById("avg-visit-duration-script");
-    const ctx = document.getElementById("avg-visit-duration-canvas");
+  const data = getJSON("avg-visit-duration-script");
+  const ctx = document.getElementById("avg-visit-duration-canvas");
+  if (!data || !ctx) return;
 
-    if (!ctx || !raw) {
-        console.warn("Missing chart canvas or data script.");
-        return;
-    }
-
-    const { avgVisitDurationLabels, companyAAvgVisitDuration, companyBAvgVisitDuration } = JSON.parse(raw.textContent);
-
-    new Chart(ctx, {
-        type: "bar",
-        data: {
-            labels: avgVisitDurationLabels,
-            datasets: [
-                {
-                    label: "Company A",
-                    data: companyAAvgVisitDuration,
-                    backgroundColor: "rgba(54, 162, 235, 0.7)"
-                },
-                {
-                    label: "Company B",
-                    data: companyBAvgVisitDuration,
-                    backgroundColor: "rgba(255, 99, 132, 0.7)"
-                }
-            ]
+  const {
+    avgVisitDurationLabels,
+    companyAAvgVisitDuration,
+    companyBAvgVisitDuration,
+  } = data;
+  new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: avgVisitDurationLabels,
+      datasets: [
+        {
+          label: "Company A",
+          data: companyAAvgVisitDuration,
+          backgroundColor: "rgba(54,162,235,0.7)",
         },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: "Avg Visit Duration",
-                    color: "white",
-                    font: {
-                        family: "Fjalla One",
-                        size: 30
-                    }
-                },
-                datalabels: {
-                    formatter: (value) => {
-                        const mins = Math.floor(value / 60);
-                        const secs = Math.floor(value % 60).toString().padStart(2, "0");
-                        return `${mins}:${secs}`;
-                    },
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        color: "white",
-                        callback: (value) => {
-                            const mins = Math.floor(value / 60);
-                            const secs = Math.floor(value % 60).toString().padStart(2, "0");
-                            return `${mins}:${secs}`;
-                        },
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        },
-                    },
-                    title: {
-                        display: true,
-                        text: "Minutes : Seconds",
-                        color: "white",
-                        font: {
-                            family: "Roboto",
-                            size: 18
-                        },
-                        padding: {
-                            bottom: 10,
-                        }
-                    },
-                    grid: {
-                        color: "transparent"
-                    },
-                },
-
-                x: {
-                    ticks: {
-                        display: false,
-                    },
-                    title: {
-                        display: false
-                    },
-                    grid: {
-                        color: "transparent"
-                    }
-                },
-            },
-
-        }
-    });
-};
+        {
+          label: "Company B",
+          data: companyBAvgVisitDuration,
+          backgroundColor: "rgba(255,99,132,0.7)",
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        title: { text: "Avg Visit Duration" },
+        legend: { display: false },
+        datalabels: { formatter: (v) => fmt.mmss(v) },
+        tooltip: {
+          callbacks: { label: (c) => `${c.dataset.label}: ${fmt.mmss(c.raw)}` },
+          bodyFont: { family: "Roboto" },
+          titleFont: { family: "Roboto" },
+        },
+      },
+      scales: {
+        y: {
+          ...noGrid(),
+          beginAtZero: true,
+          ticks: { callback: (v) => fmt.mmss(v), font: { size: 18 } },
+          title: {
+            display: true,
+            text: "Minutes : Seconds",
+            font: { size: 18 },
+            padding: { bottom: 10 },
+          },
+        },
+        x: {
+          ...noGrid(),
+          ticks: { display: false },
+          title: { display: false },
+        },
+      },
+    },
+  });
+}

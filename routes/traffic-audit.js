@@ -97,7 +97,7 @@ router.get("/", async (_req, res) => {
     const companyBAudienceSegment = companyBSortedAudience.map((d) => d.value);
     const sumCompanyBAudienceSegment = sumArrayPercentage(
       companyBAudienceSegment.slice(2, 6)
-    ); // >34
+    ); 
 
     const genderLabels = Object.keys(
       companyA.demographics.genderDistribution

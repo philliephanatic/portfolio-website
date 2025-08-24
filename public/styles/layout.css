@@ -1,37 +1,42 @@
 /* ===== Page Layout & Sections ===== */
 
 .case-study-page {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1rem 1rem;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 1rem 1rem;
+  gap: 1rem;
 }
 
-.grid--1 { 
-    display: grid;
-    grid-template-columns: 1fr; 
+@media (max-width: 600px) {
+    .case-study-page {
+        margin: var(--page-margin);
+    }
 }
 
-.grid--2 { 
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+.grid--1 {
+  grid-template-columns: 1fr;
+}
+
+.grid--2 {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .grid--3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .grid--6 {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .column-1 {
-    grid-column: 1;
+  grid-column: 1;
 }
 
 .column-2 {
-    grid-column: 2;
+  grid-column: 2;
 }
 
+.flex {
+    display: flex;
+}

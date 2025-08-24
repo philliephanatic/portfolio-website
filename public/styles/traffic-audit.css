@@ -1,14 +1,13 @@
 /* === Bespoke & IDs === */
 #goal-statement,
 #data-statement {
-    text-align: left;
     min-height: 14.5rem;
+    min-width: 100%;
 }
 
 #goal-statement__title,
 #data-statement__title {
-    display: flex;
-    min-height: 4.5rem;
+    max-height: 4.5rem;
     text-align: center;
 }
 

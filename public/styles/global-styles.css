@@ -1,62 +1,98 @@
+/*__VARIABLES__*/
+:root {
+  /*_colors_*/
+  --bg-case-study: #1f2a44;
+  --bg-index: yellow;
+  --bg-module: #2f3e6a;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --text-color: #f5f5f5;
+
+  /*_branding-colors_*/
+  --brand-a: #36a2eb;
+  --brand-b: #ff6384;
+  --accent: gold;
+
+  /*_layout-scale_*/
+  --container-gap: 1rem;
+  --page-margin: 1rem;
+  --card-pad: 1.5rem
+
+  /*_chart-height_*/
+  --chart-h: 260px;
+
+  /*_font-size_*/
+  --fs-h1: 2.8rem;
+  --fs-h2: 2rem;
+  --fs-body: 1.6rem;
+
+  /* Line heights */
+  --lh-tight: 1.15;
+  --lh-body: 1.55;
+}
+
+/* MOBILE < 600px */
+@media (max-width: 600px) {
+  :root {
+    --container-gap: 1.5rem;
+    --page-margin: 0.5rem;
+
+    --chart-h: 360px;
+
+    --card-pad: .75rem;
+
+    --fs-h1: 4.2rem;
+    --fs-h2: 2.8rem;
+    --fs-body: 1.4rem;
+  }
+}
+
+/* Reset / base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; /* 62.5% trick: 1rem = 10px for easier scaling */
+  scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg);
-    color: var(--text);
-    max-height: 100%;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
-
-/*__VARIABLES__*/
-:root {
-    /*_page-colors_*/
-    --bg: #1F2A44;
-    --bg--index: yellow;
-    --text: #f5f5f5;
-
-    /*_components_*/
-    --card: rgba(255, 255, 255, 0.05);
-
-    /*_branding-colors_*/
-    --brand-a: #36a2eb;
-    --brand-b: #ff6384;
-    --accent: gold;
-
+  background-color: var(--bg-case-study);
+  color: var(--text-color);
+  max-height: 100%;
+  overflow-x: hidden;
+  font-family: "Roboto";
+  font-size: var(--fs-body);
 }
 
 /*__FONTS__*/
 @font-face {
-    font-family: "Fjalla One";
-    src: url(./fonts/Fjalla_One/FjallaOne-Regular.woff2) format(woff2),
-        url(./fonts/Fjalla_One/FjallaOne-Regular.woff) format(woff);
+  font-family: "Fjalla One";
+  src: url(./fonts/Fjalla_One/FjallaOne-Regular.woff2) format(woff2),
+    url(./fonts/Fjalla_One/FjallaOne-Regular.woff) format(woff);
 }
-
 @font-face {
-    font-family: "Roboto";
-    src: url(./fonts/Roboto/Roboto-Regular.woff2) format(woff2),
-        url(./fonts/Roboto/Roboto-Regular.woff) format(woff);
+  font-family: "Roboto";
+  src: url(./fonts/Roboto/Roboto-Regular.woff2) format(woff2),
+    url(./fonts/Roboto/Roboto-Regular.woff) format(woff);
 }
 
-html {
-    font-size: 62.5%;
-    /* 62.5% trick: 1rem = 10px for easier scaling */
+/*__TYPOGRAPHY__*/
+h1,
+h2 {
+  font-family: "Fjalla One";
+  color: var(--text-color);
+  line-height: var(--lh-tight);
 }
 
 h1 {
-    font-family: "Fjalla One";
-    font-size: 5rem;
-    color: var(--text);
+  font-size: var(--fs-h1);
 }
 
 h2 {
-    font-family: "Fjalla One";
-    font-size: 3.5rem;
-    color: var(--text);
+  font-size: var(--fs-h2);
 }
 
 h3,
@@ -66,59 +102,18 @@ h6,
 p,
 li,
 a {
-    font-family: "Roboto";
-    font-size: 2rem;
-    color: var(--text);
+  font-family: "Roboto";
+  font-size: var(--fs-body);
+  color: var(--text-color);
 }
 
-/*__MARGINS__*/
-/* small mobile phones */
-@media (max-width: 600px) {
-
-    header,
-    main {
-        margin-left: 2rem;
-        margin-right: 2rem;
-    }
+/* Consistent spacing for headings/text */
+h1+p,
+h2+p,
+h3+p {
+  margin-top: .5rem;
 }
 
-/* medium tablets */
-@media (min-width: 601px) and (max-width: 768px) {
-
-    header,
-    main {
-        margin-left: 10rem;
-        margin-right: 10rem;
-    }
-}
-
-/* tablets in landscape or small laptops */
-@media (min-width: 769px) and (max-width: 1024px) {
-
-    header,
-    main {
-        margin-left: 10rem;
-        margin-right: 10rem;
-    }
-}
-
-/* standard desktops and larger laptops */
-@media (min-width: 1025px) and (max-width: 1440px) {
-
-    header,
-    main {
-        margin-left: 12rem;
-        margin-right: 12rem;
-    }
-}
-
-/* extra large screens and 4K monitors */
-@media (min-width: 1441px) {
-
-    header,
-    main {
-        margin-left: 15rem;
-        margin-right: 15rem;
-    }
-
+p+p {
+  margin-top: .75rem;
 }

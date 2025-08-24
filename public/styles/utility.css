@@ -1,6 +1,6 @@
 /* ===== Reusable Components ===== */
 
-/* Flex Alignment */
+/* Flex Content Alignment */
 .u-flex-center {
     display: flex;
     justify-content: center;
@@ -17,6 +17,11 @@
     display: flex;
     align-items: baseline;
     height: 100%;
+}
+
+/* Grid Content Alignment */
+.u-align-content-start {
+    align-content: start;
 }
 
 /* span */

@@ -172,7 +172,7 @@ function initCompanyBPieChart() {
   });
 }
 
-// 📊 Bar – Audience Segment
+// 📊 Bar – Age Segment
 function initAudienceSegmentBarChart() {
   const data = getJSON("age-segment-script");
   const ctx = document.getElementById("age-segment-canvas");

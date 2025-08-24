@@ -1,11 +1,5 @@
 //__!!CHARTS CONFIG!!__//
 // public/scripts/charts/config.js
-console.log(
-  "Chart.js",
-  Chart?.version,
-  "| Datalabels:",
-  typeof ChartDataLabels
-);
 
 /* global Chart, ChartDataLabels */
 export function applyGlobalChartDefaults() {

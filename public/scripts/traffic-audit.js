@@ -1,8 +1,12 @@
-//__!!CHARTS ONLY!!__//
+// __!!CHARTS ONLY!!__
 // /public/scripts/traffic-audit.js
 
 import { onReady, getJSON, fmt } from "./utils/index.js";
-import { applyGlobalChartDefaults } from "./charts/config.js";
+import {
+  applyGlobalChartDefaults,
+  chartViewportOverrides,
+  mergeOptions,
+} from "./charts/config.js";
 
 // Reusable scale snippet: no grid, no borders, no tick marks
 const noGrid = () => ({
@@ -12,6 +16,17 @@ const noGrid = () => ({
 
 /* global Chart */
 applyGlobalChartDefaults();
+
+// Compute viewport-specific overrides once (XS/S/M/L/XL)
+const VP_OVERRIDES = chartViewportOverrides();
+
+// Merge helper so every chart gets: responsive + your options + viewport profile
+const opt = (kind, base) =>
+  mergeOptions(
+    { responsive: true, maintainAspectRatio: false },
+    base,
+    chartViewportOverrides(window, kind) // ← pass "pie" or "bar" here
+  );
 
 onReady(() => {
   initTrafficComparisonBarChart();
@@ -32,6 +47,7 @@ function initTrafficComparisonBarChart() {
   if (!data || !ctx) return;
 
   const { labels, companyATrafficValues, companyBTrafficValues } = data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -49,15 +65,13 @@ function initTrafficComparisonBarChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Monthly Sessions" },
         datalabels: { formatter: (v) => fmt.millions(v) },
         tooltip: {
           callbacks: {
-            label: (ctx) => `${ctx.dataset.label}: ${fmt.number(ctx.raw)}`,
+            label: (c) => `${c.dataset.label}: ${fmt.number(c.raw)}`,
           },
           bodyFont: { family: "Roboto" },
           titleFont: { family: "Roboto" },
@@ -67,22 +81,12 @@ function initTrafficComparisonBarChart() {
         y: {
           ...noGrid(),
           beginAtZero: true,
-          ticks: { callback: (v) => fmt.number(v), font: { size: 18 } },
-          title: {
-            display: true,
-            text: "Sessions",
-            font: { size: 18 },
-            padding: { bottom: 10 },
-          },
+          ticks: { callback: (v) => fmt.number(v) },
+          title: { display: true, text: "Sessions", padding: { bottom: 10 } },
         },
-        x: {
-          ...noGrid(),
-          border: { display: false },
-          ticks: { font: { size: 18 } },
-          title: { display: true, text: "Month", font: { size: 18 } },
-        },
+        x: { ...noGrid(), title: { display: true, text: "Month" } },
       },
-    },
+    }),
   });
 }
 
@@ -110,11 +114,9 @@ function initCompanyAPieChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("pie", {
       plugins: {
-        title: { text: "Company A Traffic Sources" },
+        title: { text: "Company A" },
         datalabels: { formatter: (v) => fmt.percent(v) },
         legend: {
           position: "bottom",
@@ -124,7 +126,7 @@ function initCompanyAPieChart() {
           callbacks: { label: (c) => `${c.label}: ${fmt.percent(c.raw)}` },
         },
       },
-    },
+    }),
   });
 }
 
@@ -154,11 +156,9 @@ function initCompanyBPieChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("pie", {
       plugins: {
-        title: { text: "Company B Traffic Sources" },
+        title: { text: "Company B" },
         datalabels: { formatter: (v) => fmt.percent(v) },
         legend: {
           position: "bottom",
@@ -168,7 +168,7 @@ function initCompanyBPieChart() {
           callbacks: { label: (c) => `${c.label}: ${fmt.percent(c.raw)}` },
         },
       },
-    },
+    }),
   });
 }
 
@@ -180,6 +180,7 @@ function initAudienceSegmentBarChart() {
 
   const { audienceLabels, companyAAudienceSegment, companyBAudienceSegment } =
     data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -197,9 +198,7 @@ function initAudienceSegmentBarChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Age" },
         tooltip: { callbacks: { label: (c) => fmt.percent(c.raw) } },
@@ -212,21 +211,12 @@ function initAudienceSegmentBarChart() {
           ticks: {
             callback: (v) =>
               new Intl.NumberFormat("en-US", { style: "percent" }).format(v),
-            font: { size: 18 },
           },
-          title: {
-            display: true,
-            text: "% of Total Sessions",
-            font: { size: 18 },
-          },
+          title: { display: true, text: "% of Total Sessions" },
         },
-        x: {
-          ...noGrid(),
-          ticks: { font: { size: 18 } },
-          title: { display: true, text: "Age Range", font: { size: 18 } },
-        },
+        x: { ...noGrid(), title: { display: true, text: "Age Range" } },
       },
-    },
+    }),
   });
 }
 
@@ -237,6 +227,7 @@ function initGenderSegmentBarChart() {
   if (!data || !ctx) return;
 
   const { genderLabels, companyAGenderSegment, companyBGenderSegment } = data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -254,9 +245,7 @@ function initGenderSegmentBarChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Gender" },
         legend: { display: false },
@@ -267,22 +256,12 @@ function initGenderSegmentBarChart() {
         y: {
           ...noGrid(),
           beginAtZero: true,
-          ticks: {
-            callback: (v) => `${(v * 100).toFixed(0)}%`,
-            font: { size: 18 },
-          },
-          title: {
-            display: true,
-            text: "% of Total Users",
-            font: { size: 18 },
-          },
+          ticks: { callback: (v) => `${(v * 100).toFixed(0)}%` },
+          title: { display: true, text: "% of Total Users" },
         },
-        x: {
-          ...noGrid(),
-          ticks: { font: { size: 18 } },
-        },
+        x: { ...noGrid() },
       },
-    },
+    }),
   });
 }
 
@@ -293,6 +272,7 @@ function initGeoSegmentBarChart() {
   if (!data || !ctx) return;
 
   const { geoLabels, companyAGeoSegment, companyBGeoSegment } = data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -310,9 +290,7 @@ function initGeoSegmentBarChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Geography" },
         legend: { display: false },
@@ -323,22 +301,12 @@ function initGeoSegmentBarChart() {
         y: {
           ...noGrid(),
           beginAtZero: true,
-          ticks: {
-            callback: (v) => `${(v * 100).toFixed(0)}%`,
-            font: { size: 18 },
-          },
-          title: {
-            display: true,
-            text: "% of Total Users",
-            font: { size: 18 },
-          },
+          ticks: { callback: (v) => `${(v * 100).toFixed(0)}%` },
+          title: { display: true, text: "% of Total Users" },
         },
-        x: {
-          ...noGrid(),
-          ticks: { font: { size: 18 } },
-        },
+        x: { ...noGrid() },
       },
-    },
+    }),
   });
 }
 
@@ -349,6 +317,7 @@ function initBounceRateBarChart() {
   if (!data || !ctx) return;
 
   const { bounceRateLabels, companyABounceRate, companyBBounceRate } = data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -366,9 +335,7 @@ function initBounceRateBarChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Bounce Rate" },
         legend: { position: "top" },
@@ -383,17 +350,11 @@ function initBounceRateBarChart() {
         y: {
           ...noGrid(),
           beginAtZero: true,
-          ticks: {
-            callback: (v) => `${(v * 100).toFixed(0)}%`,
-            font: { size: 18 },
-          },
+          ticks: { callback: (v) => `${(v * 100).toFixed(0)}%` },
         },
-        x: {
-          ...noGrid(),
-          ticks: { display: false },
-        },
+        x: { ...noGrid(), ticks: { display: false } },
       },
-    },
+    }),
   });
 }
 
@@ -405,6 +366,7 @@ function initPagesPerVisitBarChart() {
 
   const { pagesPerVisitLabels, companyAPagesPerVisit, companyBPagesPerVisit } =
     data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -422,9 +384,7 @@ function initPagesPerVisitBarChart() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Pages per Visit" },
         legend: { display: false },
@@ -434,17 +394,10 @@ function initPagesPerVisitBarChart() {
         },
       },
       scales: {
-        y: {
-          ...noGrid(),
-          beginAtZero: true,
-          ticks: { font: { size: 18 } },
-        },
-        x: {
-          ...noGrid(),
-          ticks: { display: false },
-        },
+        y: { ...noGrid(), beginAtZero: true },
+        x: { ...noGrid(), ticks: { display: false } },
       },
-    },
+    }),
   });
 }
 
@@ -459,6 +412,7 @@ function initAvgVisitDuration() {
     companyAAvgVisitDuration,
     companyBAvgVisitDuration,
   } = data;
+
   new Chart(ctx, {
     type: "bar",
     data: {
@@ -476,9 +430,7 @@ function initAvgVisitDuration() {
         },
       ],
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
+    options: opt("bar", {
       plugins: {
         title: { text: "Avg Visit Duration" },
         legend: { display: false },
@@ -493,11 +445,10 @@ function initAvgVisitDuration() {
         y: {
           ...noGrid(),
           beginAtZero: true,
-          ticks: { callback: (v) => fmt.mmss(v), font: { size: 18 } },
+          ticks: { callback: (v) => fmt.mmss(v) },
           title: {
             display: true,
             text: "Minutes : Seconds",
-            font: { size: 18 },
             padding: { bottom: 10 },
           },
         },
@@ -507,6 +458,6 @@ function initAvgVisitDuration() {
           title: { display: false },
         },
       },
-    },
+    }),
   });
 }

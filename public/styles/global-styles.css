@@ -15,10 +15,11 @@
   /*_layout-scale_*/
   --container-gap: 1rem;
   --page-margin: 1rem;
-  --card-pad: 1.5rem
+  --card-pad: 1.5rem;
 
   /*_chart-height_*/
   --chart-h: 260px;
+  
 
   /*_font-size_*/
   --fs-h1: 2.8rem;
@@ -36,7 +37,7 @@
     --container-gap: 1.5rem;
     --page-margin: 0.5rem;
 
-    --chart-h: 360px;
+    --chart-h: 30rem;
 
     --card-pad: .75rem;
 

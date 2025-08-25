@@ -133,13 +133,14 @@
 .chart {
   position: relative;
   margin: auto;
-  min-height: 30rem;
+  /* max-height: 35rem; */
+  /* height: 35rem; */
   max-width: 100%;
 }
 
 @media (max-width: 600px) {
     .chart {
-        height: var(--chart-h);
+        max-height: var(--chart-h);
     }
 }
 
@@ -179,7 +180,7 @@ ol {
   color: var(--accent);
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 1.8rem;
+  font-size: var(--fs-body);
 }
 
 .sticky-nav__sep {

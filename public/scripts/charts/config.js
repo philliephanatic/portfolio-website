@@ -58,3 +58,113 @@ export function applyGlobalChartDefaults() {
   // ⚠️ DO NOT mutate deep scale defaults globally (these may be undefined in UMD)
   // Instead, set grid/ticks per-chart (which you’re already doing).
 }
+
+/* ===== viewport optimization ===== */
+// -- Breakpoints used across charts (XS, S, M, L, XL)
+const MQ = {
+  xs: "(max-width: 600px)",
+  s: "(min-width: 601px) and (max-width: 768px)",
+  m: "(min-width: 769px) and (max-width: 1024px)",
+  l: "(min-width: 1025px) and (max-width: 1440px)",
+  xl: "(min-width: 1441px)",
+};
+
+/** Return chart option overrides for the current viewport */
+export function chartViewportOverrides(win = window, kind = "bar") {
+  if (typeof win === "undefined" || !win.matchMedia) return {};
+
+  const isXS = win.matchMedia(MQ.xs).matches;
+  const isS = win.matchMedia(MQ.s).matches;
+  const isM = win.matchMedia(MQ.m).matches;
+  const isL = win.matchMedia(MQ.l).matches;
+  const isXL = win.matchMedia(MQ.xl).matches;
+
+  // sensible defaults (desktop-ish)
+  let titleSize = 30;
+  let tickSize = 18;
+  let labelBox = 10;
+
+  if (isXS) {
+    titleSize = 18;
+    tickSize = 10;
+    labelBox = 8;
+  } else if (isS) {
+    titleSize = 20;
+    tickSize = 12;
+    labelBox = 8;
+  } else if (isM) {
+    titleSize = 24;
+    tickSize = 14;
+    labelBox = 10;
+  } else if (isL) {
+    titleSize = 28;
+    tickSize = 16;
+    labelBox = 10;
+  } else if (isXL) {
+    titleSize = 32;
+    tickSize = 20;
+    labelBox = 12;
+  }
+
+  // Base plugin scaling that applies to all kinds
+  const base = {
+    plugins: {
+      title: { font: { size: titleSize } },
+      legend: {
+        labels: {
+          boxWidth: labelBox,
+          boxHeight: labelBox,
+          font: { size: tickSize },
+        },
+      },
+      datalabels: { font: { size: Math.max(10, tickSize - 2) } },
+    },
+  };
+
+  if (kind === "pie") {
+    // Pie: legend bottom; no scales (no ticks at all)
+    return {
+      ...base,
+      plugins: {
+        ...base.plugins,
+        legend: { ...base.plugins.legend, position: "bottom", display: true },
+      },
+      // no `scales` key → avoids any axes/ticks showing on pies
+    };
+  }
+
+  // Bar (default): legend top; ticks ON (no grid/borders)
+  return {
+    ...base,
+    plugins: {
+      ...base.plugins,
+      legend: { ...base.plugins.legend, position: "top" },
+    },
+    scales: {
+      x: {
+        ticks: { display: true, font: { size: tickSize } },
+        grid: { display: false, drawBorder: false }, // omit drawTicks → defaults to true (tick marks ON)
+        border: { display: false },
+      },
+      y: {
+        ticks: { display: true, font: { size: tickSize } },
+        grid: { display: false, drawBorder: false },
+        border: { display: false },
+      },
+    },
+  };
+}
+
+/** Minimal deep merge for Chart.js option objects */
+export function mergeOptions(base = {}, ...overrides) {
+  const isObj = (v) => v && typeof v === "object" && !Array.isArray(v);
+  const out = { ...base };
+  for (const src of overrides) {
+    if (!isObj(src)) continue;
+    for (const k of Object.keys(src)) {
+      const v = src[k];
+      out[k] = isObj(v) ? mergeOptions(out[k] || {}, v) : v;
+    }
+  }
+  return out;
+}

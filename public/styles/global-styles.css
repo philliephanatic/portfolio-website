@@ -12,14 +12,14 @@
   --brand-b: #ff6384;
   --accent: gold;
 
-  /*_layout-scale_*/
-  --container-gap: 1rem;
+  /*_spacing_*/
+  --container-gap: 1.5rem;
   --page-margin: 1rem;
-  --card-pad: 1.5rem;
+  --page-padding: 1rem;
+  --card-padding: 1.5rem;
 
-  /*_chart-height_*/
-  --chart-h: 260px;
-
+  /*_container-height_*/
+  --chart-h: 26rem;
 
   /*_font-size_*/
   --fs-h1: 2.8rem;
@@ -32,25 +32,13 @@
   --lh-body: 1.55;
 }
 
-/* MOBILE: 375px - 767px */
-@media (max-width: 375px) {
-  :root {
-    --fs-375vw-stickynav: 0.95rem;
-  }
-}
-
-@media (max-width: 425px) {
-  :root {
-    --fs-425vw-stickynav: 1rem;
-  }
-}
-
+/* ===== MOBILE: 375px - 767px ===== */
 @media (min-width: 375px) and (max-width: 767px) {
   :root {
     /*_spacing_*/
-    --container-gap: 1.5rem;
     --page-margin: 0.5rem;
-    --card-pad: .75rem;
+    --page-padding: 1rem;
+    --card-padding: .75rem;
 
     /*_container-height_*/
     --chart-h: 30rem;
@@ -60,7 +48,25 @@
     --fs-h2: 2.8rem;
     --fs-body: 1.4rem;
     --fs-cta: 2rem;
+  }
+}
 
+/* ===== TABLET: 768px - 1024px ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  :root {
+    /*_spacing_*/
+    --page-margin: 3rem;
+    --page-padding: 1rem 2.5rem;
+    --card-padding: 1rem;
+
+    /*_container-height_*/
+    --chart-h: 30rem;
+
+    /*_font-size_*/
+    --fs-h1: 4.2rem;
+    --fs-h2: 3rem;
+    --fs-body: 1.5rem;
+    --fs-cta: 2rem;
 
   }
 }
@@ -125,6 +131,7 @@ a {
   font-family: "Roboto";
   font-size: var(--fs-body);
   color: var(--text-color);
+  line-height: var(--lh-body);
 }
 
 /*__SPACING__*/

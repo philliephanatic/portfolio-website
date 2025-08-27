@@ -4,7 +4,7 @@
 .hero-case-study {
   grid-column: span 2;
   background-color: var(--bg-module);
-  padding: 1.5rem;
+  padding: var(--page-padding);
   padding-top: 2rem;
   align-items: center;
 }
@@ -24,13 +24,19 @@
   text-transform: uppercase;
 }
 
+@media (min-width: 768px) and (max-width: 1023px) {
+  .module__title h2 {
+    font-size: var(--fs-h2);
+  }
+}
+
 /*__Cards__*/
 .card {
   display: flex;
   flex-direction: column;
   text-align: left;
   justify-content: start;
-  padding: var(--card-pad);
+  padding: var(--card-padding);
   alignment-baseline: text-top;
   background: var(--bg-card);
   border-radius: 0.8rem;
@@ -138,7 +144,7 @@
   max-width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
   .chart {
     max-height: var(--chart-h);
   }
@@ -201,7 +207,7 @@ ol {
 
 @media (max-width: 425px) {
   .sticky-nav a {
-    font-size: var(--fs-425vw-stickynav);
+    font-size: 1rem;
   }
 
   .sticky-nav__sep {
@@ -211,7 +217,7 @@ ol {
 
 @media (max-width: 375px) {
   .sticky-nav a {
-    font-size: var(--fs-375vw-stickynav);
+    font-size: 0.95rem;
   }
 
   .sticky-nav__list {

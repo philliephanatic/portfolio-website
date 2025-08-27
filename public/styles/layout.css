@@ -3,11 +3,11 @@
 .case-study-page {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 1rem 1rem;
+  padding: var(--page-padding);
   gap: 1rem;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) {
     .case-study-page {
         margin: var(--page-margin);
     }

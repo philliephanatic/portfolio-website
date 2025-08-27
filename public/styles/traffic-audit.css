@@ -1,7 +1,7 @@
 /* === Bespoke & IDs === */
 #goal-statement,
 #data-statement {
-    min-height: 14.5rem;
+    min-height: auto;
     min-width: 100%;
 }
 
@@ -22,6 +22,11 @@
 
 #comp-b-traffic-sources {
     padding-left: 0.25rem;
+}
+
+#age-segment-canvas,
+#bounce-rate-canvas {
+    padding-bottom: 3rem;
 }
 
 #gender-segment-canvas {

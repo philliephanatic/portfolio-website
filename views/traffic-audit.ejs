@@ -15,20 +15,20 @@
                 <section class="sticky-nav-scope u-span-2">
                     <!-- STICKY NAV -->
                     <nav class="module grid--1 u-span-2 sticky-nav" id="stickyNav">
-                        <ul class="sticky-nav__list">
-                            <li><a class="sticky-nav__link" href="#overview">Overview</a></li>
-                            <li class="sticky-nav__sep">&bull;</li>
-                            <li><a class="sticky-nav__link" href="#traffic-sources">Traffic Sources</a></li>
-                            <li class="sticky-nav__sep">&bull;</li>
-                            <li><a class="sticky-nav__link" href="#audience-segments">Audience Segments</a></li>
-                            <li class="sticky-nav__sep">&bull;</li>
-                            <li><a class="sticky-nav__link" href="#user-behavior">User Behavior</a></li>
-                            <li class="sticky-nav__sep">&bull;</li>
-                            <li><a class="sticky-nav__link" href="#conclusion">Conclusion</a></li>
-                        </ul>
+                            <ul class="sticky-nav__list">
+                                <li><a class="sticky-nav__link" href="#overview">Overview</a></li>
+                                <li class="sticky-nav__sep ">&bull;</li>
+                                <li><a class="sticky-nav__link" href="#traffic-sources">Traffic Sources</a></li>
+                                <li class="sticky-nav__sep ">&bull;</li>
+                                <li><a class="sticky-nav__link" href="#audience-segments">Audience Segments</a></li>
+                                <li class="sticky-nav__sep ">&bull;</li>
+                                <li><a class="sticky-nav__link" href="#user-behavior">User Behavior</a></li>
+                                <li class="sticky-nav__sep ">&bull;</li>
+                                <li><a class="sticky-nav__link" href="#conclusion">Conclusion</a></li>
+                            </ul>
                     </nav>
                     <!-- MODULE 1 -->
-                    <article class="module column-1 u-align-content-start" id="overview">
+                    <article class="module column-1 u-align-content-start">
                         <header class="u-flex-center" id="goal-statement__title">
                             <h2>
                                 <strong class="token--gold">GOAL</strong>
@@ -64,7 +64,7 @@
                     </article>
                     <!-- MODULE 2 -->
                     <!-- TRAFFIC-COMPARISON -->
-                    <article class="module grid--6 u-span-2" id="traffic-sources">
+                    <article class="module grid--6 u-span-2" id="overview">
                         <header class="module__title u-span-6">
                             <h2>
                                 Overview
@@ -132,14 +132,14 @@
 
                     <!-- MODULE 3 -->
                     <!-- TRAFFIC-SOURCE -->
-                    <article class="module grid--6 u-span-2">
+                    <article class="module grid--6 u-span-2" id="traffic-sources">
                         <header class="module__title u-span-6">
                             <h2>
                                 Traffic Sources
                             </h2>
                         </header>
                         <!-- CHARTS -->
-                        <figure class="chart u-span-3">
+                        <figure class="chart u-span-3" id="comp-a-traffic-sources">
                             <canvas id="companyA-traffic-source-canvas"></canvas>
                             <script id="companyA-traffic-source-script" type="application/json">
                             <%- JSON.stringify(companyATrafficSource) %>
@@ -148,7 +148,7 @@
                         <figcaption class="visually-hidden">
                             Company A Traffic Sources
                         </figcaption>
-                        <figure class="chart u-span-3">
+                        <figure class="chart u-span-3" id="comp-b-traffic-sources">
                             <canvas id="companyB-traffic-source-canvas"></canvas>
                             <script id="companyB-traffic-source-script" type="application/json">
                             <%- JSON.stringify(companyBTrafficSource) %>
@@ -223,7 +223,6 @@
                         <figcaption class="visually-hidden">
                             Age Segment
                         </figcaption>
-
                         <figure class="chart u-span-3">
                             <canvas id="gender-segment-canvas"></canvas>
                             <script id="gender-segment-script" type="application/json">
@@ -237,8 +236,7 @@
                         <figcaption class="visually-hidden">
                             Gender Segment
                         </figcaption>
-
-                        <figure class="chart u-span-3">
+                        <figure class="chart u-span-3" id="audience-segments-geo">
                             <canvas id="geo-segment-canvas"></canvas>
                             <script id="geo-segment-script" type="application/json">
                             <%- JSON.stringify({

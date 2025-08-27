@@ -159,6 +159,7 @@ router.get("/", async (_req, res) => {
     const companyBAvgTimePerPage = Math.round(
       bDurSec / Number(companyB.traffic.pagesPerVisit || 1)
     );
+    
     // “A vs B” — keep your original sign convention if needed:
     const avgTimePerPagePercentDifference = calculatePercentChange(
       companyBAvgTimePerPage,

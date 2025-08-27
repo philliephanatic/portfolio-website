@@ -1,4 +1,4 @@
-/*__VARIABLES__*/
+/*__VARIABLES-BASE__*/
 :root {
   /*_colors_*/
   --bg-case-study: #1f2a44;
@@ -19,35 +19,52 @@
 
   /*_chart-height_*/
   --chart-h: 260px;
-  
+
 
   /*_font-size_*/
   --fs-h1: 2.8rem;
   --fs-h2: 2rem;
   --fs-body: 1.6rem;
+  --fs-cta: 2.5rem;
 
   /* Line heights */
   --lh-tight: 1.15;
   --lh-body: 1.55;
 }
 
-/* MOBILE < 600px */
-@media (max-width: 600px) {
+/* MOBILE: 375px - 767px */
+@media (max-width: 375px) {
   :root {
-    --container-gap: 1.5rem;
-    --page-margin: 0.5rem;
-
-    --chart-h: 30rem;
-
-    --card-pad: .75rem;
-
-    --fs-h1: 4.2rem;
-    --fs-h2: 2.8rem;
-    --fs-body: 1.4rem;
+    --fs-375vw-stickynav: 0.95rem;
   }
 }
 
-/* Reset / base */
+@media (max-width: 425px) {
+  :root {
+    --fs-425vw-stickynav: 1rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  :root {
+    /*_spacing_*/
+    --container-gap: 1.5rem;
+    --page-margin: 0.5rem;
+    --card-pad: .75rem;
+
+    /*_container-height_*/
+    --chart-h: 30rem;
+
+    /*_font-size_*/
+    --fs-h1: 4.2rem;
+    --fs-h2: 2.8rem;
+    --fs-body: 1.4rem;
+    --fs-cta: 2rem;
+
+
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -55,7 +72,8 @@
 }
 
 html {
-  font-size: 62.5%; /* 62.5% trick: 1rem = 10px for easier scaling */
+  font-size: 62.5%;
+  /* 62.5% trick: 1rem = 10px for easier scaling */
   scroll-behavior: smooth;
 }
 
@@ -74,6 +92,7 @@ body {
   src: url(./fonts/Fjalla_One/FjallaOne-Regular.woff2) format(woff2),
     url(./fonts/Fjalla_One/FjallaOne-Regular.woff) format(woff);
 }
+
 @font-face {
   font-family: "Roboto";
   src: url(./fonts/Roboto/Roboto-Regular.woff2) format(woff2),
@@ -108,7 +127,11 @@ a {
   color: var(--text-color);
 }
 
-/* Consistent spacing for headings/text */
+/*__SPACING__*/
+h1+h2 {
+  margin-top: .25rem;
+}
+
 h1+p,
 h2+p,
 h3+p {

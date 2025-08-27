@@ -14,19 +14,16 @@ const noGrid = () => ({
   border: { display: false },
 });
 
-/* global Chart */
-applyGlobalChartDefaults();
-
-// Compute viewport-specific overrides once (XS/S/M/L/XL)
-const VP_OVERRIDES = chartViewportOverrides();
-
 // Merge helper so every chart gets: responsive + your options + viewport profile
 const opt = (kind, base) =>
   mergeOptions(
     { responsive: true, maintainAspectRatio: false },
     base,
-    chartViewportOverrides(window, kind) // ← pass "pie" or "bar" here
+    chartViewportOverrides(window, kind)
   );
+
+/* global Chart */
+applyGlobalChartDefaults();
 
 onReady(() => {
   initTrafficComparisonBarChart();
@@ -302,7 +299,7 @@ function initGeoSegmentBarChart() {
           ...noGrid(),
           beginAtZero: true,
           ticks: { callback: (v) => `${(v * 100).toFixed(0)}%` },
-          title: { display: true, text: "% of Total Users" },
+          title: { display: false },
         },
         x: { ...noGrid() },
       },
@@ -394,7 +391,7 @@ function initPagesPerVisitBarChart() {
         },
       },
       scales: {
-        y: { ...noGrid(), beginAtZero: true },
+        y: { ...noGrid(), ticks: { display: false } },
         x: { ...noGrid(), ticks: { display: false } },
       },
     }),

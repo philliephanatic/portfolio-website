@@ -16,6 +16,22 @@
     font-size: 2.5rem;
 }
 
+#comp-a-traffic-sources {
+    padding-right: 0.25rem;
+}
+
+#comp-b-traffic-sources {
+    padding-left: 0.25rem;
+}
+
+#gender-segment-canvas {
+    padding-right: 0.25rem;
+}
+
+#geo-segment-canvas {
+    padding-left: 0.25rem;
+}
+
 #exec-summary h3 {
     padding-bottom: .5rem;
     text-transform: uppercase;

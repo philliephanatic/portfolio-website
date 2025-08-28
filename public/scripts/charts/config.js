@@ -83,25 +83,31 @@ export function chartViewportOverrides(win = window, kind = "bar") {
   let titleSize = 30;
   let tickSize = 18;
   let labelBox = 10;
+  let axisSize = 15;
 
   if (isXS) {
     titleSize = 18;
+    axisSize = 12;
     tickSize = 10;
     labelBox = 8;
   } else if (isS) {
     titleSize = 20;
+    axisSize = 15;
     tickSize = 12;
     labelBox = 8;
   } else if (isM) {
     titleSize = 24;
+    axisSize = 18;
     tickSize = 14;
     labelBox = 10;
   } else if (isL) {
-    titleSize = 28;
-    tickSize = 16;
+    titleSize = 35;
+    axisSize = 22;
+    tickSize = 19;
     labelBox = 10;
   } else if (isXL) {
     titleSize = 32;
+    axisSize = 25;
     tickSize = 20;
     labelBox = 12;
   }
@@ -145,11 +151,19 @@ export function chartViewportOverrides(win = window, kind = "bar") {
         ticks: { display: true, font: { size: tickSize } },
         grid: { display: false, drawBorder: false }, // omit drawTicks → defaults to true (tick marks ON)
         border: { display: false },
+        title: {
+          display: true,
+          font: { size: axisSize },
+        },
       },
       y: {
         ticks: { display: true, font: { size: tickSize } },
         grid: { display: false, drawBorder: false },
         border: { display: false },
+        title: {
+          display: true,
+          font: { size: axisSize },
+        },
       },
     },
   };

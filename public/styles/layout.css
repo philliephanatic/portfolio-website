@@ -7,10 +7,10 @@
   gap: 1rem;
 }
 
-@media (max-width: 767px) {
-    .case-study-page {
-        margin: var(--page-margin);
-    }
+@media (min-width: 375px) and (max-width: 767px) {
+  .case-study-page {
+    margin: var(--page-margin);
+  }
 }
 
 .grid--1 {
@@ -38,5 +38,5 @@
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }

@@ -1,4 +1,14 @@
-/* === Bespoke & IDs === */
+/* =========================
+   IDs — page specific
+   ========================= */
+
+/* Titles */
+#key-point-title {
+    font-family: "Fjalla One";
+    font-size: var(--fs-h3);
+}
+
+/* Goal/Data blocks */
 #goal-statement,
 #data-statement {
     min-height: auto;
@@ -9,64 +19,129 @@
 #data-statement__title {
     max-height: 4.5rem;
     text-align: center;
+    padding-bottom: 0.5rem;
 }
 
-#key-point-title {
-    font-family: "Fjalla One";
-    font-size: 2.5rem;
-}
-
+/* Chart spacing */
 #age-segment-canvas,
 #bounce-rate-canvas {
     padding-bottom: 3rem;
 }
 
-@media (min-width: 375px) and (max-width: 1024px) {
-    #comp-a-traffic-sources {
-        padding-right: 0.25rem;
-    }
-
-    #comp-b-traffic-sources {
-        padding-left: 0.25rem;
-    }
+/* Conclusion list */
+#conclusion ol {
+    padding-left: 2.1rem;
 }
 
-@media (min-width: 1024px) and (max-width: 1440px) {
-    #comp-a-traffic-sources {
-        margin-left: 5rem;
-    }
+#conclusion li {
+    font-size: var(--fs-h3);
 }
 
-@media (min-width: 1024px) and (max-width: 1440px) {
-    #comp-b-traffic-sources {
-        margin-right: 5rem;
-    }
-}
-
-@media (min-width: 375px) and (max-width: 1024px) {
-    #gender-segment-canvas {
-        padding-right: 0.25rem;
-    }
-}
-
-@media (min-width: 375px) and (max-width: 1024px) {
-    #geo-segment-canvas {
-        padding-left: 0.25rem;
-    }
-}
-
-
+/* Exec summary */
 #exec-summary h3 {
-    padding-bottom: .5rem;
+    padding-bottom: 0.5rem;
     text-transform: uppercase;
     align-content: flex-start;
-    font-family: "fjalla one";
+    font-family: "Fjalla One";
 }
 
 #exec-summary p {
     padding-bottom: 1rem;
 }
 
-#conclusion ol {
-    padding-left: 2.1rem;
+
+/* =========================
+   Breakpoints
+   ========================= */
+
+@media (min-width: 375px) and (max-width: 767px) {
+    #comp-a-traffic-sources {
+        padding-right: 0.25rem;
+    }
+
+    #comp-b-traffic-sources {
+        padding-left: 0.25rem;
+    }
+
+    #gender-segment-canvas {
+        padding-right: 0.25rem;
+    }
+
+    #geo-segment-canvas {
+        padding-left: 0.25rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    #comp-a-traffic-sources {
+        padding-right: 0.25rem;
+    }
+
+    #comp-b-traffic-sources {
+        padding-left: 0.25rem;
+    }
+
+    #gender-segment-canvas {
+        padding-right: 0.25rem;
+    }
+
+    #geo-segment-canvas {
+        padding-left: 0.25rem;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+    #conclusion li {
+        font-size: 0;
+    }
+}
+
+
+
+/* Large (1025px–1440px): add outer margins to the two pies */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    #comp-a-traffic-sources {
+        margin-left: 5rem;
+        height: 40rem;
+    }
+
+    #comp-b-traffic-sources {
+        margin-right: 5rem;
+        height: 40rem;
+    }
+
+    #age-segment-canvas {
+        width: 60rem;
+    }
+
+    #avg-visit-duration-canvas {
+        margin-left: 5rem;
+    }
+
+    #pages-per-visit-canvas {
+        margin-right: 5rem;
+    }
+}
+
+@media (min-width: 1441px) {
+
+    #traffic-comparison-canvas,
+    #age-segment-canvas {
+        max-height: var(--chart-maxheight);
+        width: 80rem;
+    }
+
+    #companyA-traffic-source-canvas,
+    #companyB-traffic-source-canvas {
+        width: 50rem;
+    }
+
+    #age-segment-canvas,
+    #bounce-rate-canvas {
+        padding-bottom: 1rem;
+    }
+
+      #conclusion li {
+        font-size: 0;
+    }
 }

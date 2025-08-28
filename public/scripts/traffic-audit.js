@@ -81,7 +81,7 @@ function initTrafficComparisonBarChart() {
           ticks: { callback: (v) => fmt.number(v) },
           title: { display: true, text: "Sessions", padding: { bottom: 10 } },
         },
-        x: { ...noGrid(), title: { display: true, text: "Month" } },
+        x: { ...noGrid(), title: { display: false  } },
       },
     }),
   });
@@ -349,7 +349,7 @@ function initBounceRateBarChart() {
           beginAtZero: true,
           ticks: { callback: (v) => `${(v * 100).toFixed(0)}%` },
         },
-        x: { ...noGrid(), ticks: { display: false } },
+        x: { ...noGrid(), ticks: { display: true } },
       },
     }),
   });
@@ -391,7 +391,7 @@ function initPagesPerVisitBarChart() {
         },
       },
       scales: {
-        y: { ...noGrid(), ticks: { display: false } },
+        y: { ...noGrid(), ticks: { display: false }, title: {display: false} },
         x: { ...noGrid(), ticks: { display: false } },
       },
     }),

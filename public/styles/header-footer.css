@@ -166,26 +166,34 @@
     .footer-copy {
         font-size: 1.25rem;
     }
-    .site-header
-     {
+
+    .site-header {
         padding: var(--page-padding);
     }
+
     .site-footer {
         padding-bottom: 1rem;
     }
 }
-
 
 /* XL SCREEN */
 @media (min-width: 1441px) {
 
     .site-header,
     .site-footer {
-        padding-left: 30rem;
-        padding-right: 30rem;
+        padding: var(--page-padding);
     }
 
     .footer-copy {
         font-size: 1.75rem;
+    }
+}
+
+@media (min-width: 2000px) {
+
+    .site-header,
+    .site-footer {
+        padding: var(--page-padding);
+
     }
 }

@@ -19,7 +19,9 @@
   --card-padding: 1.5rem;
 
   /*_container-height_*/
-  --chart-h: 26rem;
+  --chart-minheight: 30rem;
+  --chart-maxheight: 40rem;
+  --chart-h: 30rem;
 
   /*_font-size_*/
   --fs-h1: 2.8rem;
@@ -40,9 +42,6 @@
     --page-padding: 1rem;
     --card-padding: .75rem;
 
-    /*_container-height_*/
-    --chart-h: 30rem;
-
     /*_font-size_*/
     --fs-h1: 4.2rem;
     --fs-h2: 2.8rem;
@@ -57,12 +56,11 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
     /*_spacing_*/
-    --page-margin: 3rem;
     --page-padding: 1rem 2rem;
     --card-padding: 1rem;
-
+    
     /*_container-height_*/
-    --chart-h: 30rem;
+    --chart-maxheight: 30rem;
 
     /*_font-size_*/
     --fs-h1: 4.2rem;
@@ -70,19 +68,19 @@
     --fs-h3: 2rem;
     --fs-body: 1.5rem;
     --fs-cta: 2rem;
-    --fs-card-title: 1.5rem
+    --fs-card-title: 1.1rem
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1440px) {
+/* ===== LAPTOP: 1024px - 1439px ===== */
+@media (min-width: 1024px) and (max-width: 1439px) {
   :root {
     /*_spacing_*/
-    --page-margin: 5rem;
     --page-padding: 2rem 4rem 0rem 4rem;
     --card-padding: 1rem;
 
-    /*_container-height_*/
-    --chart-h: 30rem;
+     /*_container-height_*/
+    --chart-maxheight: 30rem;
 
     /*_font-size_*/
     --fs-h1: 5rem;
@@ -90,8 +88,48 @@
     --fs-h3: 2.8rem;
     --fs-body: 1.6rem;
     --fs-cta: 2rem;
-    --fs-card-title: 1.75rem;
+    --fs-card-title: 1.5rem;
 
+  }
+}
+
+/* ===== MONITOR: 1440px - 1999px ===== */
+@media (min-width: 1440px) and (max-width: 1999px) {
+  :root {
+    /*_spacing_*/
+    --page-padding: 4rem 6rem 0rem 6rem;
+    --card-padding: 1rem;
+
+    /*_container-height_*/
+    --chart-maxheight: auto;
+
+    /*_font-size_*/
+    --fs-h1: 6.2rem;
+    --fs-h2: 5rem;
+    --fs-h3: 4rem;
+    --fs-body: 2.2rem;
+    --fs-cta: 3rem;
+    --fs-card-title: 1.75rem;
+  }
+}
+
+/* ===== XL MONITOR: 2000px + ===== */
+@media (min-width: 2000px) {
+  :root {
+    /*_spacing_*/
+    --page-padding: 4rem 50rem 0rem 50rem;
+    --card-padding: 1rem;
+
+    /*_container-height_*/
+    --chart-h: 30rem;
+
+    /*_font-size_*/
+    --fs-h1: 6.2rem;
+    --fs-h2: 5rem;
+    --fs-h3: 4rem;
+    --fs-body: 1.8rem;
+    --fs-cta: 2rem;
+    --fs-card-title: 1.75rem;
   }
 }
 

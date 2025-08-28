@@ -16,26 +16,45 @@
     font-size: 2.5rem;
 }
 
-#comp-a-traffic-sources {
-    padding-right: 0.25rem;
-}
-
-#comp-b-traffic-sources {
-    padding-left: 0.25rem;
-}
-
 #age-segment-canvas,
 #bounce-rate-canvas {
     padding-bottom: 3rem;
 }
 
-#gender-segment-canvas {
-    padding-right: 0.25rem;
+@media (min-width: 375px) and (max-width: 1024px) {
+    #comp-a-traffic-sources {
+        padding-right: 0.25rem;
+    }
+
+    #comp-b-traffic-sources {
+        padding-left: 0.25rem;
+    }
 }
 
-#geo-segment-canvas {
-    padding-left: 0.25rem;
+@media (min-width: 1024px) and (max-width: 1440px) {
+    #comp-a-traffic-sources {
+        margin-left: 5rem;
+    }
 }
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    #comp-b-traffic-sources {
+        margin-right: 5rem;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 1024px) {
+    #gender-segment-canvas {
+        padding-right: 0.25rem;
+    }
+}
+
+@media (min-width: 375px) and (max-width: 1024px) {
+    #geo-segment-canvas {
+        padding-left: 0.25rem;
+    }
+}
+
 
 #exec-summary h3 {
     padding-bottom: .5rem;
@@ -46,4 +65,8 @@
 
 #exec-summary p {
     padding-bottom: 1rem;
+}
+
+#conclusion ol {
+    padding-left: 2.1rem;
 }

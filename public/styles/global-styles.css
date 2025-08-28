@@ -46,17 +46,19 @@
     /*_font-size_*/
     --fs-h1: 4.2rem;
     --fs-h2: 2.8rem;
+    --fs-h3: 1.8rem;
     --fs-body: 1.4rem;
     --fs-cta: 2rem;
+    --fs-card-title: 1rem
   }
 }
 
-/* ===== TABLET: 768px - 1024px ===== */
+/* ===== TABLET: 768px - 1023px ===== */
 @media (min-width: 768px) and (max-width: 1023px) {
   :root {
     /*_spacing_*/
     --page-margin: 3rem;
-    --page-padding: 1rem 2.5rem;
+    --page-padding: 1rem 2rem;
     --card-padding: 1rem;
 
     /*_container-height_*/
@@ -65,11 +67,34 @@
     /*_font-size_*/
     --fs-h1: 4.2rem;
     --fs-h2: 3rem;
+    --fs-h3: 2rem;
     --fs-body: 1.5rem;
     --fs-cta: 2rem;
+    --fs-card-title: 1.5rem
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+  :root {
+    /*_spacing_*/
+    --page-margin: 5rem;
+    --page-padding: 2rem 4rem 0rem 4rem;
+    --card-padding: 1rem;
+
+    /*_container-height_*/
+    --chart-h: 30rem;
+
+    /*_font-size_*/
+    --fs-h1: 5rem;
+    --fs-h2: 3.8rem;
+    --fs-h3: 2.8rem;
+    --fs-body: 1.6rem;
+    --fs-cta: 2rem;
+    --fs-card-title: 1.75rem;
 
   }
 }
+
 
 * {
   margin: 0;
@@ -121,7 +146,10 @@ h2 {
   font-size: var(--fs-h2);
 }
 
-h3,
+h3 {
+  font-size: var(--fs-h3);
+}
+
 h4,
 h5,
 h6,

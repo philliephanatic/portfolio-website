@@ -162,30 +162,19 @@
 }
 
 /* MEDIUM SCREEN */
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1440px) {
     .footer-copy {
         font-size: 1.25rem;
     }
-    .site-header,
+    .site-header
+     {
+        padding: var(--page-padding);
+    }
     .site-footer {
-        padding-left: 10rem;
-        padding-right: 10rem;
+        padding-bottom: 1rem;
     }
 }
 
-/* LARGE SCREEN */
-@media (min-width: 1025px) and (max-width: 1440px) {
-
-    .site-header,
-    .site-footer {
-        padding-left: 10rem;
-        padding-right: 10rem;
-    }
-
-    .footer-copy {
-        font-size: 1.5rem;
-    }
-}
 
 /* XL SCREEN */
 @media (min-width: 1441px) {

@@ -76,7 +76,7 @@
 @media (min-width: 1024px) and (max-width: 1439px) {
   :root {
     /*_spacing_*/
-    --page-padding: 2rem 4rem 0rem 4rem;
+    --page-padding: 1rem 4rem;
     --card-padding: 1rem;
 
      /*_container-height_*/
@@ -97,7 +97,7 @@
 @media (min-width: 1440px) and (max-width: 1999px) {
   :root {
     /*_spacing_*/
-    --page-padding: 4rem 6rem 0rem 6rem;
+    --page-padding: 2rem 6rem;
     --card-padding: 1rem;
 
     /*_container-height_*/
@@ -117,7 +117,7 @@
 @media (min-width: 2000px) {
   :root {
     /*_spacing_*/
-    --page-padding: 4rem 50rem 0rem 50rem;
+    --page-padding: 4rem 50rem;
     --card-padding: 1rem;
 
     /*_container-height_*/

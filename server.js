@@ -3,6 +3,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 import trafficAuditRoutes from "./routes/traffic-audit.js";
+import seoAuditRoute from "./routes/seo-audit.js";
 
 dotenv.config();
 
@@ -19,9 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use("/traffic-audit", trafficAuditRoutes);
 
-app.get("/", (req, res) => {
-  res.render("index.ejs");
-});
+app.use("/seo-audit", seoAuditRoute);
 
 
 app.listen(port, () => {

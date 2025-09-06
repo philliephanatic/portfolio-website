@@ -1,5 +1,5 @@
 //__!!CHARTS DATA!!__//
-// portfolio-website/routes/traffic-audit.js
+// routes/traffic-audit.js
 
 import express from "express";
 import fs from "fs/promises";
@@ -19,7 +19,7 @@ const router = express.Router();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const jsonPath = path.join(__dirname, "../data/cleaned-similarweb-data.json");
 
-router.get("/", async (_req, res) => {
+router.get("/", async (_req, res) => { //_req vs req makes no runtime difference—it’s purely to communicate “intentionally unused” to humans and linters.
   try {
     const raw = await fs.readFile(jsonPath, "utf-8");
     const data = JSON.parse(raw);
@@ -159,7 +159,7 @@ router.get("/", async (_req, res) => {
     const companyBAvgTimePerPage = Math.round(
       bDurSec / Number(companyB.traffic.pagesPerVisit || 1)
     );
-    
+
     // “A vs B” — keep your original sign convention if needed:
     const avgTimePerPagePercentDifference = calculatePercentChange(
       companyBAvgTimePerPage,

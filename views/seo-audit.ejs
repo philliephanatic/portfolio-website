@@ -61,24 +61,102 @@
                         </header>
                         <!-- CHARTS -->
                         <figure class="chart u-span-6">
-                            <p>
-                                STACKED BAR CHART: 100% - "GOOD SHARE" vs NOT GOOD
-                                <br>
-                                LCP (Largest Contentful Paint) — aim < 2.5s <br>
-                                    INP (Interaction to Next Paint) — aim < 200ms <br>
-                                        CLS (Cumulative Layout Shift) — aim < 0.1 </p>
+                            <canvas id="core-web-vitals-canvas"></canvas>
+                            <figcaption class="visually-hidden">
+                                Core Web Vitals
+                            </figcaption>
+                            <script id="core-web-vitals-script" type="application/json">
+                            <%- JSON.stringify({
+                                
+                            }) %>
+                            </script>
                         </figure>
+                        <!-- CARDS -->
+                        <section class="card u-span-2 u-flex-center">
+                            <header class="grid--2 u-span-2 u-flex-center">
+                                <h3 class="card__title card__title--blue">
+                                    Insight
+                                </h3>
+                            </header>
+                            <p>
+                                Largest Content Paint (LCP)
+                            </p>
+                        </section>
+                        <section class="card u-span-2 u-flex-center">
+                            <header>
+                                <h3 class="card__title card__title--blue">
+                                    Insight
+                                </h3>
+                            </header>
+                            <p>
+                                Interaction to Next Pain (INP)
+                            </P>
+                        </section>
+                        <section class="card u-span-2 u-flex-center">
+                            <header>
+                                <h3 class="card__title card__title--gold">
+                                    Next Step
+                                </h3>
+                            </header>
+                            <p>
+                                Cumulative Layout Shift (CLS)
+                            </p>
+                        </section>
                     </article>
 
                     <!-- MODULE 3 -->
-                    <!-- Search Enginge Results Page (SERP) -->
-                    <article class="module grid--6 u-span-2" id="SERP">
+                    <!-- SERP -->
+                    <article class="module grid--6 u-span-2" id="core-web-vitals">
                         <header class="module__title u-span-6">
                             <h2>
                                 SERP
                             </h2>
                         </header>
+                        <!-- CHARTS -->
+                        <figure class="chart u-span-6">
+                            <canvas id="serp-canvas"></canvas>
+                            <figcaption class="visually-hidden">
+                                Core Web Vitals
+                            </figcaption>
+                            <script id="serp-script" type="application/json">
+                            <%- JSON.stringify({
+                                
+                            }) %>
+                            </script>
+                        </figure>
+                        <!-- CARDS -->
+                        <section class="card u-span-2 u-flex-center">
+                            <header class="grid--2 u-span-2 u-flex-center">
+                                <h3 class="card__title card__title--blue">
+                                    Insight
+                                </h3>
+                            </header>
+                            <p>
+                                HOLD
+                            </p>
+                        </section>
+                        <section class="card u-span-2 u-flex-center">
+                            <header>
+                                <h3 class="card__title card__title--blue">
+                                    Insight
+                                </h3>
+                            </header>
+                            <p>
+                                HOLD
+                            </P>
+                        </section>
+                        <section class="card u-span-2 u-flex-center">
+                            <header>
+                                <h3 class="card__title card__title--gold">
+                                    Next Step
+                                </h3>
+                            </header>
+                            <p>
+                                HOLD
+                            </p>
+                        </section>
                     </article>
+
                 </section>
 
                 <!-- CTA -->

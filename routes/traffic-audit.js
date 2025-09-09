@@ -6,7 +6,7 @@ import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
 import {
-  formatDate,
+  formatDateMonthYear,
   formatAndSortAudienceSegmentData,
   convertToSeconds,
   calculatePercentChange,
@@ -28,7 +28,7 @@ router.get("/", async (_req, res) => { //_req vs req makes no runtime difference
     const companyB = data.find((d) => d.name === "oldnavy.gap.com");
 
     // === Monthly Sessions ===
-    const labels = companyA.traffic.history.map((i) => formatDate(i.date));
+    const labels = companyA.traffic.history.map((i) => formatDateMonthYear(i.date));
     const companyATrafficValues = companyA.traffic.history.map((i) => i.visits);
     const companyBTrafficValues = companyB.traffic.history.map((i) => i.visits);
 

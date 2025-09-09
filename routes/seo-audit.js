@@ -4,7 +4,7 @@ import express from "express";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { formatDate } from "../lib/analytics.js";
+import { formatDateMonthYear } from "../lib/analytics.js";
 
 const router = express.Router();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -22,11 +22,44 @@ router.get("/", async (_req, res) => {
     // X- Axis Labels
     const labels = series.map((r) => r.week_end);
 
-    // X- Axis Labels: 4 WEEKS JANUARY 2025
-    // const janParse = labels.slice()
-    // const jan2025Labels = new Date(Date.UTC())
-    const jan2025Labels = formatDate(labels[10])
-    
+    const MS_DAY = 86400000;
+    const parseUTC = (s) => new Date(`${s}T00:00:00Z`);
+
+    // month: 1–12
+    const monthBoundsUTC = (year, month) => {
+      const start = new Date(Date.UTC(year, month - 1, 1));
+      const next = new Date(Date.UTC(year, month, 1)); // first day of next month
+      return { start, next };
+    };
+
+    function monthSlice(series, year, month, { pad = true } = {}) {
+      const { start, next } = monthBoundsUTC(year, month);
+      const lo = pad ? new Date(start.getTime() - 7 * MS_DAY) : start;
+      const hi = pad ? new Date(next.getTime() + 7 * MS_DAY) : next;
+
+      const rows = series.filter((r) => {
+        const t = parseUTC(r.week_end);
+        return t >= lo && t < hi;
+      });
+      // Ensure sorted
+      rows.sort((a, b) => a.week_end.localeCompare(b.week_end));
+
+      return {
+        labels: rows.map((r) => r.week_end),
+        lcp: rows.map((r) => r.p75?.lcp_ms ?? null),
+        fcp: rows.map((r) => r.p75?.fcp_ms ?? null),
+        ttfb: rows.map((r) => r.p75?.ttfb_ms ?? null),
+        inp: rows.map((r) => r.p75?.inp_ms ?? null),
+        cls: rows.map((r) => r.p75?.cls ?? null),
+        lcpGood: rows.map((r) => r.good_share?.lcp ?? null),
+        // ...add other good_share series if needed
+      };
+    }
+
+    const jan = monthSlice(series, 2025, 1, { pad: true });
+    const janTest = jan.lcpGood;
+    // jan.labels -> your weekly x-axis for January with padding
+    // jan.lcp    -> numbers aligned to those labels
 
     // p75 (ms) series
     const lcp = series.map((r) => r.p75?.lcp_ms ?? null);
@@ -43,10 +76,14 @@ router.get("/", async (_req, res) => {
     const inpGood = series.map((r) => r.good_share?.inp ?? null);
     const clsGood = series.map((r) => r.good_share?.cls ?? null);
 
+    console.log(
+      "Jan 2025: ",
+      typeof jan,
+      jan,
 
-    console.log("Jan, Feb, Match 2025: ", typeof labels, labels, );
-
-    console.log("jan2025Labels: ", jan2025Labels )
+      "janTest: ",
+      janTest
+    );
 
     // Company A - Full Site - Mobile
     // Company A - Full Site - Desktop

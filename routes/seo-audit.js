@@ -17,96 +17,68 @@ router.get("/", async (_req, res) => {
     const raw = await fs.readFile(jsonPath, "utf-8");
     const data = JSON.parse(raw);
 
-    //Possibly add to lib/analytics
+    const companyADesktop = data.sites["https://www.abercrombie.com"]?.DESKTOP; 
+    const companyADesktopFullSite =
+      companyADesktop?.type === "origin" ? companyADesktop.series ?? [] : []; 
 
-    const MS_DAY = 86400000;
-    const parseUTC = (s) => new Date(`${s}T00:00:00Z`); // avoid timezone drift
+    const companyBDesktop = data.sites["https://oldnavy.gap.com"]?.DESKTOP; 
+    const companyBDesktopFullSite =
+      companyADesktop?.type === "origin" ? companyADesktop.series ?? [] : []; 
+    
 
-    // month: 1–12
-    const monthBoundsUTC = (year, month) => {
-      const start = new Date(Date.UTC(year, month - 1, 1));
-      const next = new Date(Date.UTC(year, month, 1)); // first day of next month
-      return { start, next };
+    const toChartArraysAt = (series, indices) => {
+      const get = (sel) =>
+        indices.map((i) => {
+          const r = series.at(i);
+          return r ? sel(r) : null;
+        });
+
+      return {
+        labels: get((r) => r.week_end),
+        lcp: get((r) => r.p75?.lcp_ms ?? null),
+        fcp: get((r) => r.p75?.fcp_ms ?? null),
+        ttfb: get((r) => r.p75?.ttfb_ms ?? null),
+        inp: get((r) => r.p75?.inp_ms ?? null),
+        cls: get((r) => r.p75?.cls ?? null),
+        lcpGood: get((r) => r.good_share?.lcp ?? null),
+        fcpGood: get((r) => r.good_share?.fcp ?? null),
+        ttfbGood: get((r) => r.good_share?.ttfb ?? null),
+        inpGood: get((r) => r.good_share?.inp ?? null),
+        clsGood: get((r) => r.good_share?.cls ?? null),
+      };
     };
 
-    function monthSlice(series, year, month, { pad = false } = {}) {
-      const { start, next } = monthBoundsUTC(year, month);
-      const lo = pad ? new Date(start.getTime() - 7 * MS_DAY) : start;
-      const hi = pad ? new Date(next.getTime() + 7 * MS_DAY) : next;
+    // Company A
+    const companyAJanChart = toChartArraysAt(companyADesktopFullSite, [5, 6, 7, 8]);
+    const companyAFebChart = toChartArraysAt(companyADesktopFullSite, [9, 10, 11, 12]);
+    const companyAMarChart = toChartArraysAt(companyADesktopFullSite, [13, 14, 15, 16]);
 
-      const rows = series.filter((r) => {
-        const t = parseUTC(r.week_end);
-        return t >= lo && t < hi;
-      });
-      
-      rows.sort((a, b) => a.week_end.localeCompare(b.week_end));
-
-      return {
-        labels: rows.map((r) => r.week_end),
-        lcp: rows.map((r) => r.p75?.lcp_ms ?? null),
-        fcp: rows.map((r) => r.p75?.fcp_ms ?? null),
-        ttfb: rows.map((r) => r.p75?.ttfb_ms ?? null),
-        inp: rows.map((r) => r.p75?.inp_ms ?? null),
-        cls: rows.map((r) => r.p75?.cls ?? null),
-        lcpGood: rows.map((r) => r.good_share?.lcp ?? null),
-        fcpGood: rows.map((r) => r.good_share?.fcp ?? null),
-        ttfbGood: rows.map((r) => r.good_share?.ttfb ?? null),
-        inpGood: rows.map((r) => r.good_share?.inp ?? null),
-        clsGood: rows.map((r) => r.good_share?.cls ?? null),
-      };
-    }
-
-    // Company A - Full Site - Desktop
-    const companyAFullSiteDesktop =
-      (data.sites["https://www.abercrombie.com"]?.DESKTOP?.type === "origin" &&
-        data.sites["https://www.abercrombie.com"]?.DESKTOP?.series) ??
-      [];
-
-    const companyAFullSiteDesktopJanRaw = monthSlice(companyAFullSiteDesktop, 2025, 1, { pad: false });
-    const companyAFullSiteDesktopFebRaw = monthSlice(companyAFullSiteDesktop, 2025, 2, { pad: false });
-    const companyAFullSiteDesktopMarRaw = monthSlice(companyAFullSiteDesktop, 2025, 3, { pad: false });
-
-    // Company B - Full Site - Desktop
-    const companyBFullSiteDesktop =
-      (data.sites["https://oldnavy.gap.com"]?.DESKTOP?.type === "origin" &&
-        data.sites["https://oldnavy.gap.com"]?.DESKTOP?.series) ??
-      [];
-
-      const companyBFullSiteDesktopJanRaw = monthSlice(companyBFullSiteDesktop, 2025, 1, { pad: false });
-      const companyBFullSiteDesktopFebRaw = monthSlice(companyAFullSiteDesktop, 2025, 2, { pad: false });
-      const companyBFullSiteDesktopMarRaw = monthSlice(companyAFullSiteDesktop, 2025, 3, { pad: false });
+    // const companyAJanLcp = companyAJanChart
 
 
-    // Company A - Homepage - Desktop
+    // Company B
+    const companyBJanChart = toChartArraysAt(companyBDesktopFullSite, [5, 6, 7, 8]);
+    const companyBFebChart = toChartArraysAt(companyBDesktopFullSite, [9, 10, 11, 12]);
+    const companyBMarChart = toChartArraysAt(companyBDesktopFullSite, [13, 14, 15, 16]);
 
-    // Company B - Homepage - Desktop
+    // console.log(
+    //     "companyAJanLcp: ", companyAJanLcp
+    //   );
 
-    function keepLastN(block, n = 4) {
-      const slice = (arr) => (Array.isArray(arr) ? arr.slice(-n) : arr);
-      return {
-        labels: slice(block.labels),
-        lcp: slice(block.lcp),
-        fcp: slice(block.fcp),
-        ttfb: slice(block.ttfb),
-        inp: slice(block.inp),
-        cls: slice(block.cls),
-        lcpGood: slice(block.lcpGood),
-        fcpGood: slice(block.fcpGood),
-        ttfbGood: slice(block.ttfbGood),
-        inpGood: slice(block.inpGood),
-        clsGood: slice(block.clsGood),
-      };
-    }
+    console.log(
+      "companyAJanChart: ", companyAJanChart,
+      "companyAFebChart: ", companyAFebChart,
+      "companyAMarChart: ", companyAMarChart,
+    );
 
-    // Usage
-    const companyAFullSiteDesktopMar = keepLastN(companyAFullSiteDesktopMarRaw, 4);
-    const companyBFullSiteDesktopMar = keepLastN(companyBFullSiteDesktopMarRaw, 4);
+  
 
-    // console.log("A jan: ", jan);
-    // console.log("A feb: ", feb);
-    console.log("A mar: ", companyAFullSiteDesktopMar);
-    console.log("B mar:", companyBFullSiteDesktopMar)
+    console.log(
+      "companyBJanChart: ", companyBJanChart,
+      "companyBFebChart: ", companyBFebChart,
+      "companyBMarChart: ", companyBMarChart
 
+    )
 
     res.render("seo-audit.ejs", {
       title: "Seo Audit",

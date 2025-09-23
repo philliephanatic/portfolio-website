@@ -1,4 +1,4 @@
-//__!!CHARTS CONFIG!!__//
+//__!!GLOBAL CHARTS CONFIG!!__//
 // public/scripts/charts/config.js
 
 /* global Chart, ChartDataLabels */

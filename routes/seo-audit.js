@@ -4,7 +4,7 @@ import express from "express";
 import fs from "fs/promises";
 import path from "path";
 import { fileURLToPath } from "url";
-import { formatDateMonthYear } from "../lib/analytics.js";
+import { formatDateMonthYear, avgArrayPercentage } from "../lib/analytics.js";
 import { hostname } from "os";
 import { url } from "inspector";
 
@@ -17,15 +17,16 @@ router.get("/", async (_req, res) => {
     const raw = await fs.readFile(jsonPath, "utf-8");
     const data = JSON.parse(raw);
 
+    // COMPANY A - FULL SITE - DESKTOP
     const companyADesktop = data.sites["https://www.abercrombie.com"]?.DESKTOP; 
     const companyADesktopFullSite =
       companyADesktop?.type === "origin" ? companyADesktop.series ?? [] : []; 
 
+    // COMPANY B - FULL SITE - DESKTOP
     const companyBDesktop = data.sites["https://oldnavy.gap.com"]?.DESKTOP; 
     const companyBDesktopFullSite =
-      companyADesktop?.type === "origin" ? companyADesktop.series ?? [] : []; 
+      companyBDesktop?.type === "origin" ? companyBDesktop.series ?? [] : []; 
     
-
     const toChartArraysAt = (series, indices) => {
       const get = (sel) =>
         indices.map((i) => {
@@ -48,41 +49,67 @@ router.get("/", async (_req, res) => {
       };
     };
 
+   // !! COMBINE ALL MOBILE + DESKTOP FOR FIRST OVERVIEW CHART, THEN DRILL DOWN !!
+
+
     // Company A
+    // JAN - FULL SITE - DESKTOP
     const companyAJanChart = toChartArraysAt(companyADesktopFullSite, [5, 6, 7, 8]);
+    const companyAJanLabels = companyAJanChart?.labels;
+
+    const companyAJanLcpGoodShare = avgArrayPercentage(companyAJanChart?.lcpGood);
+
+    const companyAJanInpGoodShare = avgArrayPercentage(companyAJanChart?.inpGood);
+    const companyAJanClsGoodShare = avgArrayPercentage(companyAJanChart?.clsGood);
+    // FEB - FULL SITE - DESKTOP
     const companyAFebChart = toChartArraysAt(companyADesktopFullSite, [9, 10, 11, 12]);
+    
+    // MAR - FULL SITE - DESKTOP
     const companyAMarChart = toChartArraysAt(companyADesktopFullSite, [13, 14, 15, 16]);
 
-    // const companyAJanLcp = companyAJanChart
-
-
+    
     // Company B
+    // JAN - FULL SITE - DESKTOP
     const companyBJanChart = toChartArraysAt(companyBDesktopFullSite, [5, 6, 7, 8]);
+    const companyBJanLabels = companyBJanChart?.labels;
+    const companyBJanLcpGoodShare = avgArrayPercentage(companyBJanChart?.lcpGood);
+    const companyBJanInpGoodShare = avgArrayPercentage(companyBJanChart?.inpGood);
+    const companyBJanClsGoodShare = avgArrayPercentage(companyBJanChart?.clsGood);
+
+    // FEB - FULL SITE - DESKTOP
     const companyBFebChart = toChartArraysAt(companyBDesktopFullSite, [9, 10, 11, 12]);
+
+    // MAR - FULL SITE - DESKTOP
     const companyBMarChart = toChartArraysAt(companyBDesktopFullSite, [13, 14, 15, 16]);
 
-    // console.log(
-    //     "companyAJanLcp: ", companyAJanLcp
-    //   );
+    console.log(
+      "JANUARY A: ",
+      "companyAJanLabels: ", companyAJanLabels,
+      "companyAJanLcp: ", companyAJanLcpGoodShare,  
+      "companyAJanInp: ", companyAJanInpGoodShare,
+      "companyAJanCls: ", companyAJanClsGoodShare
+      );
 
     console.log(
-      "companyAJanChart: ", companyAJanChart,
-      "companyAFebChart: ", companyAFebChart,
-      "companyAMarChart: ", companyAMarChart,
+      "JANUARY B: ",
+      "companyBJanLabels: ", companyBJanLabels,
+      "companyBJanLcp: ", companyBJanLcpGoodShare,  
+      "companyBJanInp: ", companyBJanInpGoodShare,
+      "companyBJanCls: ", companyBJanClsGoodShare
+      
     );
-
-  
-
-    console.log(
-      "companyBJanChart: ", companyBJanChart,
-      "companyBFebChart: ", companyBFebChart,
-      "companyBMarChart: ", companyBMarChart
-
-    )
 
     res.render("seo-audit.ejs", {
       title: "Seo Audit",
       pageStyle: "seo-audit",
+
+      companyAJanLabels,
+      companyAJanLcpGoodShare,
+
+      companyBJanLcpGoodShare,
+
+
+
     });
   } catch (err) {
     console.error("SEO Audit Error:", err.message);

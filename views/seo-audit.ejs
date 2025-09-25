@@ -18,13 +18,15 @@
                         <ul class="sticky-nav__list">
                             <li><a class="sticky-nav__link" href="#overview">Overview</a></li>
                             <li class="sticky-nav__sep ">&bull;</li>
-                            <li><a class="sticky-nav__link" href="#module2">Module 2</a></li>
+                            <li><a class="sticky-nav__link" href="#core-web-vitals">Core Web Vitals</a></li>
+                            <li class="sticky-nav__sep ">&bull;</li>
+                            <li><a class="sticky-nav__link" href="#lcp">LCP</a></li>
                             <li class="sticky-nav__sep ">&bull;</li>
                         </ul>
                     </nav>
                     <!-- MODULE 1 -->
                     <!-- GOAL & DATA -->
-                    <article class="module column-1 u-align-content-start">
+                    <article class="module column-1 u-align-content-start" id="overview">
                         <header class="u-flex-center" id="goal-statement__title">
                             <h2>
                                 <strong class="token--gold">GOAL</strong>
@@ -106,7 +108,7 @@
 
                     <!-- MODULE 3 -->
                     <!-- LARGEST CONTENT PAINT (LCP) -->
-                    <article class="module grid--6 u-span-2" id="core-web-vitals">
+                    <article class="module grid--6 u-span-2" id="lcp">
                         <header class="module__title u-span-6">
                             <h2>
                                 Largest Content Paint
@@ -119,9 +121,9 @@
                                 Largest Content Paint
                             </figcaption>
                             <script id="lcp-comparison-script" type="application/json">
-                            <%- JSON.stringify({
-                                
-                            }) %>
+                            <%- JSON.stringify(
+                                lcpMonthlyPayload
+                            ) %>
                             </script>
                         </figure>
                         <!-- CARDS -->

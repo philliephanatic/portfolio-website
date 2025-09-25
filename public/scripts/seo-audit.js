@@ -35,46 +35,56 @@ function initLcpComparisonStackedBarChart() {
   const ctx = document.getElementById("lcp-comparison-canvas");
   if (!data || !ctx) return;
 
-  const { companyAJanLabels, companyAJanLcpGoodShare, companyBJanLcpGoodShare } = data;
+  const {labels, companyA, companyB } = data;
 
   new Chart(ctx, {
     type: "bar",
     data: {
-      labels: companyAJanLabels,
+      labels, // ["January","February","March"]
       datasets: [
         {
           label: "Company A",
-          data: companyAJanLcpGoodShare,
+          data: companyA, // [JanAvgMs, FebAvgMs, MarAvgMs]
+          // keep your styling choices; colors are placeholders
           backgroundColor: "rgba(54,162,235,0.7)",
+          borderWidth: 0,
         },
         {
           label: "Company B",
-          data: companyBJanLcpGoodShare,
+          data: companyB,
           backgroundColor: "rgba(255,99,132,0.7)",
+          borderWidth: 0,
         },
       ],
     },
     options: opt("bar", {
-          plugins: {
-            title: { text: "Largest Content Paint" },
-            datalabels: { formatter: (v) => fmt.percent(v) },
-            tooltip: {
-              callbacks: {
-                label: (c) => `${c.dataset.label}: ${fmt.number(c.raw)}`,
-              },
-              bodyFont: { family: "Roboto" },
-              titleFont: { family: "Roboto" },
-            },
+      // Ensure grouped bars (not stacked)
+      scales: {
+        x: { ...noGrid(), stacked: false, title: { display: true, text: "Month" } },
+        y: {
+          ...noGrid(),
+          stacked: false,
+          beginAtZero: true,
+          title: { display: true, text: "Milliseconds" },
+          ticks: { callback: (v) => `${fmt.number(v)} ms` },
+        },
+      },
+      plugins: {
+        title: { display: true, text: "Monthly Average" },
+        subtitle: {display: false, text: "Monthly Average"},
+        tooltip: {
+          callbacks: {
+            label: (c) => `${c.dataset.label}: ${fmt.number(c.raw)} ms`,
           },
-          scales: {
-            y: {
-              ...noGrid(),
-              beginAtZero: true,
-              ticks: { callback: (v) => fmt.number(v) },
-              title: { display: true, text: "% of sessions loading within 2.5s.", padding: { bottom: 10 } },
-            },
-            x: { ...noGrid(), title: { display: true  } },
-          },
-        }),
+        },
+        // If you use chartjs-plugin-datalabels:
+        datalabels: {
+          formatter: (v) => `${fmt.number(v)} ms`,
+          anchor: "end",
+          align: "end",
+        },
+      },
+    }),
   });
 }
+
